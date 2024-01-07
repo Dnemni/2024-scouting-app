@@ -652,11 +652,16 @@
         </LinearLayout>
     </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<!--<LinearLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="200dp">-->
 
-
+<!--        -->
+<!--        AMOGH CODE BELOW THIS LINE ONLY-->
+<!--        -->
+<!--        -->
+<!--        -->
+<!--        -->
     <LinearLayout
         style="@style/buttonRow">
 
@@ -825,7 +830,7 @@
             android:text="5"/>
 
     </LinearLayout>
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
