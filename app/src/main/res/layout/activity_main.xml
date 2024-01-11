@@ -332,7 +332,7 @@
 
         <TextView
             style="@style/buttonNumber"
-            android:text="Time taken to Balance: "
+            android:text="Time taken to Cycle: "
             android:layout_width="30dp"
             android:textSize="17sp"
             android:layout_height="wrap_content"
@@ -345,12 +345,24 @@
 
 
     </LinearLayout>
+
+        <LinearLayout
+            style="@style/buttonRow">
+
+            <TextView
+                style="@style/buttonNumber"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Endgame:" />
+        </LinearLayout>
+
     <LinearLayout
         style="@style/buttonRow">
 
         <TextView
             style="@style/buttonNumber"
-            android:text="Succesful Balance: "
+            android:text="Spotlight: "
             android:layout_width="30dp"
             android:textSize="17sp"
             android:layout_height="wrap_content"
@@ -369,96 +381,109 @@
 
 
     </LinearLayout>
+
+        <LinearLayout
+            style="@style/buttonRow">
+
+            <TextView
+                style="@style/buttonNumber"
+                android:text="Buddy Climb: "
+                android:layout_width="30dp"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                style="@style/buttonNumber"
+                android:id="@+id/succesful_balance"
+                android:gravity="center"
+                android:text="Yes"/>
+            <Button
+                style="@style/buttonNumber"
+                android:id="@+id/unsuccesful_balance"
+                android:gravity="center"
+                android:text="No"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            style="@style/buttonRow">
+
+            <TextView
+                style="@style/buttonNumber"
+                android:text="Trap: "
+                android:layout_width="30dp"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                style="@style/buttonNumber"
+                android:id="@+id/succesful_balance"
+                android:gravity="center"
+                android:text="Yes"/>
+            <Button
+                style="@style/buttonNumber"
+                android:id="@+id/unsuccesful_balance"
+                android:gravity="center"
+                android:text="No"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            style="@style/buttonRow">
+
+            <TextView
+                style="@style/buttonNumber"
+                android:text="Onstage: "
+                android:layout_width="30dp"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                style="@style/buttonNumber"
+                android:id="@+id/succesful_balance"
+                android:gravity="center"
+                android:text="Yes"/>
+            <Button
+                style="@style/buttonNumber"
+                android:id="@+id/unsuccesful_balance"
+                android:gravity="center"
+                android:text="No"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            style="@style/buttonRow">
+
+            <TextView
+                style="@style/buttonNumber"
+                android:text="# Times Blocked: "
+                android:layout_width="30dp"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                style="@style/buttonNumber"
+                android:id="@+id/succesful_balance"
+                android:gravity="center"
+                android:text="+"/>
+            <Button
+                style="@style/buttonNumber"
+                android:id="@+id/unsuccesful_balance"
+                android:gravity="center"
+                android:text="-"/>
+
+
+        </LinearLayout>
     <LinearLayout
         style="@style/buttonRow">
 
         <TextView
             style="@style/buttonNumber"
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Robot Stats:" />
-    </LinearLayout>
-    <LinearLayout
-        style="@style/buttonRow">
-
-        <TextView
-            style="@style/buttonNumber"
-            android:text="Strength"
-            android:textSize="20sp"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-
-            />
-        <Button
-            style="@style/buttonNumber"
-            android:id="@+id/strength_1"
-            android:gravity="center"
-            android:text="1"/>
-        <Button
-            style="@style/buttonNumber"
-            android:id="@+id/strength_2"
-            android:gravity="center"
-            android:text="2"/>
-        <Button
-            style="@style/buttonNumber"
-            android:id="@+id/strength_3"
-            android:gravity="center"
-            android:text="3"/>
-        <Button
-            style="@style/buttonNumber"
-            android:id="@+id/strength_4"
-            android:gravity="center"
-            android:text="4"/>
-        <Button
-            style="@style/buttonNumber"
-            android:id="@+id/strength_5"
-            android:gravity="center"
-            android:text="5"/>
-
-    </LinearLayout>
-    <LinearLayout
-        style="@style/buttonRow">
-
-        <TextView
-            style="@style/buttonNumber"
-            android:text="Speed"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            />
-        <Button
-            style="@style/buttonNumber"
-            android:id="@+id/speed_1"
-            android:gravity="center"
-            android:text="1"/>
-        <Button
-            style="@style/buttonNumber"
-            android:id="@+id/speed_2"
-            android:gravity="center"
-            android:text="2"/>
-        <Button
-            style="@style/buttonNumber"
-            android:id="@+id/speed_3"
-            android:gravity="center"
-            android:text="3"/>
-        <Button
-            style="@style/buttonNumber"
-            android:id="@+id/speed_4"
-            android:gravity="center"
-            android:text="4"/>
-        <Button
-            style="@style/buttonNumber"
-            android:id="@+id/speed_5"
-            android:gravity="center"
-            android:text="5"/>
-
-    </LinearLayout>
-    <LinearLayout
-        style="@style/buttonRow">
-
-        <TextView
-            style="@style/buttonNumber"
-            android:text="Manuevering"
+            android:text="Region for Defending"
             android:layout_width="30dp"
             android:textSize="15sp"
             android:layout_height="wrap_content"
