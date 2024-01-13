@@ -211,7 +211,6 @@
                         android:textOff=""
                         android:layout_width="300dp"
                         android:layout_height="200dp"
-                        android:layout_gravity="center"
                         android:background="@drawable/field"
                         app:cornerRadius="10dp" />
                     <ToggleButton
@@ -221,7 +220,17 @@
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="53dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="50dp"
+                        android:background="@drawable/speaker"/>
+                    <ToggleButton
+                        android:id="@+id/amp"
+                        android:textOn="AMP"
+                        android:textOff="AMP"
+                        android:textColor="@color/white"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="105dp"
                         android:background="@drawable/speaker"/>
 
                 </RelativeLayout>
@@ -229,9 +238,15 @@
 
 
             <ToggleButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="50dp"/>
+                android:id="@+id/onstage"
+                android:textColor="@color/white"
+                android:layout_width="61dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/toggle_color"
+                android:textOff="ONSTAGE"
+                android:textOn="ONSTAGE"
+                android:textSize="10sp" />
 
 
 
@@ -252,17 +267,6 @@
                         android:layout_margin="5dp"
                         android:backgroundTint="#00D6AB"
                         android:text="fail"
-                        android:textSize="11sp"
-                        app:cornerRadius="32dp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/score_auton"
-                        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-                        android:layout_width="80dp"
-                        android:layout_height="36dp"
-                        android:layout_marginTop="5dp"
-                        android:backgroundTint="#00D6AB"
-                        android:text="score"
                         android:textSize="11sp"
                         app:cornerRadius="32dp" />
                 </LinearLayout>
