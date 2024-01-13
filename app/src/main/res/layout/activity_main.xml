@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"                                                                                                                                                                                                                                             out_height="match_parent"
+    android:orientation="vertical">
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,6 +17,10 @@
     android:background="@color/almostBlack"
     tools:ignore="HardcodedText"
     tools:context=".MainActivity">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -138,6 +145,10 @@
             android:textSize="20dp"
             tools:ignore="DuplicateIds" />
     </LinearLayout>
+        </LinearLayout>
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -189,29 +200,38 @@
                     android:textSize="10sp" />
             </LinearLayout>
 
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <ToggleButton
-                        android:id="@+id/cube_auton"
+                        android:id="@+id/field"
                         android:textOn=""
                         android:textOff=""
                         android:layout_width="300dp"
                         android:layout_height="200dp"
-                        android:layout_marginStart="53dp"
+                        android:layout_gravity="center"
                         android:background="@drawable/field"
                         app:cornerRadius="10dp" />
+                    <ToggleButton
+                        android:id="@+id/speaker"
+                        android:textOn="SPEAKER"
+                        android:textOff="SPEAKER"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="53dp"
+                        android:background="@drawable/speaker"/>
+
+                </RelativeLayout>
 
 
-                </LinearLayout>
 
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"/>
 
 
 
@@ -517,4 +537,4 @@
 
 </LinearLayout>
 </ScrollView>
-</layout>
+</FrameLayout>
