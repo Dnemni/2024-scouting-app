@@ -394,12 +394,12 @@
 
         <Button
             style="@style/buttonNumber"
-            android:id="@+id/succesful_balance"
+            android:id="@+id/succesful_spotlight"
             android:gravity="center"
             android:text="Yes"/>
         <Button
             style="@style/buttonNumber"
-            android:id="@+id/unsuccesful_balance"
+            android:id="@+id/unsuccesful_spotlight"
             android:gravity="center"
             android:text="No"/>
 
@@ -419,12 +419,12 @@
 
             <Button
                 style="@style/buttonNumber"
-                android:id="@+id/succesful_balance"
+                android:id="@+id/succesful_buddy_climb"
                 android:gravity="center"
                 android:text="Yes"/>
             <Button
                 style="@style/buttonNumber"
-                android:id="@+id/unsuccesful_balance"
+                android:id="@+id/unsuccesful_buddy_climb"
                 android:gravity="center"
                 android:text="No"/>
 
@@ -443,12 +443,12 @@
 
             <Button
                 style="@style/buttonNumber"
-                android:id="@+id/succesful_balance"
+                android:id="@+id/succesful_trap"
                 android:gravity="center"
                 android:text="Yes"/>
             <Button
                 style="@style/buttonNumber"
-                android:id="@+id/unsuccesful_balance"
+                android:id="@+id/unsuccesful_trap"
                 android:gravity="center"
                 android:text="No"/>
 
@@ -467,12 +467,12 @@
 
             <Button
                 style="@style/buttonNumber"
-                android:id="@+id/succesful_balance"
+                android:id="@+id/succesful_onstage"
                 android:gravity="center"
                 android:text="Yes"/>
             <Button
                 style="@style/buttonNumber"
-                android:id="@+id/unsuccesful_balance"
+                android:id="@+id/unsuccesful_onstage"
                 android:gravity="center"
                 android:text="No"/>
 
@@ -491,12 +491,12 @@
 
             <Button
                 style="@style/buttonNumber"
-                android:id="@+id/succesful_balance"
+                android:id="@+id/up_times_blocked"
                 android:gravity="center"
                 android:text="+"/>
             <Button
                 style="@style/buttonNumber"
-                android:id="@+id/unsuccesful_balance"
+                android:id="@+id/down_times_blocked"
                 android:gravity="center"
                 android:text="-"/>
 
@@ -514,27 +514,27 @@
             />
         <Button
             style="@style/buttonNumber"
-            android:id="@+id/maneuvering_1"
+            android:id="@+id/region_1"
             android:gravity="center"
             android:text="1"/>
         <Button
             style="@style/buttonNumber"
-            android:id="@+id/maneuvering_2"
+            android:id="@+id/region_2"
             android:gravity="center"
             android:text="2"/>
         <Button
             style="@style/buttonNumber"
-            android:id="@+id/maneuvering_3"
+            android:id="@+id/region_3"
             android:gravity="center"
             android:text="3"/>
         <Button
             style="@style/buttonNumber"
-            android:id="@+id/maneuvering_4"
+            android:id="@+id/region_4"
             android:gravity="center"
             android:text="4"/>
         <Button
             style="@style/buttonNumber"
-            android:id="@+id/maneuvering_5"
+            android:id="@+id/region_5"
             android:gravity="center"
             android:text="5"/>
 
