@@ -158,13 +158,35 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/buttons_layout_auton"
+            android:id="@+id/buttons_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <LinearLayout
-                android:id="@+id/pickup_location_auton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <ToggleButton
+                android:id="@+id/switch_auton"
+                android:textColor="@color/white"
+                android:layout_width="61dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/toggle_color"
+                android:textOff="AUTON"
+                android:textOn="AUTON"
+                android:textSize="10sp" />
+            <ToggleButton
+                android:id="@+id/switch_teleop"
+                android:textColor="@color/white"
+                android:layout_width="61dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/toggle_color"
+                android:textOff="TElEOP"
+                android:textOn="TElEOP"
+                android:textSize="10sp" /></LinearLayout>
+            <LinearLayout
+                android:id="@+id/pickup_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -178,7 +200,7 @@
                     android:textSize="10sp" />
 
                 <ToggleButton
-                    android:id="@+id/source_pickup_auton"
+                    android:id="@+id/source_pickup"
                     android:textColor="@color/white"
                     android:layout_width="61dp"
                     android:layout_height="wrap_content"
@@ -189,7 +211,7 @@
                     android:textSize="10sp" />
 
                 <ToggleButton
-                    android:id="@+id/ground_pickup_auton"
+                    android:id="@+id/ground_pickup"
                     android:layout_width="61dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
@@ -205,7 +227,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <ToggleButton
+                    <ImageView
                         android:id="@+id/field"
                         android:textOn=""
                         android:textOff=""
@@ -213,6 +235,7 @@
                         android:layout_height="200dp"
                         android:background="@drawable/field"
                         app:cornerRadius="10dp" />
+
                     <ToggleButton
                         android:id="@+id/speaker"
                         android:textOn="SPEAKER"
@@ -223,6 +246,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="50dp"
                         android:background="@drawable/speaker"/>
+
                     <ToggleButton
                         android:id="@+id/amp"
                         android:textOn="AMP"
@@ -233,111 +257,90 @@
                         android:layout_marginStart="105dp"
                         android:background="@drawable/speaker"/>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="315dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Speakers Scored:"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/speakers_scored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="50sp"
+                        android:layout_marginStart="340dp"
+                        android:layout_marginTop="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="AMPs Scored:"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:layout_marginStart="320dp"
+                        android:layout_marginTop="100dp"/>
+                    <TextView
+                        android:id="@+id/amps_scored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="50sp"
+                        android:layout_marginStart="340dp"
+                        android:layout_marginTop="100dp"/>
                 </RelativeLayout>
 
 
 
-            <ToggleButton
-                android:id="@+id/onstage"
-                android:textColor="@color/white"
-                android:layout_width="61dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:background="@drawable/toggle_color"
-                android:textOff="ONSTAGE"
-                android:textOn="ONSTAGE"
-                android:textSize="10sp" />
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/fail_auton"
+                        android:id="@+id/fail"
                         style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-                        android:layout_width="67dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="36dp"
-                        android:layout_margin="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="start"
                         android:backgroundTint="#00D6AB"
                         android:text="fail"
                         android:textSize="11sp"
                         app:cornerRadius="32dp" />
-                </LinearLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/score"
+                        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:backgroundTint="#00D6AB"
+                        android:text="score"
+                        android:textSize="11sp"
+                        app:cornerRadius="32dp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/undo_auton"
+                        android:id="@+id/undo"
                         style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-                        android:layout_width="155dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="36dp"
-                        android:layout_margin="5dp"
+                        android:layout_marginStart="30"
+                        android:layout_marginTop="5dp"
                         android:backgroundTint="#00D6AB"
                         android:text="undo"
                         android:textSize="11sp"
                         app:cornerRadius="32dp" />
+
                 </LinearLayout>
 
-
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/a_auton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="# Of Links:"
-                    android:textColor="@color/white"
-                    android:textSize="11sp" />
-
-                <TextView
-                    android:id="@+id/num_of_links_auton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="0"
-                    android:textColor="@color/black"
-                    android:textSize="11sp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/add_link_auton"
-                    style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_margin="3dp"
-                    android:backgroundTint="#00D6AB"
-                    android:text="+"
-                    android:textSize="15dp"
-                    app:cornerRadius="32dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/minus_link_auton"
-                    style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_margin="3dp"
-                    android:backgroundTint="#00D6AB"
-                    android:text="-"
-                    android:textSize="15dp"
-                    app:cornerRadius="32dp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
 
     </LinearLayout>
 

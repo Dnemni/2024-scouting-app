@@ -119,15 +119,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String quantitative = auton_pickup + auton_coneplacement + auton_cubeplacement + teliop_pickup + teliop_coneplacement + teliop_cubeplacement + auton_fails + teliop_fails;
     String observational = "Time taken to balance, successful balance, strength, speed, maneuvering";
     String data_sent_to_sheet = titles + quantitative + observational;
-
  */
-    TextView num_of_cubes_auton, num_of_cones_auton, num_of_cubes_teliop, num_of_cones_teliop;
-    TextView num_of_links_auton, num_of_links_teliop;
-    ToggleButton first_pickup_auton, second_pickup_auton, ground_pickup_auton, first_pickup_teliop, second_pickup_teliop, ground_pickup_teliop;
-    ToggleButton cone_auton, cube_auton, highgoal_auton, middlegoal_auton, lowgoal_auton, cone_teliop, cube_teliop, highgoal_teliop, middlegoal_teliop, lowgoal_teliop;
-    MaterialButton fail_auton, score_auton, undo_auton, fail_teliop, score_teliop, undo_teliop;
-    MaterialButton add_link_auton, minus_link_auton, add_link_teliop, minus_link_teliop;
+    TextView speakers_scored,amps_scored;
+    ToggleButton switch_auton, switch_teleop;
 
+    ToggleButton source_pickup, ground_pickup;
+    ToggleButton speaker, amp;
+    MaterialButton fail, score, undo;
     Button succesful_balance, unsuccesful_balance;
 
     Button strength_1, strength_2, strength_3, strength_4, strength_5;
@@ -146,53 +144,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         inputTextColor=(EditText) findViewById(R.id.inputTextColor);
         inputTextMatch=(EditText) findViewById(R.id.inputTextMatch);
         inputTextTeam=(EditText) findViewById(R.id.inputTextTeam);
+
+        ToggleButton switch_auton, switch_teleop;
+
+        ToggleButton source_pickup, ground_pickup;
+        ToggleButton speaker, amp;
+        MaterialButton fail, score, undo;
+
 //text views below
-        num_of_links_auton = findViewById(R.id.num_of_links_auton);
-        num_of_links_teliop = findViewById(R.id.num_of_links_teliop);
-        num_of_cubes_auton = findViewById(R.id.num_of_cubes_auton);
-        num_of_cones_auton = findViewById(R.id.num_of_cones_auton);
-        num_of_cubes_teliop = findViewById(R.id.num_of_cubes_teliop);
-        num_of_cones_teliop = findViewById(R.id.num_of_cones_teliop);
-//text views above
-        first_pickup_auton = (ToggleButton) findViewById(R.id.first_pickup_auton);
-        second_pickup_auton = (ToggleButton) findViewById(R.id.second_pickup_auton);
-        ground_pickup_auton = (ToggleButton) findViewById(R.id.ground_pickup_auton);
-        first_pickup_teliop = (ToggleButton) findViewById(R.id.first_pickup_teliop);
-        second_pickup_teliop = (ToggleButton) findViewById(R.id.second_pickup_teliop);
-        ground_pickup_teliop = (ToggleButton) findViewById(R.id.ground_pickup_teliop);
+        speakers_scored = findViewById(R.id.speakers_scored);
+        amps_scored = findViewById(R.id.amps_scored);
+//toggle buttons below
+        switch_auton = (ToggleButton) findViewById(R.id.switch_auton);
+        switch_teleop = (ToggleButton) findViewById(R.id.switch_teleop);
+        source_pickup = (ToggleButton) findViewById(R.id.ground_pickup);
+        speaker = (ToggleButton) findViewById(R.id.speaker);
+        amp = (ToggleButton) findViewById(R.id.amp);
+//material buttons
+        fail = (MaterialButton) findViewById(R.id.fail);
+        score = (MaterialButton) findViewById(R.id.score);
+        undo = (MaterialButton) findViewById(R.id.undo);
 
-        cone_auton = (ToggleButton) findViewById(R.id.cone_auton);
-        cube_auton = (ToggleButton) findViewById(R.id.cube_auton);
-        highgoal_auton = (ToggleButton) findViewById(R.id.highgoal_auton);
-        middlegoal_auton = (ToggleButton) findViewById(R.id.middlegoal_auton);
-        lowgoal_auton = (ToggleButton) findViewById(R.id.lowgoal_auton);
-        cone_teliop = (ToggleButton) findViewById(R.id.cone_teliop);
-        cube_teliop = (ToggleButton) findViewById(R.id.cube_teliop);
-        highgoal_teliop = (ToggleButton) findViewById(R.id.highgoal_teliop);
-        middlegoal_teliop = (ToggleButton) findViewById(R.id.middlegoal_teliop);
-        lowgoal_teliop = (ToggleButton) findViewById(R.id.lowgoal_teliop);
-
-        fail_auton = (MaterialButton) findViewById(R.id.fail_auton);
-        score_auton = (MaterialButton) findViewById(R.id.score_auton);
-        undo_auton = (MaterialButton) findViewById(R.id.undo_auton);
-        fail_teliop = (MaterialButton) findViewById(R.id.fail_teliop);
-        score_teliop = (MaterialButton) findViewById(R.id.score_teliop);
-        undo_teliop = (MaterialButton) findViewById(R.id.undo_teliop);
-        add_link_auton = (MaterialButton) findViewById(R.id.add_link_auton);
-        minus_link_auton = (MaterialButton) findViewById(R.id.minus_link_auton);
-        add_link_teliop = (MaterialButton) findViewById(R.id.add_link_teliop);
-        minus_link_teliop = (MaterialButton) findViewById(R.id.minus_link_teliop);
-
-//        assignId(fail_auton, R.id.fail_auton);
-//        assignId(score_auton, R.id.score_auton);
-//        assignId(undo_auton, R.id.undo_auton);
-//        assignId(fail_teliop, R.id.fail_teliop);
-//        assignId(score_teliop, R.id.score_teliop);
-//        assignId(undo_teliop, R.id.undo_teliop);
-//        assignId(add_link_auton, R.id.add_link_auton);
-//        assignId(minus_link_auton, R.id.minus_link_auton);
-//        assignId(add_link_teliop, R.id.add_link_teliop);
-//        assignId(minus_link_teliop, R.id.minus_link_teliop);
 
         succesful_balance = (Button) findViewById(R.id.succesful_balance);
         unsuccesful_balance = (Button) findViewById(R.id.unsuccesful_balance);
