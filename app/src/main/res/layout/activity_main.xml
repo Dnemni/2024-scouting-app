@@ -147,8 +147,6 @@
     </LinearLayout>
         </LinearLayout>
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -174,7 +172,7 @@
                 android:background="@drawable/toggle_color"
                 android:textOff="AUTON"
                 android:textOn="AUTON"
-                android:textSize="10sp" />
+                android:textSize="10sp"/>
             <ToggleButton
                 android:id="@+id/switch_teleop"
                 android:textColor="@color/white"
@@ -229,11 +227,13 @@
 
                     <ImageView
                         android:id="@+id/field"
-                        android:textOn=""
-                        android:textOff=""
                         android:layout_width="300dp"
                         android:layout_height="200dp"
+                        android:layout_marginStart="-389dp"
+                        android:layout_toEndOf="@+id/textView2"
                         android:background="@drawable/field"
+                        android:textOff=""
+                        android:textOn=""
                         app:cornerRadius="10dp" />
 
                     <ToggleButton
@@ -275,14 +275,16 @@
                         android:textSize="50sp"
                         android:layout_marginStart="340dp"
                         android:layout_marginTop="10dp"/>
+
                     <TextView
+                        android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
+                        android:layout_marginStart="320dp"
+                        android:layout_marginTop="100dp"
                         android:text="AMPs Scored:"
                         android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:layout_marginStart="320dp"
-                        android:layout_marginTop="100dp"/>
+                        android:textSize="11sp" />
                     <TextView
                         android:id="@+id/amps_scored"
                         android:layout_width="wrap_content"
@@ -304,10 +306,10 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/fail"
                         style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="36dp"
                         android:layout_marginTop="5dp"
-                        android:layout_gravity="start"
+
                         android:backgroundTint="#00D6AB"
                         android:text="fail"
                         android:textSize="11sp"
@@ -315,25 +317,33 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/score"
                         style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="36dp"
                         android:layout_marginTop="5dp"
-                        android:layout_gravity="center_horizontal"
                         android:backgroundTint="#00D6AB"
                         android:text="score"
                         android:textSize="11sp"
                         app:cornerRadius="32dp" />
 
-
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/undo"
                         style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="36dp"
-                        android:layout_marginStart="30"
                         android:layout_marginTop="5dp"
                         android:backgroundTint="#00D6AB"
                         android:text="undo"
+                        android:textSize="11sp"
+                        app:cornerRadius="32dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/drop"
+                        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+                        android:layout_width="100dp"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="#00D6AB"
+                        android:text="drop"
                         android:textSize="11sp"
                         app:cornerRadius="32dp" />
 

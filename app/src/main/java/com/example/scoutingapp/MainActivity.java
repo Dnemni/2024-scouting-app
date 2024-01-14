@@ -57,23 +57,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //variables for data collection
     int source_pickup_autonv;
     int ground_pickup_autonv;
-    int source_pickup_teliopv;
-    int ground_pickup_teliopv;
+    int source_pickup_teleopv;
+    int ground_pickup_teleopv;
     int speaker_autonv;
     int amp_autonv;
-    int speaker_teliopv;
-    int amp_teliopv;
+    int speaker_teleopv;
+    int amp_teleopv;
+    int amp_fail_autonv;
+    int speaker_fail_autonv;
+    int amp_fail_teleopv;
+    int speaker_fail_teleopv;
+    int drop_autonv;
+    int drop_teleopv;
+
+
     int fail_autonv;
     int score_autonv;
     int fail_teliopv;
     int score_teliopv;
 
     //other variables
-    boolean undo_teliop;
-    int num_of_links_autonv;
-    int num_of_links_teliopv;
-    boolean speakerv;
+    boolean sourcev;
+    boolean groundv;
     boolean ampv;
+    boolean speakerv;
+    boolean autonv=true;
+    boolean undov;
 
     String balance;
 
@@ -104,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     ToggleButton source_pickup, ground_pickup;
     ToggleButton speaker, amp;
-    MaterialButton fail, score, undo;
+    MaterialButton fail, score, undo, drop;
     Button succesful_balance, unsuccesful_balance;
 
     Button strength_1, strength_2, strength_3, strength_4, strength_5;
@@ -124,11 +133,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         inputTextMatch=(EditText) findViewById(R.id.inputTextMatch);
         inputTextTeam=(EditText) findViewById(R.id.inputTextTeam);
 
-        ToggleButton switch_auton, switch_teleop;
 
-        ToggleButton source_pickup, ground_pickup;
-        ToggleButton speaker, amp;
-        MaterialButton fail, score, undo;
+
 
 //text views below
         speakers_scored = findViewById(R.id.speakers_scored);
@@ -136,13 +142,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //toggle buttons below
         switch_auton = (ToggleButton) findViewById(R.id.switch_auton);
         switch_teleop = (ToggleButton) findViewById(R.id.switch_teleop);
-        source_pickup = (ToggleButton) findViewById(R.id.ground_pickup);
+        source_pickup = (ToggleButton) findViewById(R.id.source_pickup);
+        ground_pickup = (ToggleButton) findViewById(R.id.ground_pickup);
         speaker = (ToggleButton) findViewById(R.id.speaker);
         amp = (ToggleButton) findViewById(R.id.amp);
 //material buttons
         fail = (MaterialButton) findViewById(R.id.fail);
         score = (MaterialButton) findViewById(R.id.score);
         undo = (MaterialButton) findViewById(R.id.undo);
+        drop = (MaterialButton) findViewById(R.id.drop);
 
 
 //        succesful_balance = (Button) findViewById(R.id.succesful_balance);
@@ -202,65 +210,93 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         updateCountDownText();
+        switch_auton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                autonv=true;
+                switch_auton.setChecked(true);
+                switch_teleop.setChecked(false);}
+        });
+        switch_teleop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                autonv=false;
+                switch_auton.setChecked(false);
+                switch_teleop.setChecked(true);}});
         source_pickup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {first_pickup_autonv++;}
-        });
-        second_pickup_auton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                sourcev=true;
+                groundv=false;
+                ground_pickup.setChecked(false);}});
+        ground_pickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                second_pickup_autonv++;
+                groundv=true;
+                sourcev=false;
+                source_pickup.setChecked(false);}});
+        amp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ampv=true;
+                speakerv=false;
+                speaker.setChecked(false);
             }
         });
-        ground_pickup_auton.setOnClickListener(new View.OnClickListener() {
+        speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ground_pickup_autonv++;
+                speakerv=true;
+                ampv=false;
+                amp.setChecked(false);
             }
         });
-        first_pickup_teliop.setOnClickListener(new View.OnClickListener() {
+        fail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                first_pickup_teliopv++;
-            }
-        });
-        second_pickup_teliop.setOnClickListener(new View.OnClickListener() {
+                if(ampv&&autonv)amp_fail_autonv++;
+                else if(ampv&&!autonv)amp_fail_teleopv++;
+                else if(speakerv&&autonv)speaker_fail_autonv++;
+                else if(speakerv&&!autonv)speaker_fail_autonv++;
+                groundv=false;
+                sourcev=false;
+                ampv=false;
+                speakerv=false;
+                clearall();}});
+        undo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                second_pickup_teliopv++;
-            }
-        });
-        ground_pickup_teliop.setOnClickListener(new View.OnClickListener() {
+                groundv=false;
+                sourcev=false;
+                ampv=false;
+                speakerv=false;
+                clearall();}});
+        score.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ground_pickup_teliopv++;
-            }
-        });
-        cube_auton.setOnClickListener(new View.OnClickListener() {
+                if(groundv&&autonv)ground_pickup_autonv++;
+                else if(groundv&&!autonv)ground_pickup_teleopv++;
+                else if(sourcev&&autonv)source_pickup_autonv++;
+                else if(sourcev&&!autonv)source_pickup_teleopv++;
+                if(ampv&&autonv)amp_autonv++;
+                else if(ampv&&!autonv)amp_teleopv++;
+                else if(speakerv&&autonv)speaker_autonv++;
+                else if(speakerv&&!autonv)speaker_teleopv++;
+                groundv=false;
+                sourcev=false;
+                ampv=false;
+                speakerv=false;
+                clearall();}});
+        drop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cube_autonv=true;
-                cone_autonv=false;
-            }
-        });
-        cone_auton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cone_autonv=true;
-                cube_autonv=false;}
-        });
-        cube_teliop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cube_teliopv=true;
-                cone_teliopv=false;}
-        });
-        cone_teliop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cone_teliopv=true;
-                cube_teliopv=false;}
-        });
+                if(autonv)drop_autonv++;
+                else if(!autonv)drop_teleopv++;
+                groundv=false;
+                sourcev=false;
+                ampv=false;
+                speakerv=false;
+                clearall();}});
         highgoal_auton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
