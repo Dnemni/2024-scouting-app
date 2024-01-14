@@ -28,22 +28,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText inputTextMatch;
     EditText inputTextTeam;
     void clearall(){
-        first_pickup_auton.setChecked(false);
-        second_pickup_auton.setChecked(false);
-        ground_pickup_auton.setChecked(false);
-        cone_auton.setChecked(false);
-        cube_auton.setChecked(false);
-        highgoal_auton.setChecked(false);
-        middlegoal_auton.setChecked(false);
-        lowgoal_auton.setChecked(false);
-        first_pickup_auton.setChecked(false);
-        second_pickup_auton.setChecked(false);
-        ground_pickup_auton.setChecked(false);
-        cone_auton.setChecked(false);
-        cube_auton.setChecked(false);
-        highgoal_auton.setChecked(false);
-        middlegoal_auton.setChecked(false);
-        lowgoal_auton.setChecked(false);
+        source_pickup.setChecked(false);
+        ground_pickup.setChecked(false);
+        amp.setChecked(false);
+        speaker.setChecked(false);
     }
     private static final long START_TIME_IN_MILLIS = 600000;
     private TextView mTextViewCountDown;
@@ -65,36 +53,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int first_pickup_teliopv;
     int second_pickup_teliopv;*/
     String pickup_location_teliopv="";
-    int first_pickup_autonv;
-    int second_pickup_autonv;
+
+    //variables for data collection
+    int source_pickup_autonv;
     int ground_pickup_autonv;
-    int first_pickup_teliopv;
-    int second_pickup_teliopv;
+    int source_pickup_teliopv;
     int ground_pickup_teliopv;
-    boolean cube_autonv;
-    boolean cube_teliopv;
-    boolean cone_autonv;
-    boolean cone_teliopv;
-    int high_cone_autonv;
-    int middle_cone_autonv;
-    int low_cone_autonv;
-    int high_cone_teliopv;
-    int middle_cone_teliopv;
-    int low_cone_teliopv;
-    int high_cube_autonv;
-    int middle_cube_autonv;
-    int low_cube_autonv;
-    int high_cube_teliopv;
-    int middle_cube_teliopv;
-    int low_cube_teliopv;
+    int speaker_autonv;
+    int amp_autonv;
+    int speaker_teliopv;
+    int amp_teliopv;
     int fail_autonv;
     int score_autonv;
-    int undo_autonv;
     int fail_teliopv;
     int score_teliopv;
-    int undo_teliopv;
+
+    //other variables
+    boolean undo_teliop;
     int num_of_links_autonv;
     int num_of_links_teliopv;
+    boolean speakerv;
+    boolean ampv;
 
     String balance;
 
@@ -166,42 +145,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         undo = (MaterialButton) findViewById(R.id.undo);
 
 
-        succesful_balance = (Button) findViewById(R.id.succesful_balance);
-        unsuccesful_balance = (Button) findViewById(R.id.unsuccesful_balance);
-        strength_1 = (Button) findViewById(R.id.strength_1);
-        strength_2 = (Button) findViewById(R.id.strength_2);
-        strength_3 = (Button) findViewById(R.id.strength_3);
-        strength_4 = (Button) findViewById(R.id.strength_4);
-        strength_5 = (Button) findViewById(R.id.strength_5);
-        speed_1 = (Button) findViewById(R.id.speed_1);
-        speed_2 = (Button) findViewById(R.id.speed_2);
-        speed_3 = (Button) findViewById(R.id.speed_3);
-        speed_4 = (Button) findViewById(R.id.speed_4);
-        speed_5 = (Button) findViewById(R.id.speed_5);
-        maneuvering_1 = (Button) findViewById(R.id.maneuvering_1);
-        maneuvering_2 = (Button) findViewById(R.id.maneuvering_2);
-        maneuvering_3 = (Button) findViewById(R.id.maneuvering_3);
-        maneuvering_4 = (Button) findViewById(R.id.maneuvering_4);
-        maneuvering_5 = (Button) findViewById(R.id.maneuvering_5);
+//        succesful_balance = (Button) findViewById(R.id.succesful_balance);
+//        unsuccesful_balance = (Button) findViewById(R.id.unsuccesful_balance);
+//        strength_1 = (Button) findViewById(R.id.strength_1);
+//        strength_2 = (Button) findViewById(R.id.strength_2);
+//        strength_3 = (Button) findViewById(R.id.strength_3);
+//        strength_4 = (Button) findViewById(R.id.strength_4);
+//        strength_5 = (Button) findViewById(R.id.strength_5);
+//        speed_1 = (Button) findViewById(R.id.speed_1);
+//        speed_2 = (Button) findViewById(R.id.speed_2);
+//        speed_3 = (Button) findViewById(R.id.speed_3);
+//        speed_4 = (Button) findViewById(R.id.speed_4);
+//        speed_5 = (Button) findViewById(R.id.speed_5);
+//        maneuvering_1 = (Button) findViewById(R.id.maneuvering_1);
+//        maneuvering_2 = (Button) findViewById(R.id.maneuvering_2);
+//        maneuvering_3 = (Button) findViewById(R.id.maneuvering_3);
+//        maneuvering_4 = (Button) findViewById(R.id.maneuvering_4);
+//        maneuvering_5 = (Button) findViewById(R.id.maneuvering_5);
 
-
-//        assignId(succesful_balance, R.id.succesful_balance);
-//        assignId(unsuccesful_balance, R.id.unsuccesful_balance);
-//        assignId(strength_1, R.id.strength_1);
-//        assignId(strength_2, R.id.strength_2);
-//        assignId(strength_3, R.id.strength_3);
-//        assignId(strength_4, R.id.strength_4);
-//        assignId(strength_5, R.id.strength_5);
-//        assignId(speed_1, R.id.speed_1);
-//        assignId(speed_2, R.id.speed_2);
-//        assignId(speed_3, R.id.speed_3);
-//        assignId(speed_4, R.id.speed_4);
-//        assignId(speed_5, R.id.speed_5);
-//        assignId(maneuvering_1, R.id.maneuvering_1);
-//        assignId(maneuvering_2, R.id.maneuvering_2);
-//        assignId(maneuvering_3, R.id.maneuvering_3);
-//        assignId(maneuvering_4, R.id.maneuvering_4);
-//        assignId(maneuvering_5, R.id.maneuvering_5);
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
 
 
@@ -241,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         updateCountDownText();
-        first_pickup_auton.setOnClickListener(new View.OnClickListener() {
+        source_pickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {first_pickup_autonv++;}
         });

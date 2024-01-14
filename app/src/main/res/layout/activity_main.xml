@@ -238,14 +238,14 @@
 
                     <ToggleButton
                         android:id="@+id/speaker"
-                        android:textOn="SPEAKER"
-                        android:textOff="SPEAKER"
-                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="50dp"
-                        android:background="@drawable/speaker"/>
+                        android:background="@drawable/speaker"
+                        android:textColor="@color/white"
+                        android:textOff="SPEAKER"
+                        android:textOn="SPEAKER" />
 
                     <ToggleButton
                         android:id="@+id/amp"
