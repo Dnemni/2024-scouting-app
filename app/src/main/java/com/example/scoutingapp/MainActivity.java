@@ -184,12 +184,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String name = "amogh";
                 int matchnumber = 76;
                 int teamnumber = 7390;
-
                 saveData(name, matchnumber, teamnumber, alliance_color, pickup_location_autonv, pickup_location_teliopv,
-                        high_cube_teliopv, middle_cube_teliopv, low_cube_teliopv, high_cone_teliopv, middle_cone_teliopv,
-                        low_cone_teliopv, high_cube_autonv, middle_cube_autonv, low_cube_autonv, high_cone_autonv, middle_cone_autonv,
-                        low_cone_autonv, fail_teliopv, fail_autonv, num_of_links_teliopv, num_of_links_autonv, balance, robot_strengthv,
+                         fail_teliopv, fail_autonv, balance, robot_strengthv,
                         robot_speedv, robot_maneuvarablev);
+
+//                saveData(name, matchnumber, teamnumber, alliance_color, pickup_location_autonv, pickup_location_teliopv,
+//                        high_cube_teliopv, middle_cube_teliopv, low_cube_teliopv, high_cone_teliopv, middle_cone_teliopv,
+//                        low_cone_teliopv, high_cube_autonv, middle_cube_autonv, low_cube_autonv, high_cone_autonv, middle_cone_autonv,
+//                        low_cone_autonv, fail_teliopv, fail_autonv, num_of_links_teliopv, num_of_links_autonv, balance, robot_strengthv,
+//                        robot_speedv, robot_maneuvarablev);
             }
         });
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
@@ -297,116 +300,116 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ampv=false;
                 speakerv=false;
                 clearall();}});
-        highgoal_auton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(cone_autonv){
-                    high_cone_autonv++;
-                } else if (cube_autonv) {
-                    high_cube_autonv++;
-                }
-            }
-        });
-        middlegoal_auton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(cone_autonv){
-                    middle_cone_autonv++;
-                } else if (cube_autonv) {
-                    middle_cube_autonv++;
-                }
-            }
-        });
-        lowgoal_auton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(cone_autonv){
-                    low_cone_autonv++;
-                } else if (cube_autonv) {
-                    low_cube_autonv++;
-                }
-            }
-        });
-        highgoal_teliop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(cone_teliopv){
-                    high_cone_teliopv++;
-                } else if (cube_teliopv) {
-                    high_cube_teliopv++;
-                }
-            }
-        });
-        middlegoal_teliop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(cone_teliopv){
-                    middle_cone_teliopv++;
-                } else if (cube_teliopv) {
-                    middle_cube_teliopv++;
-                }
-            }
-        });
-        lowgoal_teliop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(cone_teliopv){
-                    low_cone_teliopv++;
-                } else if (cube_teliopv) {
-                    low_cube_teliopv++;
-                }
-            }
-        });
-        fail_auton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clearall();
-                fail_autonv++;
-            }
-        });
-        fail_teliop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clearall();
-                fail_teliopv++;
-            }
-        });
-        undo_auton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clearall();
-            }
-        });
-        undo_teliop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clearall();
-            }
-        });
-        add_link_auton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                num_of_links_autonv++;
-            }
-        });
-        minus_link_auton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                num_of_links_autonv--;
-            }
-        });
-        add_link_teliop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                num_of_links_teliopv++;
-            }
-        });
-        minus_link_teliop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                num_of_links_teliopv--;
-            }
-        });
+//        middlegoal_auton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(cone_autonv){
+//                    middle_cone_autonv++;
+//                } else if (cube_autonv) {
+//                    middle_cube_autonv++;
+//                }
+//            }
+//        });
+//        lowgoal_auton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(cone_autonv){
+//                    low_cone_autonv++;
+//                } else if (cube_autonv) {
+//                    low_cube_autonv++;
+//                }
+//            }
+//        });
+//        highgoal_teliop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(cone_teliopv){
+//                    high_cone_teliopv++;
+//                } else if (cube_teliopv) {
+//                    high_cube_teliopv++;
+//                }
+//            }
+//        });
+//        middlegoal_teliop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(cone_teliopv){
+//                    middle_cone_teliopv++;
+//                } else if (cube_teliopv) {
+//                    middle_cube_teliopv++;
+//                }
+//            }
+//        });
+//        highgoal_auton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(cone_autonv){
+//                    high_cone_autonv++;
+//                } else if (cube_autonv) {
+//                    high_cube_autonv++;
+//                }
+//            }
+//        });
+//        lowgoal_teliop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(cone_teliopv){
+//                    low_cone_teliopv++;
+//                } else if (cube_teliopv) {
+//                    low_cube_teliopv++;
+//                }
+//            }
+//        });
+//        fail_auton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                clearall();
+//                fail_autonv++;
+//            }
+//        });
+//        fail_teliop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                clearall();
+//                fail_teliopv++;
+//            }
+//        });
+//        undo_auton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                clearall();
+//            }
+//        });
+//        undo_teliop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                clearall();
+//            }
+//        });
+//        add_link_auton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                num_of_links_autonv++;
+//            }
+//        });
+//        minus_link_auton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                num_of_links_autonv--;
+//            }
+//        });
+//        add_link_teliop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                num_of_links_teliopv++;
+//            }
+//        });
+//        minus_link_teliop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                num_of_links_teliopv--;
+//            }
+//        });
         succesful_balance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
