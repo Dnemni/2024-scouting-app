@@ -69,8 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int speaker_fail_teleopv;
     int drop_autonv;
     int drop_teleopv;
-
-
     int fail_autonv;
     int score_autonv;
     int fail_teliopv;
@@ -83,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean speakerv;
     boolean autonv=true;
     boolean undov;
+    int amp_scoredv=0;
+    int speaker_scoredv=0;
 
     String balance;
 
@@ -218,7 +218,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View view) {
                 autonv=true;
                 switch_auton.setChecked(true);
-                switch_teleop.setChecked(false);}
+                switch_teleop.setChecked(false);
+                amp_scoredv=0;
+                speaker_scoredv=0;
+                amps_scored.setText("0");
+                speakers_scored.setText("0");
+            }
         });
         switch_teleop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -285,6 +290,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else if(ampv&&!autonv)amp_teleopv++;
                 else if(speakerv&&autonv)speaker_autonv++;
                 else if(speakerv&&!autonv)speaker_teleopv++;
+                if(speakerv){
+                    speaker_scoredv ++;
+                    speakers_scored.setText(speaker_scoredv);
+                }
+                if(ampv){
+                    amp_scoredv ++;
+                    amps_scored.setText(amp_scoredv);
+                }
                 groundv=false;
                 sourcev=false;
                 ampv=false;
@@ -592,6 +605,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         MaterialButton button = (MaterialButton) view;
         String buttonText = button.getText().toString();
+        
 //        //pickup location
 //         switch (view.getId()){
 //            case 1000022: //ground pickup auton
