@@ -18,6 +18,7 @@ import com.google.android.material.button.MaterialButton;
 import android.widget.Button;
 import android.widget.ToggleButton;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -44,16 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int match_number;
     int team_number;
     //variables for shaurya above
-
-    /*int ground_pickup_autonv;
-    int first_pickup_autonv;
-    int second_pickup_autonv;*/
-    String pickup_location_autonv="";
-    /*int ground_pickup_teliopv;
-    int first_pickup_teliopv;
-    int second_pickup_teliopv;*/
     String pickup_location_teliopv="";
-
     //variables for data collection
     int source_pickup_autonv; int ground_pickup_autonv;
     int source_pickup_teleopv; int ground_pickup_teleopv;
@@ -62,8 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int amp_fail_autonv; int speaker_fail_autonv;
     int amp_fail_teleopv; int speaker_fail_teleopv;
     int drop_autonv; int drop_teleopv;
-    int fail_autonv; int score_autonv;
-    int fail_teliopv; int score_teliopv;
     boolean spotlightv; boolean buddy_climbv;
     boolean trapv; boolean onstagev; int blocksv;
 
@@ -71,19 +61,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean sourcev; boolean groundv;
     boolean ampv; boolean speakerv;
     boolean autonv=true;
-    boolean undov;
+    int [] defense_areav=new int[5];
+//    ArrayList<int> defense_areav;
     int amp_scoredv=0; int speaker_scoredv=0;
     //button definitions
     String balance;
     TextView speakers_scored,amps_scored;
-    ToggleButton switch_auton, switch_teleop;
-    ToggleButton source_pickup, ground_pickup;
-    ToggleButton speaker, amp;
+    ToggleButton switch_auton, switch_teleop,source_pickup, ground_pickup,speaker, amp;
     MaterialButton fail, score, undo, drop;
-    Button succesful_spotlight, unsuccesful_spotlight;
-    Button succesful_buddy_climb, unsuccesful_buddy_climb;
-    Button succesful_trap, unsuccesful_trap;
-    Button succesful_onstage, unsuccesful_onstage;
+    Button succesful_spotlight, unsuccesful_spotlight,succesful_buddy_climb, unsuccesful_buddy_climb;
+    Button succesful_trap, unsuccesful_trap,succesful_onstage, unsuccesful_onstage;
     Button up_times_blocked, down_times_blocked;
 
     ToggleButton region_1, region_2,region_3,region_4,region_5;
@@ -140,23 +127,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButtonReset = (MaterialButton) findViewById(R.id.button_reset);
         submit = (MaterialButton) findViewById(R.id.submit);
         // code below for submitting data to google sheet
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = "amogh";
-                int matchnumber = 76;
-                int teamnumber = 7390;
-                saveData(name, matchnumber, teamnumber, source_pickup, pickup_location_autonv, pickup_location_teliopv,
-                         fail_teliopv, fail_autonv, balance, robot_strengthv,
-                        robot_speedv, robot_maneuvarablev);
-
-//                saveData(name, matchnumber, teamnumber, alliance_color, pickup_location_autonv, pickup_location_teliopv,
-//                        high_cube_teliopv, middle_cube_teliopv, low_cube_teliopv, high_cone_teliopv, middle_cone_teliopv,
-//                        low_cone_teliopv, high_cube_autonv, middle_cube_autonv, low_cube_autonv, high_cone_autonv, middle_cone_autonv,
-//                        low_cone_autonv, fail_teliopv, fail_autonv, num_of_links_teliopv, num_of_links_autonv, balance, robot_strengthv,
+//        submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String name = "amogh";
+//                int matchnumber = 76;
+//                int teamnumber = 7390;
+//                saveData(name, matchnumber, teamnumber, source_pickup, pickup_location_autonv, pickup_location_teliopv,
+//                         fail_teliopv, fail_autonv, balance, robot_strengthv,
 //                        robot_speedv, robot_maneuvarablev);
-            }
-        });
+//
+////                saveData(name, matchnumber, teamnumber, alliance_color, pickup_location_autonv, pickup_location_teliopv,
+////                        high_cube_teliopv, middle_cube_teliopv, low_cube_teliopv, high_cone_teliopv, middle_cone_teliopv,
+////                        low_cone_teliopv, high_cube_autonv, middle_cube_autonv, low_cube_autonv, high_cone_autonv, middle_cone_autonv,
+////                        low_cone_autonv, fail_teliopv, fail_autonv, num_of_links_teliopv, num_of_links_autonv, balance, robot_strengthv,
+////                        robot_speedv, robot_maneuvarablev);
+//            }
+//        });
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -227,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(ampv&&autonv)amp_fail_autonv++;
                 else if(ampv&&!autonv)amp_fail_teleopv++;
                 else if(speakerv&&autonv)speaker_fail_autonv++;
-                else if(speakerv&&!autonv)speaker_fail_autonv++;
+                else if(speakerv&&!autonv)speaker_fail_teleopv++;
                 groundv=false;
                 sourcev=false;
                 ampv=false;
@@ -244,14 +231,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         score.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //pickup location
                 if(groundv&&autonv)ground_pickup_autonv++;
                 else if(groundv&&!autonv)ground_pickup_teleopv++;
                 else if(sourcev&&autonv)source_pickup_autonv++;
                 else if(sourcev&&!autonv)source_pickup_teleopv++;
+                //scoring location
                 if(ampv&&autonv)amp_autonv++;
                 else if(ampv&&!autonv)amp_teleopv++;
                 else if(speakerv&&autonv)speaker_autonv++;
                 else if(speakerv&&!autonv)speaker_teleopv++;
+
                 if(speakerv){
                     speaker_scoredv ++;
                     speakers_scored.setText(speaker_scoredv);
@@ -337,33 +327,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         region_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                defense_areav[0]=1;
             }
         });
         region_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_of_links_autonv++;
+                defense_areav[1]=2;
             }
         });
         region_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_of_links_autonv--;
+                defense_areav[2]=3;
             }
         });
         region_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_of_links_teliopv++;
+                defense_areav[3]=4;
             }
         });
 
         region_5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_of_links_teliopv--;
+                defense_areav[4]=5;
             }
         });
+
 //        succesful_balance.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -539,261 +531,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
         MaterialButton button = (MaterialButton) view;
         String buttonText = button.getText().toString();
-        
-//        //pickup location
-//         switch (view.getId()){
-//            case 1000022: //ground pickup auton
-//        ground_pickup_autonv++;
-//        break;
-//        case 1000006: //1st pickup auton
-//        first_pickup_autonv++;
-//        break;
-//        case 1000017: //2nd pickup auton
-//        second_pickup_autonv++;
-//        break;
-//        case 1000024: //ground pickup teliop
-//        ground_pickup_teliopv++;
-//        break;
-//        case 1000036: //1st pickup teliop
-//        first_pickup_teliopv++;
-//        break;
-//        case 1000005: //2nd pickup teliop
-//        second_pickup_teliopv++;
-//        break;
-//    }
-//            //cone or cube
-//        switch (view.getId()){
-//            case 1000032: //cube_auton
-//                cube_autonv = true;
-//                break;
-//            case 1000008: //cone_auton
-//                cube_autonv = false;
-//                break;
-//            case 1000034: //cube_teliop
-//                cube_teliopv = true;
-//                break;
-//            case 1000000: //cone_,teliop
-//                cube_teliopv = false;
-//                break;
-//
-//        }
-//        //cone/cube placement location
-//        switch (view.getId()){
-//
-//            case 1000013: //high auton
-//                if(!cube_autonv)high_cone_autonv++;
-//                else if(cube_autonv)high_cube_autonv++;
-//                break;
-//            case 1000019: //middle auton
-//                if(!cube_autonv)middle_cone_autonv++;
-//                else if(cube_autonv)middle_cube_autonv++;
-//                break;
-//            case 1000035: //low auton
-//                if(!cube_autonv)low_cone_autonv++;
-//                else if(cube_autonv)low_cube_autonv++;
-//                break;
-//            case 1000032: //high teliop
-//                if(!cube_teliopv)high_cone_teliopv++;
-//                else if(cube_teliopv)high_cube_teliopv++;
-//                break;
-//            case 1000007: //middle teliop
-//                if(!cube_teliopv)middle_cone_teliopv++;
-//                else if(cube_teliopv)middle_cube_teliopv++;
-//                break;
-//            case 1000004: //low teliop
-//                if(!cube_autonv)low_cone_teliopv++;
-//                else if(cube_autonv)low_cube_teliopv++;
-//                break;
-//        }
-//score, fail, undo
-//        switch (view.getId()){
-//            case 1000048: /*fail auton*/
-//                first_pickup_auton.setChecked(false);
-//                second_pickup_auton.setChecked(false);
-//                ground_pickup_auton.setChecked(false);
-//                cone_auton.setChecked(false);
-//                cube_auton.setChecked(false);
-//                highgoal_auton.setChecked(false);
-//                middlegoal_auton.setChecked(false);
-//                lowgoal_auton.setChecked(false);
-//                fail_autonv++;
-//                break;
-//
-//            case 1000019: /*score auton*/
-//                if(first_pickup_auton.isChecked())pickup_location_autonv="first";
-//                if(second_pickup_auton.isChecked())pickup_location_autonv="second";
-//                if(ground_pickup_auton.isChecked())pickup_location_autonv="ground";
-//
-//            case 1000020: /*score auton*/
-//                if(first_pickup_auton.isChecked())first_pickup_autonv++;
-//                if(second_pickup_auton.isChecked())second_pickup_autonv++;
-//                if(ground_pickup_auton.isChecked())ground_pickup_autonv++;
-//
-//            case 1000019: /*score auton*/
-//                if(first_pickup_auton.isChecked())first_pickup_autonv++;
-//                if(second_pickup_auton.isChecked())second_pickup_autonv++;
-//                if(ground_pickup_auton.isChecked())ground_pickup_autonv++;
-//
-//                if(cone_auton.isChecked())cone_autonv = true;
-//                if(cube_auton.isChecked())cube_autonv = true;
-//                if(highgoal_auton.isChecked()){
-//                    if(!cube_autonv)high_cone_autonv++;
-//                    else if(cube_autonv)high_cube_autonv++;
-//                }
-//                if(middlegoal_auton.isChecked()){
-//                    if(!cube_autonv)middle_cone_autonv++;
-//                    else if(cube_autonv)middle_cube_autonv++;
-//                }
-//                if(lowgoal_auton.isChecked()) {
-//                    if (!cube_autonv) low_cone_autonv++;
-//                    else if (cube_autonv) low_cube_autonv++;
-//                }
-//                    first_pickup_auton.setChecked(false);
-//                    second_pickup_auton.setChecked(false);
-//                    ground_pickup_auton.setChecked(false);
-//                    cone_auton.setChecked(false);
-//                    cube_auton.setChecked(false);
-//                    highgoal_auton.setChecked(false);
-//                    middlegoal_auton.setChecked(false);
-//                    lowgoal_auton.setChecked(false);
-//                break;
-//            case 1000050: /*undo auton*/
-//                first_pickup_auton.setChecked(false);
-//                second_pickup_auton.setChecked(false);
-//                ground_pickup_auton.setChecked(false);
-//                cone_auton.setChecked(false);
-//                cube_auton.setChecked(false);
-//                highgoal_auton.setChecked(false);
-//                middlegoal_auton.setChecked(false);
-//                lowgoal_auton.setChecked(false);
-//                break;
-////            /*case 1000060: /*fail teliop*/
-////                first_pickup_teliop.setChecked(false);
-////                second_pickup_teliop.setChecked(false);
-////                ground_pickup_teliop.setChecked(false);
-////                cone_teliop.setChecked(false);
-////                cube_teliop.setChecked(false);
-////                highgoal_teliop.setChecked(false);
-////                middlegoal_teliop.setChecked(false);
-////                lowgoal_teliop.setChecked(false);
-////                fail_teliopv++;
-////                break;
-////
-////            case 1000011: /*score teliop*/
-////                if(first_pickup_teliop.isChecked())pickup_location_teliopv="first";
-////                if(second_pickup_teliop.isChecked())pickup_location_teliopv="second";
-////                if(ground_pickup_teliop.isChecked())pickup_location_teliopv="ground";
-////
-////            case 1000011: /*score teliop*/
-////                if(first_pickup_teliop.isChecked())first_pickup_teliopv++;
-////                if(second_pickup_teliop.isChecked())second_pickup_teliopv++;
-////                if(ground_pickup_teliop.isChecked())ground_pickup_teliopv++;
-////
-////            case 1000038: /*score teliop*/
-////                if(first_pickup_teliop.isChecked())first_pickup_teliopv++;
-////                if(second_pickup_teliop.isChecked())second_pickup_teliopv++;
-////                if(ground_pickup_teliop.isChecked())ground_pickup_teliopv++;
-////
-////                if(cone_teliop.isChecked())cone_teliopv = true;
-////                if(cube_teliop.isChecked())cube_teliopv = true;
-////                if(highgoal_teliop.isChecked()){
-////                    if(!cube_autonv)high_cone_teliopv++;
-////                    else if(cube_autonv)high_cube_teliopv++;
-////                }
-////                if(middlegoal_teliop.isChecked()){
-////                    if(!cube_autonv)middle_cone_teliopv++;
-////                    else if(cube_autonv)middle_cube_teliopv++;
-////                }
-////                if(lowgoal_teliop.isChecked()) {
-////                    if(!cube_autonv)low_cone_teliopv++;
-////                    else if(cube_autonv)low_cube_teliopv++;
-////                }
-//
-//                first_pickup_teliop.setChecked(false);
-//                second_pickup_teliop.setChecked(false);
-//                ground_pickup_teliop.setChecked(false);
-//                cone_teliop.setChecked(false);
-//                cube_teliop.setChecked(false);
-//                highgoal_teliop.setChecked(false);
-//                middlegoal_teliop.setChecked(false);
-//                lowgoal_teliop.setChecked(false);
-//                break;
-//            case 1000044: /*undo teliop*/
-//                first_pickup_teliop.setChecked(false);
-//                second_pickup_teliop.setChecked(false);
-//                ground_pickup_teliop.setChecked(false);
-//                cone_teliop.setChecked(false);
-//                cube_teliop.setChecked(false);
-//                highgoal_teliop.setChecked(false);
-//                middlegoal_teliop.setChecked(false);
-//                lowgoal_teliop.setChecked(false);
-//                break;
-//        }
-//        //successful or unsuccessful balance
-//        switch (view.getId()){
-//            case 1000039:
-//                balance = "yes";
-//                break;
-//            case 1000030:
-//                balance = "no";
-//                break;
-//        }
-//        //robot strength
-//        switch (view.getId()){
-//            case 1000001:
-//                robot_strengthv=1;
-//            break;
-//            case 1000008:
-//                robot_strengthv=2;
-//            break;
-//            case 1000009:
-//                robot_strengthv=3;
-//                break;
-//            case 1000004:
-//                robot_strengthv=4;
-//                break;
-//            case 1000005:
-//                robot_strengthv=5;
-//                break;
-//        }
-//        //robot speed
-//        switch (view.getId()){
-//            case 1000055:
-//                robot_speedv=1;
-//                break;
-//            case 1000052:
-//                robot_speedv=2;
-//                break;
-//            case 1000053:
-//                robot_speedv=3;
-//                break;
-//            case 1000059:
-//                robot_speedv=4;
-//                break;
-//            case 1000061:
-//                robot_speedv=5;
-//                break;
-//        }
-//        //robot maneuverability
-//        switch (view.getId()){
-//            case 1000011:
-//                robot_maneuvarablev=1;
-//                break;
-//            case 1000015:
-//                robot_maneuvarablev=2;
-//                break;
-//            case 1000016:
-//                robot_maneuvarablev=3;
-//                break;
-//            case 1000013:
-//                robot_maneuvarablev=4;
-//                break;
-//            case 1000014:
-//                robot_maneuvarablev=5;
-//                break;
-//        }
+        region_5.setChecked(true);
+
     }
 }
