@@ -68,14 +68,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean trapv; boolean onstagev; int blocksv;
 
     //other variables
-    boolean sourcev;
-    boolean groundv;
-    boolean ampv;
-    boolean speakerv;
+    boolean sourcev; boolean groundv;
+    boolean ampv; boolean speakerv;
     boolean autonv=true;
     boolean undov;
-    int amp_scoredv=0;
-    int speaker_scoredv=0;
+    int amp_scoredv=0; int speaker_scoredv=0;
     //button definitions
     String balance;
     TextView speakers_scored,amps_scored;
