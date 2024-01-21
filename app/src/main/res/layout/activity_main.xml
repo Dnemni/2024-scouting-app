@@ -246,6 +246,7 @@
                         app:cornerRadius="10dp" />
 
                     <ToggleButton
+                        android:id="@+id/speaker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
@@ -538,31 +539,36 @@
             android:textSize="15sp"
             android:layout_height="wrap_content"
             />
-        <Button
+        <ToggleButton
             style="@style/buttonNumber"
             android:id="@+id/region_1"
             android:gravity="center"
-            android:text="1"/>
-        <Button
+            android:textOn="1"
+            android:textOff="1"/>
+        <ToggleButton
             style="@style/buttonNumber"
             android:id="@+id/region_2"
             android:gravity="center"
-            android:text="2"/>
-        <Button
+            android:textOn="2"
+            android:textOff="2"/>
+        <ToggleButton
             style="@style/buttonNumber"
             android:id="@+id/region_3"
             android:gravity="center"
-            android:text="3"/>
-        <Button
+            android:textOn="3"
+            android:textOff="3"/>
+        <ToggleButton
             style="@style/buttonNumber"
             android:id="@+id/region_4"
             android:gravity="center"
-            android:text="4"/>
-        <Button
+            android:textOn="4"
+            android:textOff="4"/>
+        <ToggleButton
             style="@style/buttonNumber"
             android:id="@+id/region_5"
             android:gravity="center"
-            android:text="5"/>
+            android:textOn="5"
+            android:textOff="5"/>
 
     </LinearLayout>
 <!--    </LinearLayout>-->
