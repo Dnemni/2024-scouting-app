@@ -137,7 +137,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
-
+		private static final long START_TIME_IN_MILLIS = 600000;
+		private TextView mTextViewCountDown;
+		private CountDownTimer mCountDownTimer;
+		private boolean mTimerRunning;
+		private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 
         mButtonStartPause = (MaterialButton) findViewById(R.id.button_start_pause);
         mButtonReset = (MaterialButton) findViewById(R.id.button_reset);
@@ -545,7 +549,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         MaterialButton button = (MaterialButton) view;
         String buttonText = button.getText().toString();
-        
+
 //        //pickup location
 //         switch (view.getId()){
 //            case 1000022: //ground pickup auton
