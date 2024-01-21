@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String name = "amogh";
                 int matchnumber = 76;
                 int teamnumber = 7390;
-                saveData(name, matchnumber, teamnumber, alliance_color, pickup_location_autonv, pickup_location_teliopv,
+                saveData(name, matchnumber, teamnumber, source_pickup, pickup_location_autonv, pickup_location_teliopv,
                          fail_teliopv, fail_autonv, balance, robot_strengthv,
                         robot_speedv, robot_maneuvarablev);
 
@@ -515,16 +515,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
-    private void saveData(String name, int matchnumber, int teamnumber, String alliance_color,  String pickup_location_autonv, String pickup_location_teleop, int cubes_high, int cubes_mid, int cubes_low, int cones_high, int cones_mid, int cones_low, int cubes_high_auton, int cubes_mid_auton, int cubes_low_auton, int cones_high_auton, int cones_mid_auton, int cones_low_auton, int failure, int failure_auton, int links, int links_auton, String succesful_balance, int strength, int speed, int maneuvering) {
-        String url = "https://script.google.com/macros/s/AKfycbzwr9CcQPnwj84vYsYY63ilWmazQ4v6qWwSJHU5ssWqZf6X89Su1C1wB-2hn3dUTKg/exec";
+    private void saveData(String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup, int source_pickup, int amplified, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list) {
+        String url = "https://script.google.com/macros/s/AKfycbyAV85vNvfMll4YgmE9JHlQhQJE7TS4xcpiqCstvx_jC9MC8e907iphCl06l81oloAC/exec";
         url = url+"action=create&name="+name+"&matchnumber="+matchnumber+"&teamnumber="+teamnumber;
-        url = url+"&color="+alliance_color+"&pickuplocationauton="+pickup_location_autonv+"&pickuplocationteleop="+pickup_location_teleop;
-        url = url+"&cubeshigh="+cubes_high+"&cubesmid="+cubes_mid+"&cubeslow="+cubes_low+"&coneshigh="+cones_high;
-        url = url+"&conesmid="+cones_mid+"&coneslow="+cones_low+"&cubeshighauton="+cubes_high_auton+"&cubesmidauton="+cubes_mid_auton;
-        url = url+"&cubeslowauton="+cubes_low_auton+"&coneshighauton="+cones_high_auton+"&conesmidauton="+cones_mid_auton;
-        url = url+"&coneslowauton="+cones_low_auton+"&failure="+failure+"&failureauton="+failure_auton+"&links="+links;
-        url = url+"&linksauton="+links_auton+"&succesfulbalance="+succesful_balance+"&strength="+strength+"&speed="+speed;
-        url = url+"&maneuvering="+maneuvering;
+        url = url+"&color="+alliance_color+"&groundpickup="+ground_pickup+"&sourcepickup="+source_pickup;
+        url = url+"&amplified="+amplified+"&drop="+drop+"&sourcetospeaker="+source_to_speaker+"&spotlight="+spotlight;
+        url = url+"&buddyclimb="+buddy_climb+"&trap="+trap+"&onstage="+onstage+"&list="+list;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
