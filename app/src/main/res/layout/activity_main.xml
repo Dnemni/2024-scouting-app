@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -253,9 +253,14 @@
                         android:layout_marginTop="50dp"
                         android:background="@drawable/speaker"
                         android:textColor="@color/white"
-                        android:textOff="SPEAKER"
+                        android:textOff="speaker"
                         android:textOn="SPEAKER" />
-
+                    <Button
+                        android:layout_width="65dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="62dp"
+                        android:backgroundTint="@color/lightgray"/>
                     <ToggleButton
                         android:id="@+id/amp"
                         android:textOn="AMP"
@@ -265,7 +270,12 @@
                         android:layout_height="30dp"
                         android:layout_marginStart="105dp"
                         android:background="@drawable/speaker"/>
-
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginTop="2dp"
+                        android:backgroundTint="@color/lightgray"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
@@ -524,36 +534,41 @@
         style="@style/buttonRow">
         <TextView
             style="@style/buttonNumber"
-            android:text="Region for Defending"
+            android:text="Defence Area"
             android:layout_width="30dp"
             android:textSize="15sp"
             android:layout_height="wrap_content"
             />
-        <Button
+        <ToggleButton
             style="@style/buttonNumber"
             android:id="@+id/region_1"
             android:gravity="center"
-            android:text="1"/>
-        <Button
+            android:textOn="1"
+            android:textOff="1"/>
+        <ToggleButton
             style="@style/buttonNumber"
             android:id="@+id/region_2"
             android:gravity="center"
-            android:text="2"/>
-        <Button
+            android:textOn="2"
+            android:textOff="2"/>
+        <ToggleButton
             style="@style/buttonNumber"
             android:id="@+id/region_3"
             android:gravity="center"
-            android:text="3"/>
-        <Button
+            android:textOn="3"
+            android:textOff="3"/>
+        <ToggleButton
             style="@style/buttonNumber"
             android:id="@+id/region_4"
             android:gravity="center"
-            android:text="4"/>
-        <Button
+            android:textOn="4"
+            android:textOff="4"/>
+        <ToggleButton
             style="@style/buttonNumber"
             android:id="@+id/region_5"
             android:gravity="center"
-            android:text="5"/>
+            android:textOn="5"
+            android:textOff="5"/>
 
     </LinearLayout>
 <!--    </LinearLayout>-->
@@ -583,4 +598,4 @@
 
 </LinearLayout>
 </ScrollView>
-</FrameLayout>
+</LinearLayout>

@@ -55,26 +55,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String pickup_location_teliopv="";
 
     //variables for data collection
-    int source_pickup_autonv;
-    int ground_pickup_autonv;
-    int source_pickup_teleopv;
-    int ground_pickup_teleopv;
-    int speaker_autonv;
-    int amp_autonv;
-    int speaker_teleopv;
-    int amp_teleopv;
-    int amp_fail_autonv;
-    int speaker_fail_autonv;
-    int amp_fail_teleopv;
-    int speaker_fail_teleopv;
-    int drop_autonv;
-    int drop_teleopv;
-
-
-    int fail_autonv;
-    int score_autonv;
-    int fail_teliopv;
-    int score_teliopv;
+    int source_pickup_autonv; int ground_pickup_autonv;
+    int source_pickup_teleopv; int ground_pickup_teleopv;
+    int speaker_autonv; int amp_autonv;
+    int speaker_teleopv; int amp_teleopv;
+    int amp_fail_autonv; int speaker_fail_autonv;
+    int amp_fail_teleopv; int speaker_fail_teleopv;
+    int drop_autonv; int drop_teleopv;
+    int fail_autonv; int score_autonv;
+    int fail_teliopv; int score_teliopv;
+    boolean spotlightv; boolean buddy_climbv;
+    boolean trapv; boolean onstagev; int blocksv;
 
     //other variables
     boolean sourcev;
@@ -83,42 +74,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean speakerv;
     boolean autonv=true;
     boolean undov;
-
+    int amp_scoredv=0;
+    int speaker_scoredv=0;
+    //button definitions
     String balance;
-
-    int robot_speedv;
-    int robot_strengthv;
-    int robot_maneuvarablev;
-    int numofconesauton = 0;
-    int numofcubessauton = 0;
-    int numofconesteliop = 0;
-    int numofcubesstelop = 0;
-
-/*
-    String titles = "name, match# team#, red/blue";
-    String auton_pickup = "#ground pickup(auton), #1st pickup(auton),#2nd pickup(auton)";
-    String auton_coneplacement = "cones scored in high(auton), cones scored in middle(auton), cones scored in low(auton)";
-    String auton_cubeplacement = "cubes scored in high(auton), cubes scored in middle(auton), cubes scored in low(auton)";
-    String auton_fails = "cone fails(auton), cube fails(auton)";
-    String teliop_pickup = "#ground pickup(auton), #1st pickup(auton),#2nd pickup(auton)";
-    String teliop_coneplacement = "cones scored in high(auton), cones scored in middle(auton), cones scored in low(auton)";
-    String teliop_cubeplacement = "cubes scored in high(auton), cubes scored in middle(auton), cubes scored in low(auton)";
-    String teliop_fails = "cone fails(teliop), cube fails(teliop)";
-    String quantitative = auton_pickup + auton_coneplacement + auton_cubeplacement + teliop_pickup + teliop_coneplacement + teliop_cubeplacement + auton_fails + teliop_fails;
-    String observational = "Time taken to balance, successful balance, strength, speed, maneuvering";
-    String data_sent_to_sheet = titles + quantitative + observational;
- */
     TextView speakers_scored,amps_scored;
     ToggleButton switch_auton, switch_teleop;
-
     ToggleButton source_pickup, ground_pickup;
     ToggleButton speaker, amp;
     MaterialButton fail, score, undo, drop;
-    Button succesful_balance, unsuccesful_balance;
+    Button succesful_spotlight, unsuccesful_spotlight;
+    Button succesful_buddy_climb, unsuccesful_buddy_climb;
+    Button succesful_trap, unsuccesful_trap;
+    Button succesful_onstage, unsuccesful_onstage;
+    Button up_times_blocked, down_times_blocked;
 
-    Button strength_1, strength_2, strength_3, strength_4, strength_5;
-    Button speed_1, speed_2, speed_3, speed_4, speed_5;
-    Button maneuvering_1, maneuvering_2, maneuvering_3, maneuvering_4, maneuvering_5;
+    ToggleButton region_1, region_2,region_3,region_4,region_5;
     Button submit;
     Button mButtonStartPause, mButtonReset;
     @SuppressLint("MissingInflatedId")
@@ -132,10 +103,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         inputTextColor=(EditText) findViewById(R.id.inputTextColor);
         inputTextMatch=(EditText) findViewById(R.id.inputTextMatch);
         inputTextTeam=(EditText) findViewById(R.id.inputTextTeam);
-
-
-
-
 //text views below
         speakers_scored = findViewById(R.id.speakers_scored);
         amps_scored = findViewById(R.id.amps_scored);
@@ -151,25 +118,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         score = (MaterialButton) findViewById(R.id.score);
         undo = (MaterialButton) findViewById(R.id.undo);
         drop = (MaterialButton) findViewById(R.id.drop);
+        //end game
+        succesful_spotlight = (Button) findViewById(R.id.succesful_spotlight);
+        unsuccesful_spotlight = (Button) findViewById(R.id.unsuccesful_spotlight);
+        succesful_buddy_climb = (Button) findViewById(R.id.succesful_buddy_climb);
+        unsuccesful_buddy_climb = (Button) findViewById(R.id.unsuccesful_buddy_climb);
+        succesful_trap = (Button) findViewById(R.id.succesful_trap);
+        unsuccesful_trap = (Button) findViewById(R.id.unsuccesful_trap);
+        succesful_onstage = (Button) findViewById(R.id.succesful_onstage);
+        unsuccesful_onstage = (Button) findViewById(R.id.unsuccesful_onstage);
+        up_times_blocked = (Button) findViewById(R.id.up_times_blocked);
+        down_times_blocked = (Button) findViewById(R.id.down_times_blocked);
+        region_1 = (ToggleButton) findViewById(R.id.region_1);
+        region_2 = (ToggleButton) findViewById(R.id.region_2);
+        region_3 = (ToggleButton) findViewById(R.id.region_3);
+        region_4 = (ToggleButton) findViewById(R.id.region_4);
+        region_5 = (ToggleButton) findViewById(R.id.region_5);
 
-
-//        succesful_balance = (Button) findViewById(R.id.succesful_balance);
-//        unsuccesful_balance = (Button) findViewById(R.id.unsuccesful_balance);
-//        strength_1 = (Button) findViewById(R.id.strength_1);
-//        strength_2 = (Button) findViewById(R.id.strength_2);
-//        strength_3 = (Button) findViewById(R.id.strength_3);
-//        strength_4 = (Button) findViewById(R.id.strength_4);
-//        strength_5 = (Button) findViewById(R.id.strength_5);
-//        speed_1 = (Button) findViewById(R.id.speed_1);
-//        speed_2 = (Button) findViewById(R.id.speed_2);
-//        speed_3 = (Button) findViewById(R.id.speed_3);
-//        speed_4 = (Button) findViewById(R.id.speed_4);
-//        speed_5 = (Button) findViewById(R.id.speed_5);
-//        maneuvering_1 = (Button) findViewById(R.id.maneuvering_1);
-//        maneuvering_2 = (Button) findViewById(R.id.maneuvering_2);
-//        maneuvering_3 = (Button) findViewById(R.id.maneuvering_3);
-//        maneuvering_4 = (Button) findViewById(R.id.maneuvering_4);
-//        maneuvering_5 = (Button) findViewById(R.id.maneuvering_5);
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
 
@@ -218,7 +183,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View view) {
                 autonv=true;
                 switch_auton.setChecked(true);
-                switch_teleop.setChecked(false);}
+                switch_teleop.setChecked(false);
+                amp_scoredv=0;
+                speaker_scoredv=0;
+                amps_scored.setText("0");
+                speakers_scored.setText("0");
+            }
         });
         switch_teleop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -285,6 +255,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else if(ampv&&!autonv)amp_teleopv++;
                 else if(speakerv&&autonv)speaker_autonv++;
                 else if(speakerv&&!autonv)speaker_teleopv++;
+                if(speakerv){
+                    speaker_scoredv ++;
+                    speakers_scored.setText(speaker_scoredv);
+                }
+                if(ampv){
+                    amp_scoredv ++;
+                    amps_scored.setText(amp_scoredv);
+                }
                 groundv=false;
                 sourcev=false;
                 ampv=false;
@@ -300,218 +278,197 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ampv=false;
                 speakerv=false;
                 clearall();}});
-//        middlegoal_auton.setOnClickListener(new View.OnClickListener() {
+        succesful_spotlight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                spotlightv=true;}});
+        unsuccesful_spotlight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                spotlightv=false;
+            }
+        });
+        succesful_buddy_climb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buddy_climbv=true;
+            }
+        });
+        unsuccesful_buddy_climb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buddy_climbv=false;
+            }
+        });
+        succesful_trap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                trapv=true;
+            }
+        });
+        unsuccesful_trap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                trapv=false;
+            }
+        });
+        succesful_onstage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onstagev=true;
+            }
+        });
+        unsuccesful_onstage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onstagev=false;
+            }
+        });
+        up_times_blocked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                blocksv++;
+            }
+        });
+        down_times_blocked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                blocksv--;
+            }
+        });
+
+        region_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+        region_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                num_of_links_autonv++;
+            }
+        });
+        region_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                num_of_links_autonv--;
+            }
+        });
+        region_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                num_of_links_teliopv++;
+            }
+        });
+
+        region_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                num_of_links_teliopv--;
+            }
+        });
+//        succesful_balance.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                if(cone_autonv){
-//                    middle_cone_autonv++;
-//                } else if (cube_autonv) {
-//                    middle_cube_autonv++;
-//                }
+//                balance = "yes";
 //            }
 //        });
-//        lowgoal_auton.setOnClickListener(new View.OnClickListener() {
+//        unsuccesful_balance.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                if(cone_autonv){
-//                    low_cone_autonv++;
-//                } else if (cube_autonv) {
-//                    low_cube_autonv++;
-//                }
+//                balance = "no";
 //            }
 //        });
-//        highgoal_teliop.setOnClickListener(new View.OnClickListener() {
+//        strength_1.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                if(cone_teliopv){
-//                    high_cone_teliopv++;
-//                } else if (cube_teliopv) {
-//                    high_cube_teliopv++;
-//                }
+//                robot_strengthv = 1;
 //            }
 //        });
-//        middlegoal_teliop.setOnClickListener(new View.OnClickListener() {
+//        strength_2.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                if(cone_teliopv){
-//                    middle_cone_teliopv++;
-//                } else if (cube_teliopv) {
-//                    middle_cube_teliopv++;
-//                }
+//                robot_strengthv = 2;
 //            }
 //        });
-//        highgoal_auton.setOnClickListener(new View.OnClickListener() {
+//        strength_3.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                if(cone_autonv){
-//                    high_cone_autonv++;
-//                } else if (cube_autonv) {
-//                    high_cube_autonv++;
-//                }
+//                robot_strengthv = 3;
 //            }
 //        });
-//        lowgoal_teliop.setOnClickListener(new View.OnClickListener() {
+//        strength_4.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                if(cone_teliopv){
-//                    low_cone_teliopv++;
-//                } else if (cube_teliopv) {
-//                    low_cube_teliopv++;
-//                }
+//                robot_strengthv = 4;
 //            }
 //        });
-//        fail_auton.setOnClickListener(new View.OnClickListener() {
+//        strength_5.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                clearall();
-//                fail_autonv++;
+//                robot_strengthv = 5;
 //            }
 //        });
-//        fail_teliop.setOnClickListener(new View.OnClickListener() {
+//        speed_1.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                clearall();
-//                fail_teliopv++;
+//                robot_speedv = 1;
 //            }
 //        });
-//        undo_auton.setOnClickListener(new View.OnClickListener() {
+//        speed_2.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                clearall();
+//                robot_speedv = 2;
 //            }
 //        });
-//        undo_teliop.setOnClickListener(new View.OnClickListener() {
+//        speed_3.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                clearall();
+//                robot_speedv = 3;
 //            }
 //        });
-//        add_link_auton.setOnClickListener(new View.OnClickListener() {
+//        speed_4.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                num_of_links_autonv++;
+//                robot_speedv = 4;
 //            }
 //        });
-//        minus_link_auton.setOnClickListener(new View.OnClickListener() {
+//        speed_5.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                num_of_links_autonv--;
+//                robot_speedv = 5;
 //            }
 //        });
-//        add_link_teliop.setOnClickListener(new View.OnClickListener() {
+//        maneuvering_1.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                num_of_links_teliopv++;
+//                robot_maneuvarablev = 1;
 //            }
 //        });
-//        minus_link_teliop.setOnClickListener(new View.OnClickListener() {
+//        maneuvering_2.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                num_of_links_teliopv--;
+//                robot_maneuvarablev = 2;
 //            }
 //        });
-        succesful_balance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                balance = "yes";
-            }
-        });
-        unsuccesful_balance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                balance = "no";
-            }
-        });
-        strength_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_strengthv = 1;
-            }
-        });
-        strength_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_strengthv = 2;
-            }
-        });
-        strength_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_strengthv = 3;
-            }
-        });
-        strength_4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_strengthv = 4;
-            }
-        });
-        strength_5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_strengthv = 5;
-            }
-        });
-        speed_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_speedv = 1;
-            }
-        });
-        speed_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_speedv = 2;
-            }
-        });
-        speed_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_speedv = 3;
-            }
-        });
-        speed_4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_speedv = 4;
-            }
-        });
-        speed_5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_speedv = 5;
-            }
-        });
-        maneuvering_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_maneuvarablev = 1;
-            }
-        });
-        maneuvering_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_maneuvarablev = 2;
-            }
-        });
-        maneuvering_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_maneuvarablev = 3;
-            }
-        });
-        maneuvering_4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_maneuvarablev = 4;
-            }
-        });
-        maneuvering_5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                robot_maneuvarablev = 5;
-            }
-        });
+//        maneuvering_3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                robot_maneuvarablev = 3;
+//            }
+//        });
+//        maneuvering_5.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                robot_maneuvarablev = 5;
+//            }
+//        });
+//        maneuvering_4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                robot_maneuvarablev = 4;
+//            }
+//        });
 
 
     }
@@ -588,6 +545,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         MaterialButton button = (MaterialButton) view;
         String buttonText = button.getText().toString();
+        
 //        //pickup location
 //         switch (view.getId()){
 //            case 1000022: //ground pickup auton
