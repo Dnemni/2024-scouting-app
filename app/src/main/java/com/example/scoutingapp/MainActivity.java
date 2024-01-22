@@ -251,6 +251,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         score.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< Updated upstream
                 if(groundv&&autonv){
                     ground_pickup_autonv++;
                 }
@@ -275,6 +276,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else if(speakerv&&!autonv){
                     speaker_teleopv++;
                 }
+=======
+                //pickup location
+                if(groundv&&autonv)ground_pickup_autonv++;
+//                else if(groundv&&!autonv) ground_pickup_teleopv++;
+//                else if(sourcev&&autonv)source_pickup_autonv++;
+//                else if(sourcev&&!autonv)source_pickup_teleopv++;
+                //scoring location
+                if(ampv&&autonv)amp_autonv++;
+//                else if(ampv&&!autonv)amp_teleopv++;
+//                else if(speakerv&&autonv)speaker_autonv++;
+//                else if(speakerv&&!autonv)speaker_teleopv++;
+
+>>>>>>> Stashed changes
                 if(speakerv){
                     speaker_scoredv ++;
                     speakers_scored.setText(speaker_scoredv);
