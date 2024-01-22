@@ -137,41 +137,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
-		private static final long START_TIME_IN_MILLIS = 600000;
-		private TextView mTextViewCountDown;
-		private CountDownTimer mCountDownTimer;
-		private boolean mTimerRunning;
-		private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
+//		private static final long START_TIME_IN_MILLIS = 600000;
+//		private TextView mTextViewCountDown;
+//		private CountDownTimer mCountDownTimer;
+//		private boolean mTimerRunning;
+//		private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 
         mButtonStartPause = (MaterialButton) findViewById(R.id.button_start_pause);
         mButtonReset = (MaterialButton) findViewById(R.id.button_reset);
         submit = (MaterialButton) findViewById(R.id.submit);
         // code below for submitting data to google sheet
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = "amogh";
-                int matchnumber = 76;
-                int teamnumber = 7390;
-                saveData(name, matchnumber, teamnumber, source_pickup, pickup_location_autonv, pickup_location_teliopv,
-                         fail_teliopv, fail_autonv, balance, robot_strengthv,
-                        robot_speedv, robot_maneuvarablev);
-
-//                saveData(name, matchnumber, teamnumber, alliance_color, pickup_location_autonv, pickup_location_teliopv,
-//                        high_cube_teliopv, middle_cube_teliopv, low_cube_teliopv, high_cone_teliopv, middle_cone_teliopv,
-//                        low_cone_teliopv, high_cube_autonv, middle_cube_autonv, low_cube_autonv, high_cone_autonv, middle_cone_autonv,
-//                        low_cone_autonv, fail_teliopv, fail_autonv, num_of_links_teliopv, num_of_links_autonv, balance, robot_strengthv,
+//        submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String name = "amogh";
+//                int matchnumber = 76;
+//                int teamnumber = 7390;
+//                saveData(name, matchnumber, teamnumber, source_pickup, pickup_location_autonv, pickup_location_teliopv,
+//                         fail_teliopv, fail_autonv, balance, robot_strengthv,
 //                        robot_speedv, robot_maneuvarablev);
-            }
-        });
+//
+////                saveData(name, matchnumber, teamnumber, alliance_color, pickup_location_autonv, pickup_location_teliopv,
+////                        high_cube_teliopv, middle_cube_teliopv, low_cube_teliopv, high_cone_teliopv, middle_cone_teliopv,
+////                        low_cone_teliopv, high_cube_autonv, middle_cube_autonv, low_cube_autonv, high_cone_autonv, middle_cone_autonv,
+////                        low_cone_autonv, fail_teliopv, fail_autonv, num_of_links_teliopv, num_of_links_autonv, balance, robot_strengthv,
+////                        robot_speedv, robot_maneuvarablev);
+//            }
+//        });
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mTimerRunning) {
-                    pauseTimer();
-                } else {
-                    startTimer();
-                }
+//                if (mTimerRunning) {
+//                    pauseTimer();
+//                } else {
+//                    startTimer();
+//                }
             }
         });
         mButtonReset.setOnClickListener(new View.OnClickListener() {
@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         score.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-<<<<<<< Updated upstream
+
                 if(groundv&&autonv){
                     ground_pickup_autonv++;
                 }
@@ -276,7 +276,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else if(speakerv&&!autonv){
                     speaker_teleopv++;
                 }
-=======
                 //pickup location
                 if(groundv&&autonv)ground_pickup_autonv++;
 //                else if(groundv&&!autonv) ground_pickup_teleopv++;
@@ -288,14 +287,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                else if(speakerv&&autonv)speaker_autonv++;
 //                else if(speakerv&&!autonv)speaker_teleopv++;
 
->>>>>>> Stashed changes
+
                 if(speakerv){
                     speaker_scoredv ++;
-                    speakers_scored.setText(speaker_scoredv);
-                }
+                    speakers_scored.setText(String.valueOf(speaker_scoredv));                }
                 if(ampv){
                     amp_scoredv ++;
-                    amps_scored.setText(amp_scoredv);
+                    amps_scored.setText(String.valueOf(amp_scoredv));
                 }
                 groundv=false;
                 sourcev=false;
@@ -379,26 +377,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         region_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_of_links_autonv++;
+              //  num_of_links_autonv++;
             }
         });
         region_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_of_links_autonv--;
+             //   num_of_links_autonv--;
             }
         });
         region_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_of_links_teliopv++;
+              //  num_of_links_teliopv++;
             }
         });
 
         region_5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                num_of_links_teliopv--;
+              //  num_of_links_teliopv--;
             }
         });
 //        succesful_balance.setOnClickListener(new View.OnClickListener() {
