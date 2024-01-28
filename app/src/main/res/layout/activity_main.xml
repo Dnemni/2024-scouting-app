@@ -183,19 +183,7 @@
                 app:cornerRadius="4dp"
                 app:strokeColor="@color/blue"
                 app:strokeWidth="2dp" />
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="310dp"
-			android:layout_marginTop="10dp"
-			android:text="Speakers Scored:"
-			android:textColor="@color/white"
-			android:textSize="16sp" />
 
-<<<<<<< HEAD
-		<TextView
-			android:id="@+id/speakers_scored"
-=======
 
 		<Button
 			android:layout_width="100dp"
@@ -205,22 +193,8 @@
 			android:background="@drawable/speaker"
 			tools:visibility="invisible" />
 
-		<com.google.android.material.button.MaterialButton
-			android:id="@+id/speaker"
-			style="@style/Widget.MaterialComponents.Button.OutlinedButton"
->>>>>>> c495e6164c43ca8d7f8255f94f2c6a1ffeb16c4c
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="330dp"
-			android:layout_marginTop="40dp"
-			android:text="0"
-			android:textColor="@color/white"
-			android:textSize="50sp" />
 
-<<<<<<< HEAD
-		<TextView
-			android:id="@+id/textView2"
-=======
+
 		<Button
 			android:layout_width="87dp"
 			android:layout_height="35dp"
@@ -229,10 +203,28 @@
 			android:background="@drawable/speaker"
 			tools:visibility="invisible" />
 
-		<com.google.android.material.button.MaterialButton
-			android:id="@+id/amp"
-			style="@style/Widget.MaterialComponents.Button.OutlinedButton"
->>>>>>> c495e6164c43ca8d7f8255f94f2c6a1ffeb16c4c
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="310dp"
+			android:layout_marginTop="10dp"
+			android:text="Speakers Scored:"
+			android:textColor="@color/white"
+			android:textSize="16sp" />
+
+		<TextView
+			android:id="@+id/speakers_scored"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="330dp"
+			android:layout_marginTop="40dp"
+			android:text="0"
+			android:textColor="@color/white"
+			android:textSize="50sp" />
+
+		<TextView
+			android:id="@+id/textView2"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="315dp"
@@ -250,7 +242,7 @@
 			android:text="0"
 			android:textColor="@color/white"
 			android:textSize="50sp" />
-        </FrameLayout>
+	</FrameLayout>
 
 
         <LinearLayout
