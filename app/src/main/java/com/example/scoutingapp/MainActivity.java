@@ -39,10 +39,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
     //variables for shaurya below
-    String scout_name= "";
+    String name= "";
     String alliance_color = "";
+
+    int amplified;
     int match_number;
     int team_number;
+
+    // , , , , ground_pickup, source_pickup, amplified, drop, source_to_speaker, spotlight, buddy_climb, trap, onstage, list
     //variables for shaurya above
 
     /*int ground_pickup_autonv;
@@ -147,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButtonReset = (MaterialButton) findViewById(R.id.button_reset);
         submit = (MaterialButton) findViewById(R.id.submit);
         // code below for submitting data to google sheet
+<<<<<<< Updated upstream
 //        submit.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -164,6 +169,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 ////                        robot_speedv, robot_maneuvarablev);
 //            }
 //        });
+=======
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("submit pressed");
+                String name = "amogh";
+                int matchnumber = 76;
+                int teamnumber = 7390;
+                saveData(name, matchnumber, teamnumber, alliance_color, ground_pickup, source_pickup,
+                        amplified, drop, source_to_speaker, spotlight, buddy_climb, trap, onstage, list);
+            }
+        });
+>>>>>>> Stashed changes
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -502,7 +520,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            }
 //        });
 
-
+// name, matchnumber, teamnumber, alliance_color, ground_pickup, source_pickup, amplified, drop, source_to_speaker, spotlight, buddy_climb, trap, onstage, list
     }
     private void saveData(String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup, int source_pickup, int amplified, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list) {
         String url = "https://script.google.com/macros/s/AKfycbyAV85vNvfMll4YgmE9JHlQhQJE7TS4xcpiqCstvx_jC9MC8e907iphCl06l81oloAC/exec";
