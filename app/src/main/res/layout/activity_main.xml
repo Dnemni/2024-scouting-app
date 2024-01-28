@@ -1,6 +1,7 @@
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
@@ -77,7 +78,7 @@
 			app:cornerRadius="4dp"
 			app:strokeColor="#FFFFFF"
 			app:strokeWidth="2dp"
-			android:onClick="startAutonTimer" />
+			 />
 
 		<!-- Teleop Button -->
 		<com.google.android.material.button.MaterialButton
@@ -91,8 +92,7 @@
 			android:textColor="#FFFFFF"
 			app:cornerRadius="4dp"
 			app:strokeColor="#FFFFFF"
-			app:strokeWidth="2dp"
-			android:onClick="startTeleopTimer" />
+			app:strokeWidth="2dp" />
 
 
 	</LinearLayout>
@@ -146,9 +146,10 @@
 		<Button
 			android:layout_width="100dp"
 			android:layout_height="37dp"
-			android:background="@drawable/speaker"
 			android:layout_marginStart="30dp"
-			android:layout_marginTop="55dp"/>
+			android:layout_marginTop="55dp"
+			android:background="@drawable/speaker"
+			tools:visibility="invisible" />
 
 		<com.google.android.material.button.MaterialButton
 			android:id="@+id/speaker"
@@ -167,9 +168,10 @@
 		<Button
 			android:layout_width="87dp"
 			android:layout_height="35dp"
-			android:background="@drawable/speaker"
 			android:layout_marginStart="105dp"
-			android:layout_marginTop="5dp"/>
+			android:layout_marginTop="5dp"
+			android:background="@drawable/speaker"
+			tools:visibility="invisible" />
 
 		<com.google.android.material.button.MaterialButton
 			android:id="@+id/amp"
