@@ -148,7 +148,7 @@
 			android:layout_height="37dp"
 			android:background="@drawable/speaker"
 			android:layout_marginStart="30dp"
-			android:layout_marginTop="55dp"
+			android:layout_marginTop="55dp"/>
 
 		<com.google.android.material.button.MaterialButton
 			android:id="@+id/speaker"
@@ -169,7 +169,7 @@
 			android:layout_height="35dp"
 			android:background="@drawable/speaker"
 			android:layout_marginStart="105dp"
-			android:layout_marginTop="5dp"
+			android:layout_marginTop="5dp"/>
 
 		<com.google.android.material.button.MaterialButton
 			android:id="@+id/amp"
@@ -335,5 +335,5 @@
 
                 Old Code Above-->
 			<!-- new code with new designs below-->
-	<RelativeLayout
+
 </LinearLayout>
