@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButtonReset = (MaterialButton) findViewById(R.id.button_reset);
         submit = (MaterialButton) findViewById(R.id.submit);
         // code below for submitting data to google sheet
-<<<<<<< Updated upstream
+
 //        submit.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -169,19 +169,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 ////                        robot_speedv, robot_maneuvarablev);
 //            }
 //        });
-=======
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("submit pressed");
-                String name = "amogh";
-                int matchnumber = 76;
-                int teamnumber = 7390;
-                saveData(name, matchnumber, teamnumber, alliance_color, ground_pickup, source_pickup,
-                        amplified, drop, source_to_speaker, spotlight, buddy_climb, trap, onstage, list);
-            }
-        });
->>>>>>> Stashed changes
+
+//        submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                System.out.println("submit pressed");
+//                String name = "amogh";
+//                int matchnumber = 76;
+//                int teamnumber = 7390;
+//                saveData(name, matchnumber, teamnumber, alliance_color, ground_pickup, source_pickup,
+//                        amplified, drop, source_to_speaker, spotlight, buddy_climb, trap, onstage, list);
+//            }
+//        });
+
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
