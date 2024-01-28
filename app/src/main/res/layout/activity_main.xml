@@ -145,7 +145,7 @@
 
 		<Button
 			android:layout_width="100dp"
-			android:layout_height="35dp"
+			android:layout_height="37dp"
 			android:background="@drawable/speaker"
 			android:layout_marginStart="30dp"
 			android:layout_marginTop="55dp"
@@ -159,6 +159,26 @@
 			android:layout_marginTop="50dp"
 			android:fontFamily="@font/red_hat_display_black"
 			android:text="SPEAKER"
+			android:textColor="@color/blue"
+			app:cornerRadius="4dp"
+			app:strokeColor="@color/blue"
+			app:strokeWidth="2dp" />
+
+		<Button
+			android:layout_width="87dp"
+			android:layout_height="35dp"
+			android:background="@drawable/speaker"
+			android:layout_marginStart="105dp"
+			android:layout_marginTop="5dp"
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/amp"
+			style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="105dp"
+			android:fontFamily="@font/red_hat_display_black"
+			android:text="AMP"
 			android:textColor="@color/blue"
 			app:cornerRadius="4dp"
 			app:strokeColor="@color/blue"
