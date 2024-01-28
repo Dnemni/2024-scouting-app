@@ -94,17 +94,105 @@
 			app:strokeWidth="2dp"
 			android:onClick="startTeleopTimer" />
 
-		<TextView
-			android:id="@+id/questionTextView"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginLeft="10dp"
-			android:fontFamily="@font/red_hat_display_black"
-			android:text="Select"
-			android:textColor="#FFFFFF"
-			android:textSize="18sp" /> <!-- Margin Top -->
+
 	</LinearLayout>
 
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginTop="20dp"
+		android:gravity="center_horizontal">
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/source_pickup"
+			style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="3dp"
+			android:fontFamily="@font/red_hat_display_black"
+			android:text="SOURCE"
+			android:textColor="#FFFFFF"
+			app:cornerRadius="4dp"
+			app:strokeColor="#FFFFFF"
+			app:strokeWidth="2dp" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/ground_pickup"
+			style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="3dp"
+			android:fontFamily="@font/red_hat_display_black"
+			android:text="GROUND"
+			android:textColor="#FFFFFF"
+			app:cornerRadius="4dp"
+			app:strokeColor="#FFFFFF"
+			app:strokeWidth="2dp" />
+
+	</LinearLayout>
+
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginTop="20dp"
+		android:gravity="center_horizontal">
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/fail"
+			style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="3dp"
+			android:fontFamily="@font/red_hat_display_black"
+			android:text="FAIL"
+			android:textColor="#FFFFFF"
+			app:cornerRadius="4dp"
+			app:strokeColor="#FFFFFF"
+			app:strokeWidth="2dp" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/score"
+			style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="3dp"
+			android:fontFamily="@font/red_hat_display_black"
+			android:text="SCORE"
+			android:textColor="#FFFFFF"
+			app:cornerRadius="4dp"
+			app:strokeColor="#FFFFFF"
+			app:strokeWidth="2dp" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/undo"
+			style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="3dp"
+			android:fontFamily="@font/red_hat_display_black"
+			android:text="UNDO"
+			android:textColor="#FFFFFF"
+			app:cornerRadius="4dp"
+			app:strokeColor="#FFFFFF"
+			app:strokeWidth="2dp" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/drop"
+			style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="3dp"
+			android:fontFamily="@font/red_hat_display_black"
+			android:text="DROP"
+			android:textColor="#FFFFFF"
+			app:cornerRadius="4dp"
+			app:strokeColor="#FFFFFF"
+			app:strokeWidth="2dp" />
+
+	</LinearLayout>
 	<!-- <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
