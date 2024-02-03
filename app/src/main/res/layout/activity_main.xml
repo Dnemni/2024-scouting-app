@@ -404,7 +404,7 @@
 		android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 		android:textColor="#FFFFFF" />
 	<com.google.android.material.button.MaterialButton
-		android:id="@+id/succesful_spotlight"
+		android:id="@+id/succesful_buddy_climb"
 		style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -417,13 +417,14 @@
 		app:cornerRadius="4dp"
 		app:strokeColor="#FFFFFF"
 		app:strokeWidth="2dp" />
+
 	<com.google.android.material.button.MaterialButton
-		android:id="@+id/unsuccesful_spotlight"
+		android:id="@+id/unsuccesful_buddy_climb"
 		style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_toRightOf="@+id/succesful_spotlight"
 		android:layout_marginStart="10dp"
+		android:layout_toRightOf="@+id/succesful_spotlight"
 		android:fontFamily="@font/red_hat_display_black"
 		android:text="No"
 		android:textColor="#FFFFFF"
