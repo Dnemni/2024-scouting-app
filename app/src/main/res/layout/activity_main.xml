@@ -264,7 +264,6 @@
                 app:cornerRadius="4dp"
                 app:strokeColor="#FFFFFF"
                 app:strokeWidth="2dp" />
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/score"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -277,7 +276,6 @@
                 app:cornerRadius="4dp"
                 app:strokeColor="#FFFFFF"
                 app:strokeWidth="2dp" />
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/undo"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -290,7 +288,6 @@
                 app:cornerRadius="4dp"
                 app:strokeColor="#FFFFFF"
                 app:strokeWidth="2dp" />
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/drop"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -305,93 +302,208 @@
                 app:strokeWidth="2dp" />
 
         </LinearLayout>
-        <!-- <RelativeLayout
-                        android:layout_width="match_parent"
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Time taken to Cycle: "
+			android:textSize="17sp"
+			android:fontFamily="@font/archivo_black"
+			android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+			android:textColor="#FFFFFF" />
+		<EditText
+			android:layout_width="190dp"
+			android:layout_height="33dp"
+			android:inputType="text" />
+	</LinearLayout>
+<LinearLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Endgame"
+		android:textSize="30sp"
+		android:gravity="center_horizontal"
+		android:fontFamily="@font/archivo_black"
+		android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+		android:textColor="#FFFFFF" />
+</LinearLayout>
+<RelativeLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+<!--	spotlight row-->
+	<TextView
+		android:id="@+id/endgame1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Spotlight"
+		android:textSize="17sp"
+		android:layout_marginTop="10dp"
+		android:layout_marginStart="40dp"
+		android:fontFamily="@font/archivo_black"
+		android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+		android:textColor="#FFFFFF" />
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/succesful_spotlight"
+		style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toEndOf="@+id/endgame1"
+		android:layout_marginStart="10dp"
+		android:fontFamily="@font/red_hat_display_black"
+		android:text="YES"
+		android:textColor="#FFFFFF"
+		android:textSize="20sp"
+		app:cornerRadius="4dp"
+		app:strokeColor="#FFFFFF"
+		app:strokeWidth="2dp" />
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/unsuccesful_spotlight"
+		style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@+id/succesful_spotlight"
+		android:layout_marginStart="10dp"
+		android:fontFamily="@font/red_hat_display_black"
+		android:text="No"
+		android:textColor="#FFFFFF"
+		android:textSize="20sp"
+		app:cornerRadius="4dp"
+		app:strokeColor="#FFFFFF"
+		app:strokeWidth="2dp" />
+	<!--	Buddy Climb row-->
+	<TextView
+		android:id="@+id/endgame2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Spotlight"
+		android:layout_below="@+id/endgame1"
+		android:textSize="17sp"
+		android:layout_marginTop="10dp"
+		android:layout_marginStart="40dp"
+		android:fontFamily="@font/archivo_black"
+		android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+		android:textColor="#FFFFFF" />
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/succesful_spotlight"
+		style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toEndOf="@+id/endgame1"
+		android:layout_marginStart="10dp"
+		android:fontFamily="@font/red_hat_display_black"
+		android:text="YES"
+		android:textColor="#FFFFFF"
+		android:textSize="20sp"
+		app:cornerRadius="4dp"
+		app:strokeColor="#FFFFFF"
+		app:strokeWidth="2dp" />
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/unsuccesful_spotlight"
+		style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@+id/succesful_spotlight"
+		android:layout_marginStart="10dp"
+		android:fontFamily="@font/red_hat_display_black"
+		android:text="No"
+		android:textColor="#FFFFFF"
+		android:textSize="20sp"
+		app:cornerRadius="4dp"
+		app:strokeColor="#FFFFFF"
+		app:strokeWidth="2dp" />
+</RelativeLayout>
+	<!-- <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/field"
+                        android:layout_width="300dp"
+                        android:layout_height="200dp"
+                        android:layout_marginStart="-389dp"
+                        android:layout_toEndOf="@+id/textView2"
+                        android:background="@drawable/field"
+                        android:textOff=""
+                        android:textOn=""
+                        app:cornerRadius="10dp" />
+
+                    <ToggleButton
+                        android:id="@+id/speaker"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="50dp"
+                        android:background="@drawable/speaker"
+                        android:textColor="@color/white"
+                        android:textOff="speaker"
+                        android:textOn="SPEAKER" />
+                    <Button
+                        android:layout_width="65dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="62dp"
+                        android:backgroundTint="@color/lightgray"/>
+                    <ToggleButton
+                        android:id="@+id/amp"
+                        android:textOn="AMP"
+                        android:textOff="AMP"
+                        android:textColor="@color/white"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="105dp"
+                        android:background="@drawable/speaker"/>
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="110dp"
+                        android:layout_marginTop="2dp"
+                        android:backgroundTint="@color/lightgray"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="315dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Speakers Scored:"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
 
-                        <ImageView
-                            android:id="@+id/field"
-                            android:layout_width="300dp"
-                            android:layout_height="200dp"
-                            android:layout_marginStart="-389dp"
-                            android:layout_toEndOf="@+id/textView2"
-                            android:background="@drawable/field"
-                            android:textOff=""
-                            android:textOn=""
-                            app:cornerRadius="10dp" />
+                    <TextView
+                        android:id="@+id/speakers_scored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="50sp"
+                        android:layout_marginStart="340dp"
+                        android:layout_marginTop="10dp"/>
 
-                        <ToggleButton
-                            android:id="@+id/speaker"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="30dp"
-                            android:layout_marginTop="50dp"
-                            android:background="@drawable/speaker"
-                            android:textColor="@color/white"
-                            android:textOff="speaker"
-                            android:textOn="SPEAKER" />
-                        <Button
-                            android:layout_width="65dp"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="40dp"
-                            android:layout_marginTop="62dp"
-                            android:backgroundTint="@color/lightgray"/>
-                        <ToggleButton
-                            android:id="@+id/amp"
-                            android:textOn="AMP"
-                            android:textOff="AMP"
-                            android:textColor="@color/white"
-                            android:layout_width="50dp"
-                            android:layout_height="30dp"
-                            android:layout_marginStart="105dp"
-                            android:background="@drawable/speaker"/>
-                        <Button
-                            android:layout_width="40dp"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="110dp"
-                            android:layout_marginTop="2dp"
-                            android:backgroundTint="@color/lightgray"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_marginStart="315dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Speakers Scored:"
-                            android:textColor="@color/white"
-                            android:textSize="11sp" />
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="320dp"
+                        android:layout_marginTop="100dp"
+                        android:text="AMPs Scored:"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
+                    <TextView
+                        android:id="@+id/amps_scored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="50sp"
+                        android:layout_marginStart="340dp"
+                        android:layout_marginTop="100dp"/>
+                </RelativeLayout>
 
-                        <TextView
-                            android:id="@+id/speakers_scored"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="50sp"
-                            android:layout_marginStart="340dp"
-                            android:layout_marginTop="10dp"/>
-
-                        <TextView
-                            android:id="@+id/textView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_marginStart="320dp"
-                            android:layout_marginTop="100dp"
-                            android:text="AMPs Scored:"
-                            android:textColor="@color/white"
-                            android:textSize="11sp" />
-                        <TextView
-                            android:id="@+id/amps_scored"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="50sp"
-                            android:layout_marginStart="340dp"
-                            android:layout_marginTop="100dp"/>
-                    </RelativeLayout>
-
-                    Old Code Above-->
+                Old Code Above-->
 			<!-- new code with new designs below-->
 
 </LinearLayout>
