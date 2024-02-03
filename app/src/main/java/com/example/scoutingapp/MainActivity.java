@@ -102,11 +102,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textView = (TextView) findViewById(R.id.textView);
-        inputTextName=(EditText) findViewById(R.id.inputTextName);
-        inputTextColor=(EditText) findViewById(R.id.inputTextColor);
-        inputTextMatch=(EditText) findViewById(R.id.inputTextMatch);
-        inputTextTeam=(EditText) findViewById(R.id.inputTextTeam);
+//        textView = (TextView) findViewById(R.id.textView);
+//        inputTextName=(EditText) findViewById(R.id.inputTextName);
+//        inputTextColor=(EditText) findViewById(R.id.inputTextColor);
+//        inputTextMatch=(EditText) findViewById(R.id.inputTextMatch);
+//        inputTextTeam=(EditText) findViewById(R.id.inputTextTeam);
 //text views below
         speakers_scored = findViewById(R.id.speakers_scored);
         amps_scored = findViewById(R.id.amps_scored);
@@ -140,15 +140,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         region_5 = (ToggleButton) findViewById(R.id.region_5);
 
 
-        mTextViewCountDown = findViewById(R.id.text_view_countdown);
+//      mTextViewCountDown = findViewById(R.id.text_view_countdown);
 //		private static final long START_TIME_IN_MILLIS = 600000;
 //		private TextView mTextViewCountDown;
 //		private CountDownTimer mCountDownTimer;
 //		private boolean mTimerRunning;
 //		private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 
-        mButtonStartPause = (MaterialButton) findViewById(R.id.button_start_pause);
-        mButtonReset = (MaterialButton) findViewById(R.id.button_reset);
+//        mButtonStartPause = (MaterialButton) findViewById(R.id.button_start_pause);
+//        mButtonReset = (MaterialButton) findViewById(R.id.button_reset);
         submit = (MaterialButton) findViewById(R.id.submit);
         // code below for submitting data to google sheet
 
