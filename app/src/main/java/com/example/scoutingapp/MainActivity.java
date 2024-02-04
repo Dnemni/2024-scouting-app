@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     amplified_speaker_teleopv++;
                 }
                 else if(!ampv&&!autonv){
-                    reg_notesv++;
+                    //reg_notesv++;
                 }
                 else if(speakerv&&autonv){
                     speaker_autonv++;
@@ -395,17 +395,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                ampv=false;
 //                speakerv=false;
 //                clearall();}});
-        drop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(autonv) {
-                    drop_autonv++;
-                } else if(!autonv) {drop_teleopv++;}
-                groundv=false;
-                sourcev=false;
-                ampv=false;
-                speakerv=false;
-                clearall();}});
+//        drop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(autonv) {
+//                    drop_autonv++;
+//                } else if(!autonv) {drop_teleopv++;}
+//                groundv=false;
+//                sourcev=false;
+//                ampv=false;
+//                speakerv=false;
+//                clearall();}});
         succesful_spotlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -600,11 +600,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void saveData(String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list) {
         String url = "https://script.google.com/macros/s/AKfycbwEq0zDFuf0nxK62CI65RkVFZelua9lvjGHePq5gHoro8K2lEzJL_8mbzPBY2xELl6Q/exec";
-        url = url+"action=create&name="+name+"&matchnumber="+matchnumber+"&teamnumber="+teamnumber;
-        url = url+"&color="+alliance_color+"&groundpickupauton="+ground_pickup_auton+"&groundpickupteleop="+ground_pickup_teleop+"&sourcepickupauton="+source_pickup_auton+"&sourcepickupteleop="+source_pickup_teleop+"&regularnoteauton="+regular_note_auton+"&regularnoteteleop="+regular_note_teleop;
-        url = url+"&amplifiednote="+amplified_note+"&speakernotesauton="+speaker_notes_auton+"&speakernotesteleop="+speaker_notes_teleop+"&ampnotesauton="+amp_notes_auton+"&ampnotesteleop="+amp_notes_teleop+"&drop="+drop+"&sourcetospeaker="+source_to_speaker+"&spotlight="+spotlight;
-        url = url+"&buddyclimb="+buddy_climb+"&trap="+trap+"&onstage="+onstage+"&list="+list;
-
+        url = url + "action=create&name=" + name + "&matchnumber=" + matchnumber + "&teamnumber=" + teamnumber;
+        url = url + "&color=" + alliance_color + "&groundpickupauton=" + ground_pickup_auton + "&groundpickupteleop=" + ground_pickup_teleop + "&sourcepickupauton=" + source_pickup_auton + "&sourcepickupteleop=" + source_pickup_teleop + "&regularnoteauton=" + regular_note_auton + "&regularnoteteleop=" + regular_note_teleop;
+        url = url + "&amplifiednote=" + amplified_note + "&speakernotesauton=" + speaker_notes_auton + "&speakernotesteleop=" + speaker_notes_teleop + "&ampnotesauton=" + amp_notes_auton + "&ampnotesteleop=" + amp_notes_teleop + "&drop=" + drop + "&sourcetospeaker=" + source_to_speaker + "&spotlight=" + spotlight;
+        url = url + "&buddyclimb=" + buddy_climb + "&trap=" + trap + "&onstage=" + onstage + "&list=" + list;
+    }
 //        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
 //            @Override
 //            public void onResponse(String response) {
@@ -662,10 +662,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //
 //        mTextViewCountDown.setText(timeLeftFormatted);
 //    }
-    @Override
-    public void onClick(View view) {
-
-        MaterialButton button = (MaterialButton) view;
-        String buttonText = button.getText().toString();
-    }
+ //   @Override
+//    public void onClick(View view) {
+//
+//        MaterialButton button = (MaterialButton) view;
+//        String buttonText = button.getText().toString();
+//    }
 }

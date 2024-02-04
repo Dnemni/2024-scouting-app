@@ -90,7 +90,7 @@
 						android:textColor="#FFFFFF"
 						android:textSize="15sp" />
 					<com.google.android.material.button.MaterialButton
-						android:layout_height="wrap_content"
+						android:layout_height="80dp"
 						android:layout_width="match_parent"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						app:cornerRadius="4dp"
@@ -100,17 +100,26 @@
 					<!-- Red alliance Button -->
 					<ToggleButton
 						android:id="@+id/red_alliance"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_margin="3dp"
+						android:layout_margin="15dp"
+						android:layout_toEndOf="@+id/alliancething"
+						android:background="@drawable/red_alliance"
 						android:fontFamily="@font/red_hat_display_black"
-						android:textOn="AUTON"
-						android:textOff="AUTON"
 						android:textColor="#FFFFFF"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
+						android:textOff="RED"
+						android:textOn="RED" />
+					<ToggleButton
+						android:id="@+id/blue_alliance"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_margin="15dp"
+						android:layout_toEndOf="@+id/red_alliance"
+						android:background="@drawable/blue_alliance"
+						android:fontFamily="@font/red_hat_display_black"
+						android:textColor="#FFFFFF"
+						android:textOff="BLUE"
+						android:textOn="BLUE" />
 
 
 				</RelativeLayout>
