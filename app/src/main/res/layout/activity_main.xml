@@ -97,6 +97,21 @@
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp"
 						android:layout_toEndOf="@+id/alliancething"/>
+					<!-- Red alliance Button -->
+					<ToggleButton
+						android:id="@+id/red_alliance"
+						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_margin="3dp"
+						android:fontFamily="@font/red_hat_display_black"
+						android:textOn="AUTON"
+						android:textOff="AUTON"
+						android:textColor="#FFFFFF"
+						app:cornerRadius="4dp"
+						app:strokeColor="#FFFFFF"
+						app:strokeWidth="2dp" />
+
 
 				</RelativeLayout>
 				<!-- Timer TextView -->
@@ -114,7 +129,6 @@
 						android:text="00:00"
 						android:textColor="#FFFFFF"
 						android:textSize="24sp" />
-
 					<!-- Start Timer Button-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/startButton"
