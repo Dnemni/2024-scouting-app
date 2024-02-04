@@ -30,7 +30,6 @@
 					android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 					android:textColor="#FFFFFF"
 					android:textSize="40sp" />
-
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -39,7 +38,6 @@
 					android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 					android:textColor="#FFFFFF"
 					android:textSize="28sp" />
-
 				<LinearLayout
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content">
@@ -59,7 +57,6 @@
 						android:layout_marginTop="8dp"
 						android:inputType="text" />
 				</LinearLayout>
-
 				<LinearLayout
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content">
@@ -79,7 +76,6 @@
 						android:layout_marginTop="8dp"
 						android:inputType="text" />
 				</LinearLayout>
-
 				<LinearLayout
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content">
@@ -115,7 +111,7 @@
 						android:textColor="#FFFFFF"
 						android:textSize="24sp" />
 
-					<!-- Start Button -->
+					<!-- Start Timer Button-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/startButton"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -129,7 +125,6 @@
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
 				</LinearLayout>
-
 				<!-- True and False Buttons -->
 				<LinearLayout
 					android:layout_width="match_parent"
@@ -139,71 +134,70 @@
 					android:orientation="horizontal">
 
 					<!-- Auton Button -->
-					<com.google.android.material.button.MaterialButton
+					<ToggleButton
 						android:id="@+id/switch_auton"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_margin="3dp"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="AUTON"
+						android:textOn="AUTON"
+						android:textOff="AUTON"
 						android:textColor="#FFFFFF"
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
 					<!-- Teleop Button -->
-					<com.google.android.material.button.MaterialButton
+					<ToggleButton
 						android:id="@+id/switch_teleop"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_margin="3dp"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="TELEOP"
+						android:textOn="TELEOP"
+						android:textOff="TELEOP"
 						android:textColor="#FFFFFF"
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
-
 				</LinearLayout>
-
+<!--				pickup location buttons-->
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="20dp"
 					android:gravity="center_horizontal"
 					android:orientation="horizontal">
-
-					<com.google.android.material.button.MaterialButton
+<!--source button	-->
+					<ToggleButton
 						android:id="@+id/source_pickup"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_margin="3dp"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="SOURCE"
+						android:textOn="SOURCE"
+						android:textOff="SOURCE"
 						android:textColor="#FFFFFF"
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
-					<com.google.android.material.button.MaterialButton
+<!--ground button-->
+					<ToggleButton
 						android:id="@+id/ground_pickup"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_margin="3dp"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="GROUND"
+						android:textOn="GROUND"
+						android:textOff="GROUND"
 						android:textColor="#FFFFFF"
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
 				</LinearLayout>
-
 				<FrameLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
@@ -214,16 +208,15 @@
 						android:layout_width="300dp"
 						android:layout_height="200dp"
 						android:background="@drawable/field" />
-
-
+<!--not important-->
 					<Button
 						android:layout_width="100dp"
 						android:layout_height="37dp"
 						android:layout_marginStart="30dp"
 						android:layout_marginTop="55dp"
 						android:background="@drawable/speaker" />
-
-					<com.google.android.material.button.MaterialButton
+<!--speaker-->
+					<ToggleButton
 						android:id="@+id/speaker"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="wrap_content"
@@ -231,50 +224,33 @@
 						android:layout_marginStart="30dp"
 						android:layout_marginTop="50dp"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="SPEAKER"
+						android:textOff="SPEAKER"
+						android:textOn="SPEAKER"
 						android:textColor="@color/blue"
 						app:cornerRadius="4dp"
 						app:strokeColor="@color/blue"
 						app:strokeWidth="2dp" />
-
+<!--not important-->
 					<Button
 						android:layout_width="87dp"
 						android:layout_height="35dp"
 						android:layout_marginStart="105dp"
 						android:layout_marginTop="5dp"
 						android:background="@drawable/speaker" />
-
-					<com.google.android.material.button.MaterialButton
+<!--amp-->
+					<ToggleButton
 						android:id="@+id/amp"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginStart="105dp"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="AMP"
+						android:textOn="AMP"
+						android:textOff="AMP"
 						android:textColor="@color/blue"
 						app:cornerRadius="4dp"
 						app:strokeColor="@color/blue"
 						app:strokeWidth="2dp" />
-
-
-					<Button
-						android:layout_width="100dp"
-						android:layout_height="37dp"
-						android:layout_marginStart="30dp"
-						android:layout_marginTop="55dp"
-						android:background="@drawable/speaker"
-						tools:visibility="invisible" />
-
-
-					<Button
-						android:layout_width="87dp"
-						android:layout_height="35dp"
-						android:layout_marginStart="105dp"
-						android:layout_marginTop="5dp"
-						android:background="@drawable/speaker"
-						tools:visibility="invisible" />
-
 
 					<TextView
 						android:layout_width="wrap_content"
@@ -315,15 +291,13 @@
 						android:textColor="@color/white"
 						android:textSize="50sp" />
 				</FrameLayout>
-
-
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="20dp"
 					android:gravity="center_horizontal"
 					android:orientation="horizontal">
-
+<!--fail-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/fail"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -336,7 +310,7 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
+<!--score-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/score"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -349,7 +323,7 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
+<!--undo-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/undo"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -362,7 +336,7 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
+<!--drop-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/drop"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -427,7 +401,7 @@
 						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 						android:textColor="#FFFFFF"
 						android:textSize="17sp" />
-
+<!--yes spotlight-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/succesful_spotlight"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -442,7 +416,7 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
+<!--no spotlight-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/unsuccesful_spotlight"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -469,7 +443,7 @@
 						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 						android:textColor="#FFFFFF"
 						android:textSize="17sp" />
-
+<!--yes buddy climb-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/succesful_buddy_climb"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -485,7 +459,7 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
+<!--no buddy climb-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/unsuccesful_buddy_climb"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -513,7 +487,7 @@
 						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 						android:textColor="#FFFFFF"
 						android:textSize="17sp" />
-
+<!--yes trap-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/succesful_trap"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -529,7 +503,7 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
+<!--no trap-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/unsuccesful_trap"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -557,7 +531,7 @@
 						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 						android:textColor="#FFFFFF"
 						android:textSize="17sp" />
-
+<!--yes onstage-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/succesful_onstage"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -573,7 +547,7 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
+<!--no onstage-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/unsuccesful_onstage"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -601,7 +575,7 @@
 						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 						android:textColor="#FFFFFF"
 						android:textSize="15sp" />
-
+<!--add block-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/up_times_blocked"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -617,7 +591,7 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
+<!--minus block-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/down_times_blocked"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -648,8 +622,8 @@
 						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 						android:textColor="#FFFFFF"
 						android:textSize="15sp" />
-
-					<com.google.android.material.button.MaterialButton
+<!--area one-->
+					<ToggleButton
 						android:id="@+id/region_1"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="50dp"
@@ -657,14 +631,15 @@
 						android:layout_marginStart="10dp"
 						android:layout_toEndOf="@+id/endgame1"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="1"
+						android:textOn="1"
+						android:textOff="1"
 						android:textColor="#FFFFFF"
 						android:textSize="20sp"
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
-					<com.google.android.material.button.MaterialButton
+<!--area two-->
+					<ToggleButton
 						android:id="@+id/region_2"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="50dp"
@@ -677,43 +652,46 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
-					<com.google.android.material.button.MaterialButton
+<!--area three-->
+					<ToggleButton
 						android:id="@+id/region_3"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="50dp"
 						android:layout_height="wrap_content"
 						android:layout_toEndOf="@+id/endgame1"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="3"
+						android:textOn="3"
+						android:textOff="3"
 						android:textColor="#FFFFFF"
 						android:textSize="20sp"
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
-					<com.google.android.material.button.MaterialButton
+<!--area four-->
+					<ToggleButton
 						android:id="@+id/region_4"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="50dp"
 						android:layout_height="wrap_content"
 						android:layout_toEndOf="@+id/endgame1"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="4"
+						android:textOn="4"
+						android:textOff="4"
 						android:textColor="#FFFFFF"
 						android:textSize="20sp"
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-
-					<com.google.android.material.button.MaterialButton
+<!--area five-->
+					<ToggleButton
 						android:id="@+id/region_5"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="50dp"
 						android:layout_height="wrap_content"
 						android:layout_toEndOf="@+id/endgame1"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="5"
+						android:textOn="5"
+						android:textOff="5"
 						android:textColor="#FFFFFF"
 						android:textSize="20sp"
 						app:cornerRadius="4dp"
@@ -724,6 +702,7 @@
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
+<!--					submit-->
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/submit"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
