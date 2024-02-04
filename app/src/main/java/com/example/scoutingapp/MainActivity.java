@@ -343,6 +343,69 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ampv=false;
                 speakerv=false;
                 clearall();}});
+//        score.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if(groundv&&autonv){
+//                    ground_pickup_autonv++;
+//                }
+//                else if(groundv&&!autonv){
+//                    ground_pickup_teleopv++;
+//                }
+//                else if(sourcev&&autonv){
+//                    source_pickup_autonv++;
+//                }
+//                else if(sourcev&&!autonv){
+//                    source_pickup_teleopv++;
+//                }
+//                if(ampv&&autonv){
+//                    amp_autonv++;
+//                }
+//                else if(ampv&&!autonv){
+//                    amp_teleopv++;
+//                }
+//                else if(speakerv&&autonv){
+//                    speaker_autonv++;
+//                }
+//                else if(speakerv&&!autonv){
+//                    speaker_teleopv++;
+//                }
+//                //pickup location
+//                if(groundv&&autonv)ground_pickup_autonv++;
+////                else if(groundv&&!autonv) ground_pickup_teleopv++;
+////                else if(sourcev&&autonv)source_pickup_autonv++;
+////                else if(sourcev&&!autonv)source_pickup_teleopv++;
+//                //scoring location
+//                if(ampv&&autonv)amp_autonv++;
+////                else if(ampv&&!autonv)amp_teleopv++;
+////                else if(speakerv&&autonv)speaker_autonv++;
+////                else if(speakerv&&!autonv)speaker_teleopv++;
+//
+//
+//                if(speakerv){
+//                    speaker_scoredv ++;
+//                    speakers_scored.setText(String.valueOf(speaker_scoredv));                }
+//                if(ampv){
+//                    amp_scoredv ++;
+//                    amps_scored.setText(String.valueOf(amp_scoredv));
+//                }
+//                groundv=false;
+//                sourcev=false;
+//                ampv=false;
+//                speakerv=false;
+//                clearall();}});
+        drop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(autonv) {
+                    drop_autonv++;
+                } else if(!autonv) {drop_teleopv++;}
+                groundv=false;
+                sourcev=false;
+                ampv=false;
+                speakerv=false;
+                clearall();}});
         succesful_spotlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -535,13 +598,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 // name, matchnumber, teamnumber, alliance_color, ground_pickup, source_pickup, amplified, drop, source_to_speaker, spotlight, buddy_climb, trap, onstage, list
     }
-//    private void saveData(String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup, int source_pickup, int amplified, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list) {
-//        String url = "https://script.google.com/macros/s/AKfycbyAV85vNvfMll4YgmE9JHlQhQJE7TS4xcpiqCstvx_jC9MC8e907iphCl06l81oloAC/exec";
-//        url = url+"action=create&name="+name+"&matchnumber="+matchnumber+"&teamnumber="+teamnumber;
-//        url = url+"&color="+alliance_color+"&groundpickup="+ground_pickup+"&sourcepickup="+source_pickup;
-//        url = url+"&amplified="+amplified+"&drop="+drop+"&sourcetospeaker="+source_to_speaker+"&spotlight="+spotlight;
-//        url = url+"&buddyclimb="+buddy_climb+"&trap="+trap+"&onstage="+onstage+"&list="+list;
-//
+    private void saveData(String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list) {
+        String url = "https://script.google.com/macros/s/AKfycbwEq0zDFuf0nxK62CI65RkVFZelua9lvjGHePq5gHoro8K2lEzJL_8mbzPBY2xELl6Q/exec";
+        url = url+"action=create&name="+name+"&matchnumber="+matchnumber+"&teamnumber="+teamnumber;
+        url = url+"&color="+alliance_color+"&groundpickupauton="+ground_pickup_auton+"&groundpickupteleop="+ground_pickup_teleop+"&sourcepickupauton="+source_pickup_auton+"&sourcepickupteleop="+source_pickup_teleop+"&regularnoteauton="+regular_note_auton+"&regularnoteteleop="+regular_note_teleop;
+        url = url+"&amplifiednote="+amplified_note+"&speakernotesauton="+speaker_notes_auton+"&speakernotesteleop="+speaker_notes_teleop+"&ampnotesauton="+amp_notes_auton+"&ampnotesteleop="+amp_notes_teleop+"&drop="+drop+"&sourcetospeaker="+source_to_speaker+"&spotlight="+spotlight;
+        url = url+"&buddyclimb="+buddy_climb+"&trap="+trap+"&onstage="+onstage+"&list="+list;
+
 //        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
 //            @Override
 //            public void onResponse(String response) {
