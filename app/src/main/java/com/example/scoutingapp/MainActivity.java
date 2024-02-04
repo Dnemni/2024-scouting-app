@@ -5,7 +5,6 @@ import android.os.CountDownTimer;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.android.volley.Request;
@@ -78,7 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean speakerv;
     boolean autonv=true;
     boolean undov;
-    int amp_scoredv=0;
+    int amp_notesv = 0;
+    int reg_notesv = 0;
     int speaker_scoredv=0;
     //button definitions
     String balance;
@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 autonv=true;
                 switch_auton.setChecked(true);
                 switch_teleop.setChecked(false);
-                amp_scoredv=0;
+                amp_notesv =0;
                 speaker_scoredv=0;
                 amps_scored.setText("0");
                 speakers_scored.setText("0");
@@ -286,7 +286,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     amp_autonv++;
                 }
                 else if(ampv&&!autonv){
-                    amp_teleopv++;
+                    amp_notesv++;
+                }
+                else if(!ampv&&!autonv){
+                    reg_notesv++;
                 }
                 else if(speakerv&&autonv){
                     speaker_autonv++;
@@ -310,8 +313,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     speaker_scoredv ++;
                     speakers_scored.setText(String.valueOf(speaker_scoredv));                }
                 if(ampv){
-                    amp_scoredv ++;
-                    amps_scored.setText(String.valueOf(amp_scoredv));
+                    amp_notesv++;
+                    amps_scored.setText(String.valueOf(amp_notesv));
                 }
                 groundv=false;
                 sourcev=false;
