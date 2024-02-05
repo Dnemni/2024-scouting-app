@@ -41,7 +41,6 @@
 				<LinearLayout
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content">
-
 					<TextView
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
@@ -50,7 +49,6 @@
 						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 						android:textColor="#FFFFFF"
 						android:textSize="15sp" />
-
 					<EditText
 						android:layout_width="190dp"
 						android:layout_height="33dp"
@@ -70,6 +68,23 @@
 						android:textColor="#FFFFFF"
 						android:textSize="15sp" />
 
+					<EditText
+						android:layout_width="190dp"
+						android:layout_height="33dp"
+						android:layout_marginTop="8dp"
+						android:inputType="text" />
+				</LinearLayout>
+				<LinearLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content">
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:fontFamily="@font/archivo_black"
+						android:text="Match#:"
+						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+						android:textColor="#FFFFFF"
+						android:textSize="15sp" />
 					<EditText
 						android:layout_width="190dp"
 						android:layout_height="33dp"
@@ -224,6 +239,20 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
+<!--					amplified-->
+					<ToggleButton
+						android:id="@+id/amplify"
+						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_margin="3dp"
+						android:fontFamily="@font/red_hat_display_black"
+						android:textOn="AMPLIFY"
+						android:textOff="AMPLIFY"
+						android:textColor="#FFFFFF"
+						app:cornerRadius="4dp"
+						app:strokeColor="#FFFFFF"
+						app:strokeWidth="2dp"/>
 				</LinearLayout>
 				<FrameLayout
 					android:layout_width="match_parent"
@@ -673,7 +702,8 @@
 						android:layout_height="wrap_content"
 						android:layout_toEndOf="@+id/endgame1"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="2"
+						android:textOn="2"
+						android:textOff="2"
 						android:textColor="#FFFFFF"
 						android:textSize="20sp"
 						app:cornerRadius="4dp"
