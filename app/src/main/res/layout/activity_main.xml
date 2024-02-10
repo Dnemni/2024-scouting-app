@@ -15,7 +15,7 @@
 
 			<LinearLayout
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
+				android:layout_height="wrap_content"
 				android:background="#001F3F"
 				android:orientation="vertical"
 				android:padding="16dp"> <!-- Dark Navy Blue Background -->
@@ -407,7 +407,51 @@
 <!--						app:strokeWidth="2dp" />-->
 
 				</LinearLayout>
-
+<RelativeLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+	<!--Times blocked-->
+	<TextView
+		android:id="@+id/endgame5"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:fontFamily="@font/archivo_black"
+		android:text="Times Blocked"
+		android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+		android:textColor="#FFFFFF"
+		android:textSize="15sp" />
+	<!--add block-->
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/up_times_blocked"
+		style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="40dp"
+		android:layout_toEndOf="@+id/endgame5"
+		android:fontFamily="@font/red_hat_display_black"
+		android:text="+"
+		android:textColor="#FFFFFF"
+		android:textSize="20sp"
+		app:cornerRadius="4dp"
+		app:strokeColor="#FFFFFF"
+		app:strokeWidth="2dp" />
+	<!--minus block-->
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/down_times_blocked"
+		style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="10dp"
+		android:layout_toRightOf="@+id/up_times_blocked"
+		android:fontFamily="@font/red_hat_display_black"
+		android:text="-"
+		android:textColor="#FFFFFF"
+		android:textSize="20sp"
+		app:cornerRadius="4dp"
+		app:strokeColor="#FFFFFF"
+		app:strokeWidth="2dp" />
+</RelativeLayout>
 				<LinearLayout
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content">
@@ -446,156 +490,192 @@
 				<RelativeLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
-					<!--	spotlight row-->
-					<TextView
-						android:id="@+id/endgame1"
+<!--Onstage  row--><TextView
+					android:id="@+id/endgame1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="10dp"
+					android:fontFamily="@font/archivo_black"
+					android:text="Onstage"
+					android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+					android:textColor="#FFFFFF"
+					android:textSize="17sp" />
+<!--yes onstage--><com.google.android.material.button.MaterialButton
+					android:id="@+id/succesful_onstage"
+					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="30dp"
+					android:layout_toEndOf="@+id/endgame1"
+					android:fontFamily="@font/red_hat_display_black"
+					android:text="YES"
+					android:textColor="#FFFFFF"
+					android:textSize="20sp"
+					app:cornerRadius="4dp"
+					app:strokeColor="#FFFFFF"
+					app:strokeWidth="2dp" />
+<!--no try onstage--><com.google.android.material.button.MaterialButton
+					android:id="@+id/no_try_onstage"
+					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_toRightOf="@+id/succesful_onstage"
+					android:fontFamily="@font/red_hat_display_black"
+					android:layout_marginStart="3dp"
+					android:text="No"
+					android:textColor="#FFFFFF"
+					android:textSize="20sp"
+					app:cornerRadius="4dp"
+					app:strokeColor="#FFFFFF"
+					app:strokeWidth="2dp" />
+<!--fail onstage--><com.google.android.material.button.MaterialButton
+					android:id="@+id/unsuccesful_onstage"
+					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="3dp"
+					android:layout_toRightOf="@+id/no_try_onstage"
+					android:fontFamily="@font/red_hat_display_black"
+					android:text="fail"
+					android:textColor="#FFFFFF"
+					android:textSize="20sp"
+					app:cornerRadius="4dp"
+					app:strokeColor="#FFFFFF"
+					app:strokeWidth="2dp" />
+
+<!--Harmony row--><TextView
+					android:id="@+id/endgame2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/endgame1"
+					android:layout_marginTop="10dp"
+					android:fontFamily="@font/archivo_black"
+					android:text="Harmony"
+					android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+					android:textColor="#FFFFFF"
+					android:textSize="17sp" />
+<!--yes Harmony--><com.google.android.material.button.MaterialButton
+					android:id="@+id/succesful_harmony"
+					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/endgame1"
+					android:layout_marginStart="30dp"
+					android:layout_toEndOf="@+id/endgame1"
+					android:fontFamily="@font/red_hat_display_black"
+					android:text="YES"
+					android:textColor="#FFFFFF"
+					android:textSize="20sp"
+					app:cornerRadius="4dp"
+					app:strokeColor="#FFFFFF"
+					app:strokeWidth="2dp" />
+<!--no try Harmony--><com.google.android.material.button.MaterialButton
+					android:id="@+id/no_try_harmony"
+					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/endgame1"
+					android:layout_marginStart="3dp"
+					android:layout_toRightOf="@+id/succesful_harmony"
+					android:fontFamily="@font/red_hat_display_black"
+					android:text="No"
+					android:textColor="#FFFFFF"
+					android:textSize="20sp"
+					app:cornerRadius="4dp"
+					app:strokeColor="#FFFFFF"
+					app:strokeWidth="2dp" />
+<!--fail Harmony--><com.google.android.material.button.MaterialButton
+					android:id="@+id/unsuccesful_harmony"
+					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/endgame1"
+					android:layout_marginStart="3dp"
+					android:layout_toRightOf="@+id/no_try_harmony"
+					android:fontFamily="@font/red_hat_display_black"
+					android:text="fail"
+					android:textColor="#FFFFFF"
+					android:textSize="20sp"
+					app:cornerRadius="4dp"
+					app:strokeColor="#FFFFFF"
+					app:strokeWidth="2dp" />
+
+<!--Trap  row--><TextView
+					android:id="@+id/endgame3"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/endgame2"
+					android:layout_marginTop="10dp"
+					android:fontFamily="@font/archivo_black"
+					android:text="Trap"
+					android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+					android:textColor="#FFFFFF"
+					android:textSize="17sp" />
+<!--yes trap--><com.google.android.material.button.MaterialButton
+					android:id="@+id/succesful_trap"
+					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/endgame2"
+					android:layout_marginStart="30dp"
+					android:layout_toEndOf="@+id/endgame1"
+					android:fontFamily="@font/red_hat_display_black"
+					android:text="YES"
+					android:textColor="#FFFFFF"
+					android:textSize="20sp"
+					app:cornerRadius="4dp"
+					app:strokeColor="#FFFFFF"
+					app:strokeWidth="2dp" />
+<!--no try trap--><com.google.android.material.button.MaterialButton
+					android:id="@+id/no_try_trap"
+					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/endgame2"
+					android:layout_marginStart="3dp"
+					android:layout_toRightOf="@+id/succesful_trap"
+					android:fontFamily="@font/red_hat_display_black"
+					android:text="No"
+					android:textColor="#FFFFFF"
+					android:textSize="20sp"
+					app:cornerRadius="4dp"
+					app:strokeColor="#FFFFFF"
+					app:strokeWidth="2dp" />
+<!--fail trap--><com.google.android.material.button.MaterialButton
+					android:id="@+id/unsuccesful_trap"
+					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/endgame2"
+					android:layout_marginStart="3dp"
+					android:layout_toRightOf="@+id/no_try_trap"
+					android:fontFamily="@font/red_hat_display_black"
+					android:text="fail"
+					android:textColor="#FFFFFF"
+					android:textSize="20sp"
+					app:cornerRadius="4dp"
+					app:strokeColor="#FFFFFF"
+					app:strokeWidth="2dp" />
+
+<!--spotlight row--><TextView
+						android:id="@+id/endgame4"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="10dp"
+						android:layout_below="@+id/endgame3"
 						android:fontFamily="@font/archivo_black"
 						android:text="Spotlight"
 						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 						android:textColor="#FFFFFF"
 						android:textSize="17sp" />
-<!--yes spotlight-->
-					<com.google.android.material.button.MaterialButton
+<!--yes spotlight--><com.google.android.material.button.MaterialButton
 						android:id="@+id/succesful_spotlight"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginStart="40dp"
+						android:layout_marginStart="30dp"
 						android:layout_toEndOf="@+id/endgame1"
-						android:fontFamily="@font/red_hat_display_black"
-						android:text="YES"
-						android:textColor="#FFFFFF"
-						android:textSize="20sp"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
-<!--no spotlight-->
-					<com.google.android.material.button.MaterialButton
-						android:id="@+id/unsuccesful_spotlight"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginStart="10dp"
-						android:layout_toRightOf="@+id/succesful_spotlight"
-						android:fontFamily="@font/red_hat_display_black"
-						android:text="No"
-						android:textColor="#FFFFFF"
-						android:textSize="20sp"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
-					<!--	Buddy Climb row-->
-					<TextView
-						android:id="@+id/endgame2"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/endgame1"
-						android:layout_marginTop="10dp"
-						android:fontFamily="@font/archivo_black"
-						android:text="Buddy Climb"
-						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-						android:textColor="#FFFFFF"
-						android:textSize="17sp" />
-<!--yes buddy climb-->
-					<com.google.android.material.button.MaterialButton
-						android:id="@+id/succesful_buddy_climb"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/endgame1"
-						android:layout_marginStart="40dp"
-						android:layout_toEndOf="@+id/endgame1"
-						android:fontFamily="@font/red_hat_display_black"
-						android:text="YES"
-						android:textColor="#FFFFFF"
-						android:textSize="20sp"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
-<!--no buddy climb-->
-					<com.google.android.material.button.MaterialButton
-						android:id="@+id/unsuccesful_buddy_climb"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/endgame1"
-						android:layout_marginStart="10dp"
-						android:layout_toRightOf="@+id/succesful_spotlight"
-						android:fontFamily="@font/red_hat_display_black"
-						android:text="No"
-						android:textColor="#FFFFFF"
-						android:textSize="20sp"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
-					<!--	Trap  row-->
-					<TextView
-						android:id="@+id/endgame3"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/endgame2"
-						android:layout_marginTop="10dp"
-						android:fontFamily="@font/archivo_black"
-						android:text="Trap"
-						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-						android:textColor="#FFFFFF"
-						android:textSize="17sp" />
-<!--yes trap-->
-					<com.google.android.material.button.MaterialButton
-						android:id="@+id/succesful_trap"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/endgame2"
-						android:layout_marginStart="40dp"
-						android:layout_toEndOf="@+id/endgame1"
-						android:fontFamily="@font/red_hat_display_black"
-						android:text="YES"
-						android:textColor="#FFFFFF"
-						android:textSize="20sp"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
-<!--no trap-->
-					<com.google.android.material.button.MaterialButton
-						android:id="@+id/unsuccesful_trap"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/endgame2"
-						android:layout_marginStart="10dp"
-						android:layout_toRightOf="@+id/succesful_spotlight"
-						android:fontFamily="@font/red_hat_display_black"
-						android:text="No"
-						android:textColor="#FFFFFF"
-						android:textSize="20sp"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
-					<!--	Trap  row-->
-					<TextView
-						android:id="@+id/endgame4"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
 						android:layout_below="@+id/endgame3"
-						android:layout_marginTop="10dp"
-						android:fontFamily="@font/archivo_black"
-						android:text="Onstage"
-						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-						android:textColor="#FFFFFF"
-						android:textSize="17sp" />
-<!--yes onstage-->
-					<com.google.android.material.button.MaterialButton
-						android:id="@+id/succesful_onstage"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/endgame3"
-						android:layout_marginStart="40dp"
-						android:layout_toEndOf="@+id/endgame1"
 						android:fontFamily="@font/red_hat_display_black"
 						android:text="YES"
 						android:textColor="#FFFFFF"
@@ -603,15 +683,14 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-<!--no onstage-->
-					<com.google.android.material.button.MaterialButton
-						android:id="@+id/unsuccesful_onstage"
+<!--no spotlight--><com.google.android.material.button.MaterialButton
+						android:id="@+id/no_try_spotlight"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_below="@+id/endgame3"
-						android:layout_marginStart="10dp"
+						android:layout_marginStart="3dp"
 						android:layout_toRightOf="@+id/succesful_spotlight"
+						android:layout_below="@+id/endgame3"
 						android:fontFamily="@font/red_hat_display_black"
 						android:text="No"
 						android:textColor="#FFFFFF"
@@ -619,50 +698,21 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-					<!--	Times blocked-->
-					<TextView
-						android:id="@+id/endgame5"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/endgame4"
-						android:layout_marginTop="10dp"
-						android:fontFamily="@font/archivo_black"
-						android:text="Times Blocked"
-						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-						android:textColor="#FFFFFF"
-						android:textSize="15sp" />
-<!--add block-->
-					<com.google.android.material.button.MaterialButton
-						android:id="@+id/up_times_blocked"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/endgame4"
-						android:layout_marginStart="40dp"
-						android:layout_toEndOf="@+id/endgame1"
-						android:fontFamily="@font/red_hat_display_black"
-						android:text="+"
-						android:textColor="#FFFFFF"
-						android:textSize="20sp"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
-<!--minus block-->
-					<com.google.android.material.button.MaterialButton
-						android:id="@+id/down_times_blocked"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/endgame4"
-						android:layout_marginStart="10dp"
-						android:layout_toRightOf="@+id/succesful_spotlight"
-						android:fontFamily="@font/red_hat_display_black"
-						android:text="-"
-						android:textColor="#FFFFFF"
-						android:textSize="20sp"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
+<!--no spotlight--><com.google.android.material.button.MaterialButton
+					android:id="@+id/unsuccesful_spotlight"
+					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="10dp"
+					android:layout_toRightOf="@+id/no_try_spotlight"
+					android:layout_below="@+id/endgame3"
+					android:fontFamily="@font/red_hat_display_black"
+					android:text="No"
+					android:textColor="#FFFFFF"
+					android:textSize="20sp"
+					app:cornerRadius="4dp"
+					app:strokeColor="#FFFFFF"
+					app:strokeWidth="2dp" />
 				</RelativeLayout>
 
 				<LinearLayout
