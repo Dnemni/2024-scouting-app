@@ -124,6 +124,7 @@
 						android:textColor="#FFFFFF"
 						android:textOff="RED"
 						android:textOn="RED"
+						android: textColor="@drawable/button_text_color"
 						android:backgroundTint="@color/red"/>
 					<ToggleButton
 						android:id="@+id/blue_alliance"
