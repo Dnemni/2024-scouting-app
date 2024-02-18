@@ -125,21 +125,22 @@
 						android:fontFamily="@font/red_hat_display_black"
 						android:textColor="#FFFFFF"
 						android:textOff="RED"
-						android:textOn="RED"
-						android: textColor="@drawable/button_text_color"
-						android:backgroundTint="@color/red"/>
+						android:textOn="RED" />
+
 					<ToggleButton
 						android:id="@+id/blue_alliance"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_margin="15dp"
+						android:layout_marginStart="15dp"
+						android:layout_marginTop="15dp"
+						android:layout_marginEnd="15dp"
+						android:layout_marginBottom="15dp"
 						android:layout_toEndOf="@+id/red_alliance"
 						android:background="@drawable/blue_alliance"
 						android:fontFamily="@font/red_hat_display_black"
 						android:textColor="#FFFFFF"
 						android:textOff="BLUE"
-						android:textOn="BLUE"
-						android:backgroundTint="@color/blue"/>
+						android:textOn="BLUE" />
 
 
 				</RelativeLayout>
