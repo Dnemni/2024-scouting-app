@@ -50,8 +50,9 @@
 						android:textSize="15sp" />
 					<EditText
 						android:layout_width="190dp"
-						android:layout_height="33dp"
+						android:layout_height="40dp"
 						android:layout_marginTop="8dp"
+						android:textColor="#FFFFFF"
 						android:inputType="text" />
 				</LinearLayout>
 				<LinearLayout
@@ -69,8 +70,9 @@
 
 					<EditText
 						android:layout_width="190dp"
-						android:layout_height="33dp"
+						android:layout_height="40dp"
 						android:layout_marginTop="8dp"
+						android:textColor="#FFFFFF"
 						android:inputType="text" />
 				</LinearLayout>
 				<LinearLayout
@@ -86,8 +88,9 @@
 						android:textSize="15sp" />
 					<EditText
 						android:layout_width="190dp"
-						android:layout_height="33dp"
+						android:layout_height="40dp"
 						android:layout_marginTop="8dp"
+						android:textColor="#FFFFFF"
 						android:inputType="text" />
 				</LinearLayout>
 				<RelativeLayout
@@ -105,7 +108,8 @@
 						android:textSize="15sp" />
 					<com.google.android.material.button.MaterialButton
 						android:layout_height="80dp"
-						android:layout_width="match_parent"
+						android:layout_width="250dp"
+						android:gravity="center_horizontal"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
@@ -730,11 +734,11 @@
 					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginStart="10dp"
+					android:layout_marginStart="3dp"
 					android:layout_toRightOf="@+id/no_try_spotlight"
 					android:layout_below="@+id/endgame3"
 					android:fontFamily="@font/red_hat_display_black"
-					android:text="No"
+					android:text="Fail"
 					android:textColor="#FFFFFF"
 					android:textSize="20sp"
 					app:cornerRadius="4dp"
@@ -939,7 +943,6 @@
 
                 Old Code Above-->
 				<!-- new code with new designs below-->
-
 			</LinearLayout>
 		</ScrollView>
 	</LinearLayout>
