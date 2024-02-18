@@ -338,8 +338,9 @@
 						android:layout_marginStart="310dp"
 						android:layout_marginTop="10dp"
 						android:text="Speakers Scored:"
+						android:fontFamily="@font/red_hat_display_black"
 						android:textColor="@color/white"
-						android:textSize="16sp" />
+						android:textSize="15sp" />
 
 					<TextView
 						android:id="@+id/speakers_scored"
@@ -348,6 +349,7 @@
 						android:layout_marginStart="330dp"
 						android:layout_marginTop="40dp"
 						android:text="0"
+
 						android:textColor="@color/white"
 						android:textSize="50sp" />
 
@@ -359,6 +361,7 @@
 						android:layout_marginTop="100dp"
 						android:text="AMPs Scored:"
 						android:textColor="@color/white"
+						android:fontFamily="@font/red_hat_display_black"
 						android:textSize="16sp" />
 
 					<TextView
