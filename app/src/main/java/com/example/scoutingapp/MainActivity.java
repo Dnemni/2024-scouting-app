@@ -10,7 +10,11 @@ import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 import android.widget.Button;
+import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     TextView textView;
@@ -24,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         amp.setChecked(false);
         speaker.setChecked(false);
     }
+    //set end time in seconds
+    private int duration = 120;
+    private boolean timerRunning = false;
     private static final long START_TIME_IN_MILLIS = 600000;
     private TextView mTextViewCountDown;
     private CountDownTimer mCountDownTimer;
@@ -35,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     int match_number;
     int team_number;
+    //variables for timer anirwin made
+
 
     //variables for data collection
     int source_pickup_autonv; int ground_pickup_autonv;
@@ -43,25 +52,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int speaker_teleopv; int amp_teleopv; int amplified_speaker_teleopv = 0; int regular_notes;
     int amp_fail_autonv; int speaker_fail_autonv;
     int amp_fail_teleopv; int speaker_fail_teleopv;
-    boolean spotlightv; boolean buddy_climbv;
-    boolean trapv; boolean onstagev; int blocksv;
+    String spotlightv; String buddy_climbv;
+    String trapv; String onstagev; int blocksv;
 
     //other variables
     boolean sourcev; boolean groundv;
     boolean ampv; boolean speakerv;
     boolean autonv=true;
     int speaker_scoredv=0; int amp_scoredv=0; // for display use only not actual data sent to sheet
+
     //button definitions
+    TextView timer_minutes,timer_seconds;
+    MaterialButton start_timer;
     String balance;
     TextView speakers_scored,amps_scored;
     ToggleButton switch_auton, switch_teleop;
     ToggleButton source_pickup, ground_pickup; //CHECK MATCHING UP
     ToggleButton speaker, amp;
     MaterialButton fail, score, undo/*,drop*/;
-    MaterialButton succesful_spotlight, unsuccesful_spotlight;
-    MaterialButton succesful_buddy_climb, unsuccesful_buddy_climb;
-    MaterialButton succesful_trap, unsuccesful_trap;
-    MaterialButton succesful_onstage, unsuccesful_onstage;
+    MaterialButton succesful_spotlight, no_try_spotlight, unsuccesful_spotlight;
+    MaterialButton succesful_harmony, no_try_harmony, unsuccesful_harmony;
+    MaterialButton succesful_trap, no_try_trap, unsuccesful_trap;
+    MaterialButton succesful_onstage, no_try_onstage, unsuccesful_onstage;
     MaterialButton up_times_blocked, down_times_blocked;
     ToggleButton region_1, region_2,region_3,region_4,region_5;
     Button submit;
@@ -77,6 +89,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        inputTextColor=(EditText) findViewById(R.id.inputTextColor);
 //        inputTextMatch=(EditText) findViewById(R.id.inputTextMatch);
 //        inputTextTeam=(EditText) findViewById(R.id.inputTextTeam);
+
+        //timer stuff
+        timer_minutes = (TextView) findViewById(R.id.timer_minutes);
+        timer_seconds = (TextView) findViewById(R.id.timer_seconds);
+        start_timer = (MaterialButton) findViewById(R.id.start_timer);
+
 //text views below
         speakers_scored = findViewById(R.id.speakers_scored);
         amps_scored = findViewById(R.id.amps_scored);
@@ -94,12 +112,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        drop = (MaterialButton) findViewById(R.id.drop);
         //end game
         succesful_spotlight = (MaterialButton) findViewById(R.id.succesful_spotlight);
+        no_try_spotlight = (MaterialButton) findViewById(R.id.no_try_spotlight);
         unsuccesful_spotlight = (MaterialButton) findViewById(R.id.unsuccesful_spotlight);
-        succesful_buddy_climb = (MaterialButton) findViewById(R.id.succesful_buddy_climb);
-        unsuccesful_buddy_climb = (MaterialButton) findViewById(R.id.unsuccesful_buddy_climb);
+        succesful_harmony = (MaterialButton) findViewById(R.id.succesful_harmony);
+        no_try_harmony = (MaterialButton) findViewById(R.id.no_try_harmony);
+        unsuccesful_harmony = (MaterialButton) findViewById(R.id.unsuccesful_harmony);
         succesful_trap = (MaterialButton) findViewById(R.id.succesful_trap);
+        no_try_trap = (MaterialButton) findViewById(R.id.no_try_trap);
         unsuccesful_trap = (MaterialButton) findViewById(R.id.unsuccesful_trap);
         succesful_onstage = (MaterialButton) findViewById(R.id.succesful_onstage);
+        no_try_onstage = (MaterialButton) findViewById(R.id.no_try_onstage);
         unsuccesful_onstage = (MaterialButton) findViewById(R.id.unsuccesful_onstage);
         up_times_blocked = (MaterialButton) findViewById(R.id.up_times_blocked);
         down_times_blocked = (MaterialButton) findViewById(R.id.down_times_blocked);
@@ -185,6 +207,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 autonv=false;
                 switch_auton.setChecked(false);
                 switch_teleop.setChecked(true);}});
+        start_timer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!timerRunning){
+                    timerRunning = true;
+                new CountDownTimer(duration*1000, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                String time = String.format("%02d:%02d", TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
+                                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)-
+                                        TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
+                                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)-
+                                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
+                                        Locale.getDefault());
+
+                                final String[] minsec = time.split(":");
+
+                                timer_minutes.setText(minsec[1]);
+                                timer_seconds.setText(minsec[2]);
+                            }
+                        });
+                    }
+                    @Override
+                    //reset timer length
+                    public void onFinish() {
+                        duration =120;
+                        timerRunning = false;
+                    }
+                }.start();}
+                else{
+                    Toast.makeText(MainActivity.this, "timer is already running", Toast.LENGTH_SHORT).show();
+                }
+            }});
         source_pickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -222,7 +280,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     amp_fail_teleopv++;
                 } else if(speakerv&&autonv) {
                     speaker_fail_autonv++;
-                } else if(speakerv&&!autonv) {speaker_fail_autonv++;}
+                } else if(speakerv&&!autonv) {
+                    speaker_fail_teleopv++;}
                 groundv=false;
                 sourcev=false;
                 ampv=false;
@@ -231,61 +290,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         undo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                groundv=false;
-                sourcev=false;
-                ampv=false;
-                speakerv=false;
-                clearall();}});
-        score.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(groundv&&autonv){
-                    ground_pickup_autonv++;
-                }
-                else if(groundv&&!autonv){
-                    ground_pickup_teleopv++;
-                }
-                else if(sourcev&&autonv){
-                    source_pickup_autonv++;
-                }
-                else if(sourcev&&!autonv){
-                    source_pickup_teleopv++;
-                }
-                if(ampv&&autonv){
-                    amp_autonv++;
-                }
-                else if(ampv&&!autonv){
-                    amplified_speaker_teleopv++;
-                }
-                else if(!ampv&&!autonv){
-                    //reg_notesv++;
-                }
-                else if(speakerv&&autonv){
-                    speaker_autonv++;
-                }
-                else if(speakerv&&!autonv){
-                    speaker_teleopv++;
-                }
-                //pickup location
-                if(groundv&&autonv)ground_pickup_autonv++;
-                else if(groundv&&!autonv) ground_pickup_teleopv++;
-                else if(sourcev&&autonv)source_pickup_autonv++;
-                else if(sourcev&&!autonv)source_pickup_teleopv++;
-                //scoring location
-                if(ampv&&autonv)amp_autonv++;
-                else if(ampv&&!autonv)amp_teleopv++;
-                else if(speakerv&&autonv)speaker_autonv++;
-                else if(speakerv&&!autonv)speaker_teleopv++;
-
-
-                if(speakerv){
-                    speaker_scoredv ++;
-                    speakers_scored.setText(String.valueOf(speaker_scoredv));                }
-                if(ampv){
-                    amplified_speaker_teleopv++;
-                    amps_scored.setText(String.valueOf(amplified_speaker_teleopv));
-                }
                 groundv=false;
                 sourcev=false;
                 ampv=false;
@@ -321,21 +325,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 //pickup location
                 if(groundv&&autonv)ground_pickup_autonv++;
-//                else if(groundv&&!autonv) ground_pickup_teleopv++;
-//                else if(sourcev&&autonv)source_pickup_autonv++;
-//                else if(sourcev&&!autonv)source_pickup_teleopv++;
+                else if(groundv&&!autonv) ground_pickup_teleopv++;
+                else if(sourcev&&autonv)source_pickup_autonv++;
+                else if(sourcev&&!autonv)source_pickup_teleopv++;
                 //scoring location
                 if(ampv&&autonv)amp_autonv++;
-//                else if(ampv&&!autonv)amp_teleopv++;
-//                else if(speakerv&&autonv)speaker_autonv++;
-//                else if(speakerv&&!autonv)speaker_teleopv++;
+                else if(ampv&&!autonv)amp_teleopv++;
+                else if(speakerv&&autonv)speaker_autonv++;
+                else if(speakerv&&!autonv)speaker_teleopv++;
 
 
                 if(speakerv){
-                    speaker_scoredv++;
+                    speaker_scoredv ++;
                     speakers_scored.setText(String.valueOf(speaker_scoredv));                }
                 if(ampv){
-                    amp_scoredv++;
+                    amp_scoredv ++;
                     amps_scored.setText(String.valueOf(amp_scoredv));
                 }
                 groundv=false;
@@ -343,113 +347,74 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ampv=false;
                 speakerv=false;
                 clearall();}});
-//        score.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                if(groundv&&autonv){
-//                    ground_pickup_autonv++;
-//                }
-//                else if(groundv&&!autonv){
-//                    ground_pickup_teleopv++;
-//                }
-//                else if(sourcev&&autonv){
-//                    source_pickup_autonv++;
-//                }
-//                else if(sourcev&&!autonv){
-//                    source_pickup_teleopv++;
-//                }
-//                if(ampv&&autonv){
-//                    amp_autonv++;
-//                }
-//                else if(ampv&&!autonv){
-//                    amp_teleopv++;
-//                }
-//                else if(speakerv&&autonv){
-//                    speaker_autonv++;
-//                }
-//                else if(speakerv&&!autonv){
-//                    speaker_teleopv++;
-//                }
-//                //pickup location
-//                if(groundv&&autonv)ground_pickup_autonv++;
-////                else if(groundv&&!autonv) ground_pickup_teleopv++;
-////                else if(sourcev&&autonv)source_pickup_autonv++;
-////                else if(sourcev&&!autonv)source_pickup_teleopv++;
-//                //scoring location
-//                if(ampv&&autonv)amp_autonv++;
-////                else if(ampv&&!autonv)amp_teleopv++;
-////                else if(speakerv&&autonv)speaker_autonv++;
-////                else if(speakerv&&!autonv)speaker_teleopv++;
-//
-//
-//                if(speakerv){
-//                    speaker_scoredv ++;
-//                    speakers_scored.setText(String.valueOf(speaker_scoredv));                }
-//                if(ampv){
-//                    amp_scoredv ++;
-//                    amps_scored.setText(String.valueOf(amp_scoredv));
-//                }
-//                groundv=false;
-//                sourcev=false;
-//                ampv=false;
-//                speakerv=false;
-//                clearall();}});
-//        drop.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(autonv) {
-//                    drop_autonv++;
-//                } else if(!autonv) {drop_teleopv++;}
-//                groundv=false;
-//                sourcev=false;
-//                ampv=false;
-//                speakerv=false;
-//                clearall();}});
         succesful_spotlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                spotlightv=true;}});
+                spotlightv="succesful";}});
+        no_try_spotlight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                spotlightv="no try";
+            }
+        });
         unsuccesful_spotlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                spotlightv=false;
+                spotlightv="fail";
             }
         });
-        succesful_buddy_climb.setOnClickListener(new View.OnClickListener() {
+        succesful_harmony.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buddy_climbv=true;
+                buddy_climbv="succesful";
             }
         });
-        unsuccesful_buddy_climb.setOnClickListener(new View.OnClickListener() {
+        no_try_harmony.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buddy_climbv=false;
+                buddy_climbv="no try";
+            }
+        });
+        unsuccesful_harmony.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buddy_climbv="fail";
             }
         });
         succesful_trap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                trapv=true;
+                trapv="succesful";
+            }
+        });
+        no_try_trap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                trapv="no try";
             }
         });
         unsuccesful_trap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                trapv=false;
+                trapv="fail";
             }
         });
         succesful_onstage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onstagev=true;
+                onstagev="succesful";
             }
         });
         unsuccesful_onstage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onstagev=false;
+                onstagev="no try";
+            }
+        });
+        unsuccesful_onstage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onstagev="fail";
             }
         });
         up_times_blocked.setOnClickListener(new View.OnClickListener() {
