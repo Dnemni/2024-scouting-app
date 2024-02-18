@@ -125,7 +125,9 @@
 						android:fontFamily="@font/red_hat_display_black"
 						android:textColor="#FFFFFF"
 						android:textOff="RED"
-						android:textOn="RED" />
+						android:textOn="RED"
+						android: textColor="@drawable/button_text_color"
+						android:backgroundTint="@color/red"/>
 					<ToggleButton
 						android:id="@+id/blue_alliance"
 						android:layout_width="wrap_content"
@@ -136,7 +138,8 @@
 						android:fontFamily="@font/red_hat_display_black"
 						android:textColor="#FFFFFF"
 						android:textOff="BLUE"
-						android:textOn="BLUE" />
+						android:textOn="BLUE"
+						android:backgroundTint="@color/blue"/>
 
 
 				</RelativeLayout>
