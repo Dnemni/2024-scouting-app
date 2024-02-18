@@ -197,20 +197,23 @@
 					android:orientation="horizontal">
 
 					<!-- Auton Button -->
+					<!-- Teleop Button -->
+
 					<ToggleButton
 						android:id="@+id/switch_auton"
-						android:background="@drawable/toggle_color"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_margin="3dp"
+						android:background="@drawable/toggle_color"
 						android:fontFamily="@font/red_hat_display_black"
-						android:textOn="AUTON"
-						android:textOff="AUTON"
 						android:textColor="#FFFFFF"
+						android:textOff="AUTON"
+						android:textOn="AUTON"
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
-					<!-- Teleop Button -->
+						app:strokeWidth="2dp"
+						android:radius="45dp"/>
+
 					<ToggleButton
 						android:id="@+id/switch_teleop"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
