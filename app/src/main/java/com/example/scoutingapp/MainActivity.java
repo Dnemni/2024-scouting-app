@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     MaterialButton start_timer;
     String balance;
     TextView speakers_scored,amps_scored;
+    ToggleButton red_alliance, blue_alliance;
     ToggleButton switch_auton, switch_teleop;
     ToggleButton source_pickup, ground_pickup; //CHECK MATCHING UP
     ToggleButton speaker, amp;
@@ -99,6 +100,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         speakers_scored = findViewById(R.id.speakers_scored);
         amps_scored = findViewById(R.id.amps_scored);
 //toggle buttons below
+        red_alliance = (ToggleButton) findViewById(R.id.red_alliance);
+        blue_alliance = (ToggleButton) findViewById(R.id.blue_alliance);
         switch_auton = (ToggleButton) findViewById(R.id.switch_auton);
         switch_teleop = (ToggleButton) findViewById(R.id.switch_teleop);
         source_pickup = (ToggleButton) findViewById(R.id.source_pickup);
@@ -189,6 +192,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        });
 //
 //        updateCountDownText();
+
+        red_alliance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alliance_color="red";
+                red_alliance.setChecked(true);
+                blue_alliance.setChecked(false);
+            }});
+        blue_alliance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alliance_color="blue";
+                blue_alliance.setChecked(true);
+                red_alliance.setChecked(false);
+            }});
         switch_auton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
