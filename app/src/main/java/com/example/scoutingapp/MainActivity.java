@@ -556,6 +556,70 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
         mTextViewCountDown.setText(timeLeftFormatted);
     }
+	private TextView timerTextView;
+	private Button startButton, stopButton, resetButton;
+	private long startTime = 0L;
+	private Handler handler = new Handler();
+	private long timeInMilliseconds = 0L;
+	private boolean isRunning = false;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		timerTextView = findViewById(R.id.timerTextView);
+		startButton = findViewById(R.id.startButton);
+		stopButton = findViewById(R.id.stopButton);
+		resetButton = findViewById(R.id.resetButton);
+
+		startButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				if (!isRunning) {
+					startTime = System.currentTimeMillis();
+					handler.postDelayed(runnable, 0);
+					isRunning = true;
+				}
+			}
+		});
+
+		stopButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				isRunning = false;
+			}
+		});
+
+		resetButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				isRunning = false;
+				timeInMilliseconds = 0L;
+				timerTextView.setText("00:00:00");
+			}
+		});
+	}
+
+	private Runnable runnable = new Runnable() {
+		@Override
+		public void run() {
+			if (isRunning) {
+				timeInMilliseconds = System.currentTimeMillis() - startTime;
+				updateTimerTextView();
+				handler.postDelayed(this, 0);
+			}
+		}
+	};
+
+	private void updateTimerTextView() {
+		int hours = (int) (timeInMilliseconds / 1000) / 3600;
+		int minutes = (int) ((timeInMilliseconds / 1000) % 3600) / 60;
+		int seconds = (int) (timeInMilliseconds / 1000) % 60;
+
+		String time = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+		timerTextView.setText(time);
+	}
     private void saveData(String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list) {
         String url = "https://script.google.com/macros/s/AKfycbwEq0zDFuf0nxK62CI65RkVFZelua9lvjGHePq5gHoro8K2lEzJL_8mbzPBY2xELl6Q/exec";
         url = url + "action=create&name=" + name + "&matchnumber=" + matchnumber + "&teamnumber=" + teamnumber;
