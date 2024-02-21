@@ -49,6 +49,7 @@
 						android:textColor="#FFFFFF"
 						android:textSize="15sp" />
 					<EditText
+						android:id="@+id/scout_name"
 						android:layout_width="190dp"
 						android:layout_height="40dp"
 						android:layout_marginTop="8dp"
@@ -69,6 +70,7 @@
 						android:textSize="15sp" />
 
 					<EditText
+						android:id="@+id/team_num"
 						android:layout_width="190dp"
 						android:layout_height="40dp"
 						android:layout_marginTop="8dp"
@@ -87,11 +89,12 @@
 						android:textColor="#FFFFFF"
 						android:textSize="15sp" />
 					<EditText
+						android:id="@+id/match_num"
 						android:layout_width="190dp"
 						android:layout_height="40dp"
 						android:layout_marginTop="8dp"
 						android:textColor="#FFFFFF"
-						android:inputType="text" />
+						android:inputType="number" />
 				</LinearLayout>
 				<RelativeLayout
 					android:layout_width="match_parent"
@@ -156,37 +159,35 @@
 
 					<!-- Timer TextView -->
 					<TextView
-						android:id="@+id/timer_minutes"
+						android:id="@+id/mTextViewCountDown"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:fontFamily="@font/archivo_black"
-						android:text="00"
-						android:textColor="#FFFFFF"
-						android:textSize="24sp"/>
-					<TextView
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:fontFamily="@font/archivo_black"
-						android:text=":"
-						android:textColor="#FFFFFF"
-						android:textSize="24sp" />
-					<TextView
-						android:id="@+id/timer_seconds"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:fontFamily="@font/archivo_black"
-						android:text="00"
+						android:text="0:00"
 						android:textColor="#FFFFFF"
 						android:textSize="24sp"/>
 					<!-- Start Timer Button-->
 					<com.google.android.material.button.MaterialButton
-						android:id="@+id/start_timer"
+						android:id="@+id/mButtonStartPause"
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginLeft="10dp"
 						android:fontFamily="@font/red_hat_display_black"
 						android:text="Start"
+						android:textColor="#FFFFFF"
+						app:cornerRadius="4dp"
+						app:strokeColor="#FFFFFF"
+						app:strokeWidth="3dp" />
+					<!-- Pause Timer Button-->
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/mButtonReset"
+						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="10dp"
+						android:fontFamily="@font/red_hat_display_black"
+						android:text="Reset"
 						android:textColor="#FFFFFF"
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
@@ -220,7 +221,7 @@
 
 					<ToggleButton
 						android:id="@+id/switch_teleop"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:background="@drawable/toggle_color"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_margin="3dp"
@@ -242,7 +243,7 @@
 <!--source button	-->
 					<ToggleButton
 						android:id="@+id/source_pickup"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:background="@drawable/toggle_color"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_margin="3dp"
@@ -256,7 +257,7 @@
 <!--ground button-->
 					<ToggleButton
 						android:id="@+id/ground_pickup"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:background="@drawable/toggle_color"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_margin="3dp"
@@ -270,7 +271,7 @@
 <!--					amplified-->
 					<ToggleButton
 						android:id="@+id/amplify"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:background="@drawable/toggle_color"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_margin="3dp"
@@ -292,13 +293,6 @@
 						android:layout_width="300dp"
 						android:layout_height="200dp"
 						android:background="@drawable/field" />
-<!--not important-->
-					<Button
-						android:layout_width="100dp"
-						android:layout_height="37dp"
-						android:layout_marginStart="30dp"
-						android:layout_marginTop="55dp"
-						android:background="@drawable/speaker" />
 <!--speaker-->
 					<ToggleButton
 						android:id="@+id/speaker"
@@ -314,13 +308,6 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="@color/blue"
 						app:strokeWidth="2dp" />
-<!--not important-->
-					<Button
-						android:layout_width="87dp"
-						android:layout_height="35dp"
-						android:layout_marginStart="105dp"
-						android:layout_marginTop="5dp"
-						android:background="@drawable/speaker" />
 <!--amp-->
 					<ToggleButton
 						android:id="@+id/amp"
@@ -448,10 +435,21 @@
 		android:layout_height="wrap_content"
 		android:layout_marginTop="10dp"
 		android:fontFamily="@font/archivo_black"
-		android:text="Times Blocked"
+		android:text="Times Blocked:"
 		android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 		android:textColor="#FFFFFF"
 		android:textSize="15sp" />
+<!--display for num of times blocked-->
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/times_blocked"
+		android:layout_toRightOf="@+id/endgame5"
+		android:text="0"
+		android:textColor="#FFFFFF"
+		android:textSize="30sp"
+		android:layout_margin="3dp"
+		/>
 	<!--add block-->
 	<com.google.android.material.button.MaterialButton
 		android:id="@+id/up_times_blocked"
@@ -496,13 +494,8 @@
 						android:textColor="#FFFFFF"
 						android:textSize="17sp" />
 
-					<EditText
-						android:layout_width="190dp"
-						android:layout_height="33dp"
-						android:layout_marginTop="10dp"
-						android:inputType="text" />
-				</LinearLayout>
 
+				</LinearLayout>
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
@@ -531,49 +524,46 @@
 					android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 					android:textColor="#FFFFFF"
 					android:textSize="17sp" />
-<!--yes onstage--><com.google.android.material.button.MaterialButton
-					android:id="@+id/succesful_onstage"
-					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="30dp"
-					android:layout_toEndOf="@+id/endgame1"
-					android:fontFamily="@font/red_hat_display_black"
-					android:text="YES"
-					android:textColor="#FFFFFF"
-					android:textSize="20sp"
-					app:cornerRadius="4dp"
-					app:strokeColor="#FFFFFF"
-					app:strokeWidth="2dp" />
-<!--no try onstage--><com.google.android.material.button.MaterialButton
-					android:id="@+id/no_try_onstage"
-					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_toRightOf="@+id/succesful_onstage"
-					android:fontFamily="@font/red_hat_display_black"
-					android:layout_marginStart="3dp"
-					android:text="No"
-					android:textColor="#FFFFFF"
-					android:textSize="20sp"
-					app:cornerRadius="4dp"
-					app:strokeColor="#FFFFFF"
-					app:strokeWidth="2dp" />
-<!--fail onstage--><com.google.android.material.button.MaterialButton
+<!--yes onstage--><ToggleButton
+						android:id="@+id/succesful_onstage"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="30dp"
+						android:layout_marginTop="3dp"
+						android:layout_marginEnd="3dp"
+						android:layout_marginBottom="3dp"
+						android:layout_toEndOf="@+id/endgame1"
+						android:background="@drawable/toggle_color"
+						android:fontFamily="@font/red_hat_display_black"
+						android:textColor="#FFFFFF"
+						android:textOff="YES"
+						android:textOn="YES"
+						android:textSize="20sp" />
+<!--no try onstage--><ToggleButton
+						android:id="@+id/no_try_onstage"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_margin="3dp"
+						android:layout_marginStart="3dp"
+						android:layout_toRightOf="@+id/succesful_onstage"
+						android:background="@drawable/toggle_color"
+						android:fontFamily="@font/red_hat_display_black"
+						android:textColor="#FFFFFF"
+						android:textOff="NO"
+						android:textOn="NO"
+						android:textSize="20sp" />
+<!--fail onstage--><ToggleButton
 					android:id="@+id/unsuccesful_onstage"
-					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:background="@drawable/toggle_color"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginStart="3dp"
+					android:layout_margin="3dp"
 					android:layout_toRightOf="@+id/no_try_onstage"
 					android:fontFamily="@font/red_hat_display_black"
-					android:text="fail"
+					android:textOn="FAIL"
+					android:textOff="FAIL"
 					android:textColor="#FFFFFF"
-					android:textSize="20sp"
-					app:cornerRadius="4dp"
-					app:strokeColor="#FFFFFF"
-					app:strokeWidth="2dp" />
-
+					android:textSize="20sp"/>
 <!--Harmony row--><TextView
 					android:id="@+id/endgame2"
 					android:layout_width="wrap_content"
@@ -585,52 +575,48 @@
 					android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 					android:textColor="#FFFFFF"
 					android:textSize="17sp" />
-<!--yes Harmony--><com.google.android.material.button.MaterialButton
+<!--yes Harmony--><ToggleButton
 					android:id="@+id/succesful_harmony"
-					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:background="@drawable/toggle_color"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/endgame1"
+					android:layout_below="@+id/succesful_onstage"
 					android:layout_marginStart="30dp"
+					android:layout_marginTop="3dp"
+					android:layout_marginEnd="3dp"
+					android:layout_marginBottom="3dp"
 					android:layout_toEndOf="@+id/endgame1"
 					android:fontFamily="@font/red_hat_display_black"
-					android:text="YES"
+					android:textOn="YES"
+					android:textOff="YES"
 					android:textColor="#FFFFFF"
-					android:textSize="20sp"
-					app:cornerRadius="4dp"
-					app:strokeColor="#FFFFFF"
-					app:strokeWidth="2dp" />
-<!--no try Harmony--><com.google.android.material.button.MaterialButton
+					android:textSize="20sp"/>
+<!--no try Harmony--><ToggleButton
 					android:id="@+id/no_try_harmony"
-					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:background="@drawable/toggle_color"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/endgame1"
-					android:layout_marginStart="3dp"
+					android:layout_below="@+id/no_try_onstage"
+					android:layout_margin="3dp"
 					android:layout_toRightOf="@+id/succesful_harmony"
 					android:fontFamily="@font/red_hat_display_black"
-					android:text="No"
+					android:textOn="NO"
+					android:textOff="NO"
 					android:textColor="#FFFFFF"
-					android:textSize="20sp"
-					app:cornerRadius="4dp"
-					app:strokeColor="#FFFFFF"
-					app:strokeWidth="2dp" />
-<!--fail Harmony--><com.google.android.material.button.MaterialButton
+					android:textSize="20sp"/>
+<!--fail Harmony--><ToggleButton
 					android:id="@+id/unsuccesful_harmony"
-					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:background="@drawable/toggle_color"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/endgame1"
-					android:layout_marginStart="3dp"
+					android:layout_below="@+id/unsuccesful_onstage"
+					android:layout_margin="3dp"
 					android:layout_toRightOf="@+id/no_try_harmony"
 					android:fontFamily="@font/red_hat_display_black"
-					android:text="fail"
+					android:textOn="FAIL"
+					android:textOff="FAIL"
 					android:textColor="#FFFFFF"
-					android:textSize="20sp"
-					app:cornerRadius="4dp"
-					app:strokeColor="#FFFFFF"
-					app:strokeWidth="2dp" />
-
+					android:textSize="20sp"/>
 <!--Trap  row--><TextView
 					android:id="@+id/endgame3"
 					android:layout_width="wrap_content"
@@ -642,52 +628,48 @@
 					android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 					android:textColor="#FFFFFF"
 					android:textSize="17sp" />
-<!--yes trap--><com.google.android.material.button.MaterialButton
+<!--yes trap--><ToggleButton
 					android:id="@+id/succesful_trap"
-					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:background="@drawable/toggle_color"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/endgame2"
+					android:layout_below="@+id/succesful_harmony"
 					android:layout_marginStart="30dp"
+					android:layout_marginTop="3dp"
+					android:layout_marginEnd="3dp"
+					android:layout_marginBottom="3dp"
 					android:layout_toEndOf="@+id/endgame1"
 					android:fontFamily="@font/red_hat_display_black"
-					android:text="YES"
+					android:textOn="YES"
+					android:textOff="YES"
 					android:textColor="#FFFFFF"
-					android:textSize="20sp"
-					app:cornerRadius="4dp"
-					app:strokeColor="#FFFFFF"
-					app:strokeWidth="2dp" />
-<!--no try trap--><com.google.android.material.button.MaterialButton
+					android:textSize="20sp"/>
+<!--no try trap--><ToggleButton
 					android:id="@+id/no_try_trap"
-					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:background="@drawable/toggle_color"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/endgame2"
-					android:layout_marginStart="3dp"
+					android:layout_below="@+id/no_try_harmony"
+					android:layout_margin="3dp"
 					android:layout_toRightOf="@+id/succesful_trap"
 					android:fontFamily="@font/red_hat_display_black"
-					android:text="No"
+					android:textOn="NO"
+					android:textOff="NO"
 					android:textColor="#FFFFFF"
-					android:textSize="20sp"
-					app:cornerRadius="4dp"
-					app:strokeColor="#FFFFFF"
-					app:strokeWidth="2dp" />
-<!--fail trap--><com.google.android.material.button.MaterialButton
+					android:textSize="20sp"/>
+<!--fail trap--><ToggleButton
 					android:id="@+id/unsuccesful_trap"
-					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:background="@drawable/toggle_color"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/endgame2"
-					android:layout_marginStart="3dp"
+					android:layout_below="@+id/unsuccesful_harmony"
+					android:layout_margin="3dp"
 					android:layout_toRightOf="@+id/no_try_trap"
 					android:fontFamily="@font/red_hat_display_black"
-					android:text="fail"
+					android:textOn="FAIL"
+					android:textOff="FAIL"
 					android:textColor="#FFFFFF"
-					android:textSize="20sp"
-					app:cornerRadius="4dp"
-					app:strokeColor="#FFFFFF"
-					app:strokeWidth="2dp" />
-
+					android:textSize="20sp" />
 <!--spotlight row--><TextView
 						android:id="@+id/endgame4"
 						android:layout_width="wrap_content"
@@ -699,56 +681,54 @@
 						android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 						android:textColor="#FFFFFF"
 						android:textSize="17sp" />
-<!--yes spotlight--><com.google.android.material.button.MaterialButton
+<!--yes spotlight--><ToggleButton
 						android:id="@+id/succesful_spotlight"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:background="@drawable/toggle_color"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginStart="30dp"
+						android:layout_marginTop="3dp"
+						android:layout_marginEnd="3dp"
+						android:layout_marginBottom="3dp"
 						android:layout_toEndOf="@+id/endgame1"
-						android:layout_below="@+id/endgame3"
+						android:layout_below="@+id/succesful_trap"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="YES"
+						android:textOn="YES"
+						android:textOff="YES"
 						android:textColor="#FFFFFF"
-						android:textSize="20sp"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
-<!--no spotlight--><com.google.android.material.button.MaterialButton
+						android:textSize="20sp"/>
+<!--no try spotlight--><ToggleButton
 						android:id="@+id/no_try_spotlight"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:background="@drawable/toggle_color"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginStart="3dp"
+						android:layout_margin="3dp"
 						android:layout_toRightOf="@+id/succesful_spotlight"
-						android:layout_below="@+id/endgame3"
+						android:layout_below="@+id/no_try_trap"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="No"
+						android:textOn="NO"
+						android:textOff="NO"
 						android:textColor="#FFFFFF"
-						android:textSize="20sp"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
-<!--no spotlight--><com.google.android.material.button.MaterialButton
+						android:textSize="20sp"/>
+<!--fail spotlight--><ToggleButton
 					android:id="@+id/unsuccesful_spotlight"
-					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					android:background="@drawable/toggle_color"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginStart="3dp"
+					android:layout_margin="3dp"
 					android:layout_toRightOf="@+id/no_try_spotlight"
-					android:layout_below="@+id/endgame3"
+					android:layout_below="@+id/unsuccesful_trap"
 					android:fontFamily="@font/red_hat_display_black"
-					android:text="Fail"
+					android:textOn="FAIL"
+					android:textOff="FAIL"
 					android:textColor="#FFFFFF"
-					android:textSize="20sp"
-					app:cornerRadius="4dp"
-					app:strokeColor="#FFFFFF"
-					app:strokeWidth="2dp" />
+					android:textSize="20sp"/>
 				</RelativeLayout>
 
 				<LinearLayout
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content">
+					android:layout_height="wrap_content"
+					android:layout_marginTop="5dp">
 					<!--	Times blocked-->
 					<TextView
 						android:layout_width="wrap_content"
@@ -762,7 +742,7 @@
 <!--area one-->
 					<ToggleButton
 						android:id="@+id/region_1"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:background="@drawable/toggle_color"
 						android:layout_width="50dp"
 						android:layout_height="wrap_content"
 						android:layout_marginStart="10dp"
@@ -778,9 +758,10 @@
 <!--area two-->
 					<ToggleButton
 						android:id="@+id/region_2"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:background="@drawable/toggle_color"
 						android:layout_width="50dp"
 						android:layout_height="wrap_content"
+						android:layout_marginStart="3dp"
 						android:layout_toEndOf="@+id/endgame1"
 						android:fontFamily="@font/red_hat_display_black"
 						android:textOn="2"
@@ -793,8 +774,9 @@
 <!--area three-->
 					<ToggleButton
 						android:id="@+id/region_3"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:background="@drawable/toggle_color"
 						android:layout_width="50dp"
+						android:layout_marginStart="3dp"
 						android:layout_height="wrap_content"
 						android:layout_toEndOf="@+id/endgame1"
 						android:fontFamily="@font/red_hat_display_black"
@@ -808,8 +790,9 @@
 <!--area four-->
 					<ToggleButton
 						android:id="@+id/region_4"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:background="@drawable/toggle_color"
 						android:layout_width="50dp"
+						android:layout_marginStart="3dp"
 						android:layout_height="wrap_content"
 						android:layout_toEndOf="@+id/endgame1"
 						android:fontFamily="@font/red_hat_display_black"
@@ -823,8 +806,9 @@
 <!--area five-->
 					<ToggleButton
 						android:id="@+id/region_5"
-						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:background="@drawable/toggle_color"
 						android:layout_width="50dp"
+						android:layout_marginStart="3dp"
 						android:layout_height="wrap_content"
 						android:layout_toEndOf="@+id/endgame1"
 						android:fontFamily="@font/red_hat_display_black"

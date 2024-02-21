@@ -17,34 +17,101 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView textView;
-    EditText inputTextName;
-    EditText inputTextColor;
-    EditText inputTextMatch;
-    EditText inputTextTeam;
     void clearall(){
         source_pickup.setChecked(false);
         ground_pickup.setChecked(false);
         amp.setChecked(false);
         speaker.setChecked(false);
     }
-    //set end time in seconds
-    private int duration = 120;
-    private boolean timerRunning = false;
-    private static final long START_TIME_IN_MILLIS = 600000;
-    private TextView mTextViewCountDown;
-    private CountDownTimer mCountDownTimer;
-    private boolean mTimerRunning;
+    void hideall(){
+        mTextViewCountDown.setVisibility(View.INVISIBLE);
+        mButtonStartPause.setVisibility(View.INVISIBLE);
+        mButtonReset.setVisibility(View.INVISIBLE);
+        switch_auton.setVisibility(View.INVISIBLE);
+        switch_teleop.setVisibility(View.INVISIBLE);
+        source_pickup.setVisibility(View.INVISIBLE);
+        ground_pickup.setVisibility(View.INVISIBLE);
+//        amplify.setVisibility(View.INVISIBLE); something wrong with this line it causes program to crash
+        speaker.setVisibility(View.INVISIBLE);
+        amp.setVisibility(View.INVISIBLE);
+        fail.setVisibility(View.INVISIBLE);
+        score.setVisibility(View.INVISIBLE);
+        undo.setVisibility(View.INVISIBLE);
+        succesful_spotlight.setVisibility(View.INVISIBLE);
+        no_try_spotlight.setVisibility(View.INVISIBLE);
+        unsuccesful_spotlight.setVisibility(View.INVISIBLE);
+        succesful_harmony.setVisibility(View.INVISIBLE);
+        no_try_harmony.setVisibility(View.INVISIBLE);
+        unsuccesful_harmony.setVisibility(View.INVISIBLE);
+        succesful_trap.setVisibility(View.INVISIBLE);
+        no_try_trap.setVisibility(View.INVISIBLE);
+        unsuccesful_trap.setVisibility(View.INVISIBLE);
+        succesful_onstage.setVisibility(View.INVISIBLE);
+        no_try_onstage.setVisibility(View.INVISIBLE);
+        unsuccesful_onstage.setVisibility(View.INVISIBLE);
+        up_times_blocked.setVisibility(View.INVISIBLE);
+        down_times_blocked.setVisibility(View.INVISIBLE);
+        region_1.setVisibility(View.INVISIBLE);
+        region_2.setVisibility(View.INVISIBLE);
+        region_3.setVisibility(View.INVISIBLE);
+        region_4.setVisibility(View.INVISIBLE);
+        region_5.setVisibility(View.INVISIBLE);
+        submit.setVisibility(View.INVISIBLE);
+    }
+    void showall(){
+        mButtonStartPause.setVisibility(View.VISIBLE);
+        mButtonReset.setVisibility(View.VISIBLE);
+        mTextViewCountDown.setVisibility(View.INVISIBLE);
+        switch_auton.setVisibility(View.VISIBLE);
+        switch_teleop.setVisibility(View.VISIBLE);
+        source_pickup.setVisibility(View.VISIBLE);
+        ground_pickup.setVisibility(View.VISIBLE);
+//      amplify.setVisibility(View.VISIBLE); something wrong with this line it causes program to crash
+        speaker.setVisibility(View.VISIBLE);
+        amp.setVisibility(View.VISIBLE);
+        fail.setVisibility(View.VISIBLE);
+        score.setVisibility(View.VISIBLE);
+        undo.setVisibility(View.VISIBLE);
+        succesful_spotlight.setVisibility(View.VISIBLE);
+        no_try_spotlight.setVisibility(View.VISIBLE);
+        unsuccesful_spotlight.setVisibility(View.VISIBLE);
+        succesful_harmony.setVisibility(View.VISIBLE);
+        no_try_harmony.setVisibility(View.VISIBLE);
+        unsuccesful_harmony.setVisibility(View.VISIBLE);
+        succesful_trap.setVisibility(View.VISIBLE);
+        no_try_trap.setVisibility(View.VISIBLE);
+        unsuccesful_trap.setVisibility(View.VISIBLE);
+        succesful_onstage.setVisibility(View.VISIBLE);
+        no_try_onstage.setVisibility(View.VISIBLE);
+        unsuccesful_onstage.setVisibility(View.VISIBLE);
+        up_times_blocked.setVisibility(View.VISIBLE);
+        down_times_blocked.setVisibility(View.VISIBLE);
+        region_1.setVisibility(View.VISIBLE);
+        region_2.setVisibility(View.VISIBLE);
+        region_3.setVisibility(View.VISIBLE);
+        region_4.setVisibility(View.VISIBLE);
+        region_5.setVisibility(View.VISIBLE);
+        submit.setVisibility(View.VISIBLE);
+    }
+    void filledout(){
+        scout_namev=scout_name.getText().toString();
+        team_numberv=team_num.getText().toString();
+        match_numberv=match_num.getText().toString();
+        String blank = scout_name.getText().toString();;
+        if(scout_namev!=blank&&team_numberv!=blank&&match_numberv!=blank){
+           showall();
+        }
+        else{
+            hideall();
+        }
+    }
+    //entry data: unless these four have been filled out the rest of the app is hidden
+    String scout_namev = ""; String alliance_colorv = "";
+    String match_numberv=""; String team_numberv="";
+    //variables for timer
+    long START_TIME_IN_MILLIS = 45000;
+    private CountDownTimer mCountDownTimer; private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
-    //variables for shaurya below
-    String name= "";
-    String alliance_color = "";
-
-    int match_number;
-    int team_number;
-    //variables for timer anirwin made
-
-
     //variables for data collection
     int source_pickup_autonv; int ground_pickup_autonv;
     int source_pickup_teleopv; int ground_pickup_teleopv;
@@ -54,52 +121,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int amp_fail_teleopv; int speaker_fail_teleopv;
     String spotlightv; String buddy_climbv;
     String trapv; String onstagev; int blocksv;
-
-    //other variables
+    //variables use for checking whether or not an action is done or button is clicked
     boolean sourcev; boolean groundv;
     boolean ampv; boolean speakerv;
-    boolean autonv=true;
+    boolean autonv=true; boolean amplifiedv = false;
     int speaker_scoredv=0; int amp_scoredv=0; // for display use only not actual data sent to sheet
 
-    //button definitions
-    TextView timer_minutes,timer_seconds;
-    MaterialButton start_timer;
-    String balance;
-    TextView speakers_scored,amps_scored;
+    //textview, editview, and button definitions in order shown on app top to bottom
+    EditText scout_name, team_num, match_num;
+    TextView mTextViewCountDown;
+    Button mButtonStartPause, mButtonReset;
     ToggleButton red_alliance, blue_alliance;
+    TextView speakers_scored,amps_scored;
     ToggleButton switch_auton, switch_teleop;
-    ToggleButton source_pickup, ground_pickup; //CHECK MATCHING UP
+    ToggleButton source_pickup, ground_pickup, amplify;
     ToggleButton speaker, amp;
-    MaterialButton fail, score, undo/*,drop*/;
-    MaterialButton succesful_spotlight, no_try_spotlight, unsuccesful_spotlight;
-    MaterialButton succesful_harmony, no_try_harmony, unsuccesful_harmony;
-    MaterialButton succesful_trap, no_try_trap, unsuccesful_trap;
-    MaterialButton succesful_onstage, no_try_onstage, unsuccesful_onstage;
+    MaterialButton fail, score, undo;
+    ToggleButton succesful_spotlight, no_try_spotlight, unsuccesful_spotlight;
+    ToggleButton succesful_harmony, no_try_harmony, unsuccesful_harmony;
+    ToggleButton succesful_trap, no_try_trap, unsuccesful_trap;
+    ToggleButton succesful_onstage, no_try_onstage, unsuccesful_onstage;
     MaterialButton up_times_blocked, down_times_blocked;
+    TextView times_blocked;
     ToggleButton region_1, region_2,region_3,region_4,region_5;
     Button submit;
-    Button mButtonStartPause, mButtonReset;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //timer buttons
+        mTextViewCountDown = findViewById(R.id.mTextViewCountDown);
+        mButtonStartPause = findViewById(R.id.mButtonStartPause);
+        mButtonReset = findViewById(R.id.mButtonReset);
 
-        textView = (TextView) findViewById(R.id.textView);
-//        inputTextName=(EditText) findViewById(R.id.inputTextName);
-//        inputTextColor=(EditText) findViewById(R.id.inputTextColor);
-//        inputTextMatch=(EditText) findViewById(R.id.inputTextMatch);
-//        inputTextTeam=(EditText) findViewById(R.id.inputTextTeam);
+        //entry data
+        scout_name=(EditText) findViewById(R.id.scout_name);
+        team_num=(EditText) findViewById(R.id.team_num);
+        match_num=(EditText) findViewById(R.id.match_num);
 
-        //timer stuff
-        timer_minutes = (TextView) findViewById(R.id.timer_minutes);
-        timer_seconds = (TextView) findViewById(R.id.timer_seconds);
-        start_timer = (MaterialButton) findViewById(R.id.start_timer);
-
-//text views below
+//text views for display
         speakers_scored = findViewById(R.id.speakers_scored);
         amps_scored = findViewById(R.id.amps_scored);
-//toggle buttons below
+//toggle buttons
         red_alliance = (ToggleButton) findViewById(R.id.red_alliance);
         blue_alliance = (ToggleButton) findViewById(R.id.blue_alliance);
         switch_auton = (ToggleButton) findViewById(R.id.switch_auton);
@@ -112,20 +176,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fail = (MaterialButton) findViewById(R.id.fail);
         score = (MaterialButton) findViewById(R.id.score);
         undo = (MaterialButton) findViewById(R.id.undo);
-//        drop = (MaterialButton) findViewById(R.id.drop);
-        //end game
-        succesful_spotlight = (MaterialButton) findViewById(R.id.succesful_spotlight);
-        no_try_spotlight = (MaterialButton) findViewById(R.id.no_try_spotlight);
-        unsuccesful_spotlight = (MaterialButton) findViewById(R.id.unsuccesful_spotlight);
-        succesful_harmony = (MaterialButton) findViewById(R.id.succesful_harmony);
-        no_try_harmony = (MaterialButton) findViewById(R.id.no_try_harmony);
-        unsuccesful_harmony = (MaterialButton) findViewById(R.id.unsuccesful_harmony);
-        succesful_trap = (MaterialButton) findViewById(R.id.succesful_trap);
-        no_try_trap = (MaterialButton) findViewById(R.id.no_try_trap);
-        unsuccesful_trap = (MaterialButton) findViewById(R.id.unsuccesful_trap);
-        succesful_onstage = (MaterialButton) findViewById(R.id.succesful_onstage);
-        no_try_onstage = (MaterialButton) findViewById(R.id.no_try_onstage);
-        unsuccesful_onstage = (MaterialButton) findViewById(R.id.unsuccesful_onstage);
+//end game
+        succesful_spotlight =  findViewById(R.id.succesful_spotlight);
+        no_try_spotlight =  findViewById(R.id.no_try_spotlight);
+        unsuccesful_spotlight =  findViewById(R.id.unsuccesful_spotlight);
+        succesful_harmony =  findViewById(R.id.succesful_harmony);
+        no_try_harmony =  findViewById(R.id.no_try_harmony);
+        unsuccesful_harmony =  findViewById(R.id.unsuccesful_harmony);
+        succesful_trap =  findViewById(R.id.succesful_trap);
+        no_try_trap =  findViewById(R.id.no_try_trap);
+        unsuccesful_trap =  findViewById(R.id.unsuccesful_trap);
+        succesful_onstage =  findViewById(R.id.succesful_onstage);
+        no_try_onstage =  findViewById(R.id.no_try_onstage);
+        unsuccesful_onstage =  findViewById(R.id.unsuccesful_onstage);
+        times_blocked = findViewById(R.id.times_blocked);
         up_times_blocked = (MaterialButton) findViewById(R.id.up_times_blocked);
         down_times_blocked = (MaterialButton) findViewById(R.id.down_times_blocked);
         region_1 = (ToggleButton) findViewById(R.id.region_1);
@@ -134,7 +198,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         region_4 = (ToggleButton) findViewById(R.id.region_4);
         region_5 = (ToggleButton) findViewById(R.id.region_5);
 //      mTextViewCountDown = findViewById(R.id.text_view_countdown);
-//		private static final long START_TIME_IN_MILLIS = 600000;
 //		private TextView mTextViewCountDown;
 //		private CountDownTimer mCountDownTimer;
 //		private boolean mTimerRunning;
@@ -142,8 +205,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        mButtonStartPause = (MaterialButton) findViewById(R.id.button_start_pause);
 //        mButtonReset = (MaterialButton) findViewById(R.id.button_reset);
         submit = (MaterialButton) findViewById(R.id.submit);
-        // code below for submitting data to google sheet
 
+        // code below for submitting data to google sheet
 //        submit.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -173,37 +236,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                        amplified, drop, source_to_speaker, spotlight, buddy_climb, trap, onstage, list);
 //            }
 //        });
-
-//        mButtonStartPause.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                if (mTimerRunning) {
-////                    pauseTimer();
-////                } else {
-////                    startTimer();
-////                }
-//            }
-//        });
-//        mButtonReset.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                resetTimer();
-//            }
-//        });
-//
-//        updateCountDownText();
-
         red_alliance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alliance_color="red";
+                alliance_colorv="red";
                 red_alliance.setChecked(true);
                 blue_alliance.setChecked(false);
             }});
         blue_alliance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alliance_color="blue";
+                alliance_colorv="blue";
                 blue_alliance.setChecked(true);
                 red_alliance.setChecked(false);
             }});
@@ -217,6 +260,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 speaker_scoredv=0;
                 amps_scored.setText("0");
                 speakers_scored.setText("0");
+                START_TIME_IN_MILLIS = 45000;
+                resetTimer();
             }
         });
         switch_teleop.setOnClickListener(new View.OnClickListener() {
@@ -224,43 +269,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View view) {
                 autonv=false;
                 switch_auton.setChecked(false);
-                switch_teleop.setChecked(true);}});
-        start_timer.setOnClickListener(new View.OnClickListener() {
+                switch_teleop.setChecked(true);
+                START_TIME_IN_MILLIS = 75000;
+                resetTimer();}});
+        mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if(!timerRunning){
-                    timerRunning = true;
-                new CountDownTimer(duration*1000, 1000) {
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                String time = String.format("%02d:%02d", TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
-                                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)-
-                                        TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
-                                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)-
-                                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
-                                        Locale.getDefault());
-
-                                final String[] minsec = time.split(":");
-
-                                timer_minutes.setText(minsec[1]);
-                                timer_seconds.setText(minsec[2]);
-                            }
-                        });
-                    }
-                    @Override
-                    //reset timer length
-                    public void onFinish() {
-                        duration =120;
-                        timerRunning = false;
-                    }
-                }.start();}
-                else{
-                    Toast.makeText(MainActivity.this, "timer is already running", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                if (mTimerRunning) {
+                    pauseTimer();
+                } else {
+                    startTimer();
                 }
-            }});
+            }
+        });
+        mButtonReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetTimer();
+            }
+        });
+        updateCountDownText();
         source_pickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -273,6 +301,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 groundv=true;
                 sourcev=false;
                 source_pickup.setChecked(false);}});
+        amplify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                amplifiedv=true;
+                speakerv=false;
+                speaker.setChecked(false);
+            }
+        });
         amp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -439,12 +475,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View view) {
                 blocksv++;
+                times_blocked.setText(String.valueOf(blocksv));
             }
         });
         down_times_blocked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                blocksv--;
+                if(blocksv>=1){
+                    blocksv--;
+                }
+                times_blocked.setText(String.valueOf(blocksv));
             }
         });
         region_1.setOnClickListener(new View.OnClickListener() {
@@ -476,110 +516,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
               //  num_of_links_teliopv--;
             }
         });
-//        succesful_balance.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                balance = "yes";
-//            }
-//        });
-//        unsuccesful_balance.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                balance = "no";
-//            }
-//        });
-//        strength_1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_strengthv = 1;
-//            }
-//        });
-//        strength_2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_strengthv = 2;
-//            }
-//        });
-//        strength_3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_strengthv = 3;
-//            }
-//        });
-//        strength_4.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_strengthv = 4;
-//            }
-//        });
-//        strength_5.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_strengthv = 5;
-//            }
-//        });
-//        speed_1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_speedv = 1;
-//            }
-//        });
-//        speed_2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_speedv = 2;
-//            }
-//        });
-//        speed_3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_speedv = 3;
-//            }
-//        });
-//        speed_4.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_speedv = 4;
-//            }
-//        });
-//        speed_5.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_speedv = 5;
-//            }
-//        });
-//        maneuvering_1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_maneuvarablev = 1;
-//            }
-//        });
-//        maneuvering_2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_maneuvarablev = 2;
-//            }
-//        });
-//        maneuvering_3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_maneuvarablev = 3;
-//            }
-//        });
-//        maneuvering_5.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_maneuvarablev = 5;
-//            }
-//        });
-//        maneuvering_4.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                robot_maneuvarablev = 4;
-//            }
-//        });
+    }
+    private void startTimer() {
+        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+            }
 
-// name, matchnumber, teamnumber, alliance_color, ground_pickup, source_pickup, amplified, drop, source_to_speaker, spotlight, buddy_climb, trap, onstage, list
+            @Override
+            public void onFinish() {
+                mTimerRunning = false;
+                mButtonStartPause.setText("Start");
+                mButtonStartPause.setVisibility(View.INVISIBLE);
+                mButtonReset.setVisibility(View.VISIBLE);
+            }
+        }.start();
+
+        mTimerRunning = true;
+        mButtonStartPause.setText("pause");
+        mButtonReset.setVisibility(View.INVISIBLE);
+    }
+    private void pauseTimer() {
+        mCountDownTimer.cancel();
+        mTimerRunning = false;
+        mButtonStartPause.setText("Start");
+        mButtonReset.setVisibility(View.VISIBLE);
+    }
+    private void resetTimer() {
+        mTimeLeftInMillis = START_TIME_IN_MILLIS;
+        updateCountDownText();
+        mButtonReset.setVisibility(View.INVISIBLE);
+        mButtonStartPause.setVisibility(View.VISIBLE);
+    }
+    private void updateCountDownText() {
+        int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
+        int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+        mTextViewCountDown.setText(timeLeftFormatted);
     }
     private void saveData(String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list) {
         String url = "https://script.google.com/macros/s/AKfycbwEq0zDFuf0nxK62CI65RkVFZelua9lvjGHePq5gHoro8K2lEzJL_8mbzPBY2xELl6Q/exec";
@@ -650,5 +625,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         MaterialButton button = (MaterialButton) view;
         String buttonText = button.getText().toString();
+
     }
 }
