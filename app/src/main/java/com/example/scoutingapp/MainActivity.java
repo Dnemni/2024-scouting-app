@@ -301,14 +301,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 groundv=true;
                 sourcev=false;
                 source_pickup.setChecked(false);}});
-        amplify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                amplifiedv=true;
-                speakerv=false;
-                speaker.setChecked(false);
-            }
-        });
+//        amplify.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                amplifiedv=true;
+//                speakerv=false;
+//                speaker.setChecked(false);
+//            }
+//        });
         amp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
