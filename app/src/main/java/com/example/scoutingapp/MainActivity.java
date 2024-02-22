@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int source_pickup_autonv; int ground_pickup_autonv;
     int source_pickup_teleopv; int ground_pickup_teleopv;
     int speaker_autonv; int amp_autonv;
-    int speaker_teleopv; int amp_teleopv; int amplified_speaker_teleopv = 0; int regular_notes;
+    int speaker_teleopv; int amp_teleopv; int amplified_speaker_teleopv;
     int amp_fail_autonv; int speaker_fail_autonv;
     int amp_fail_teleopv; int speaker_fail_teleopv;
     String spotlightv; String buddy_climbv;
@@ -207,41 +207,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         submit = (MaterialButton) findViewById(R.id.submit);
 
         // code below for submitting data to google sheet
-//        submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String name = "amogh";
-//                int matchnumber = 76;
-//                int teamnumber = 7390;
-//                saveData(name, matchnumber, teamnumber, source_pickup, pickup_location_autonv, pickup_location_teliopv,
-//                         fail_teliopv, fail_autonv, balance, robot_strengthv,
-//                        robot_speedv, robot_maneuvarablev);
-//
-//               saveData(name, matchnumber, teamnumber, alliance_color, pickup_location_autonv, pickup_location_teliopv,
-//                     high_cube_teliopv, middle_cube_teliopv, low_cube_teliopv, high_cone_teliopv, middle_cone_teliopv,
-//                     low_cone_teliopv, high_cube_autonv, middle_cube_autonv, low_cube_autonv, high_cone_autonv, middle_cone_autonv,
-//                      low_cone_autonv, fail_teliopv, fail_autonv, num_of_links_teliopv, num_of_links_autonv, balance, robot_strengthv,
-//                        robot_speedv, robot_maneuvarablev);
-//            }
-//        });
 
-//        submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                System.out.println("submit pressed");
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               System.out.println("submit pressed");
+               String source_to_speaker = "NA";
+               String list = "NA";
+               // String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list
+               saveData(scout_namev, match_numberv, team_numberv, alliance_colorv ,ground_pickup_autonv, ground_pickup_teleopv, source_pickup_autonv, source_pickup_teleopv, speaker_autonv, speaker_teleopv, amplified_speaker_teleopv, speaker_autonv, speaker_teleopv, amp_autonv, amp_teleopv, amp_fail_autonv+amp_fail_teleopv+speaker_fail_autonv+speaker_fail_teleopv, source_to_speaker, spotlightv, buddy_climbv, trapv, onstagev, list)  {
+                   String placeholder = "placeholder";
+                }
 //                String name = "amogh";
 //                int matchnumber = 76;
 //                int teamnumber = 7390;
 //                saveData(name, matchnumber, teamnumber, alliance_color, ground_pickup, source_pickup,
 //                        amplified, drop, source_to_speaker, spotlight, buddy_climb, trap, onstage, list);
-//            }
-//        });
+            }
+        });
         red_alliance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 alliance_colorv="red";
                 red_alliance.setChecked(true);
                 blue_alliance.setChecked(false);
+                scout_namev=scout_name.getText().toString();
+                team_numberv=team_num.getText().toString();
+                match_numberv=match_num.getText().toString();
             }});
         blue_alliance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -249,6 +242,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 alliance_colorv="blue";
                 blue_alliance.setChecked(true);
                 red_alliance.setChecked(false);
+                scout_namev=scout_name.getText().toString();
+                team_numberv=team_num.getText().toString();
+                match_numberv=match_num.getText().toString();
             }});
         switch_auton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -556,7 +552,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
         mTextViewCountDown.setText(timeLeftFormatted);
     }
-    private void saveData(String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list) {
+    private void saveData(String name, String matchnumber, String teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list) {
         String url = "https://script.google.com/macros/s/AKfycbwEq0zDFuf0nxK62CI65RkVFZelua9lvjGHePq5gHoro8K2lEzJL_8mbzPBY2xELl6Q/exec";
         url = url + "action=create&name=" + name + "&matchnumber=" + matchnumber + "&teamnumber=" + teamnumber;
         url = url + "&color=" + alliance_color + "&groundpickupauton=" + ground_pickup_auton + "&groundpickupteleop=" + ground_pickup_teleop + "&sourcepickupauton=" + source_pickup_auton + "&sourcepickupteleop=" + source_pickup_teleop + "&regularnoteauton=" + regular_note_auton + "&regularnoteteleop=" + regular_note_teleop;
