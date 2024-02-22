@@ -221,6 +221,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View view) {
                System.out.println("submit pressed");
+				if (view.getId() == R.id.submit) {
+					source_pickup.setChecked(false);
+					ground_pickup.setChecked(false);
+					amp.setChecked(false);
+					speaker.setChecked(false);
+					switch_teleop.setChecked(false);
+					switch_auton.setChecked(false);
+					clearall();
+					scout_name.setText("");
+					team_num.setText("");
+					match_num.setText("");
+					speakers_scored.setText("0");
+					amps_scored.setText("0");
+					times_blocked.setText("0");
+					for (ToggleButton button : new ToggleButton[]{switch_auton, switch_teleop, source_pickup, ground_pickup, amp, speaker, succesful_spotlight, no_try_spotlight, unsuccesful_spotlight, succesful_harmony, no_try_harmony, unsuccesful_harmony, succesful_trap, no_try_trap, unsuccesful_trap, succesful_onstage, no_try_onstage, unsuccesful_onstage, region_1, region_2, region_3, region_4, region_5}) {
+						button.setChecked(false);
+					}
+					if (mCountDownTimer != null) {
+						mCountDownTimer.cancel();
+						resetTimer();
+					}
+				}
                String source_to_speaker = "NA";
                String list = "NA";
                // String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list
