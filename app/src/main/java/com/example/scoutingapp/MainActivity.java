@@ -1,5 +1,5 @@
 package com.example.scoutingapp;
-import android.widget.TextView;
+
 import android.annotation.SuppressLint;
 import android.os.CountDownTimer;
 import androidx.appcompat.app.AppCompatActivity;
@@ -248,10 +248,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                String source_to_speaker = "NA";
                String list = "NA";
                // String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list
-				String currentTime = mTimerRunning ? mTextViewCountDown.getText().toString() : "0:00";
-				lastScoreTime.setText(currentTime);
-
-				saveData(scout_namev, match_numberv, team_numberv, alliance_colorv ,ground_pickup_autonv, ground_pickup_teleopv, source_pickup_autonv, source_pickup_teleopv, speaker_autonv, speaker_teleopv, amplified_speaker_teleopv, speaker_autonv, speaker_teleopv, amp_autonv, amp_teleopv, amp_fail_autonv+amp_fail_teleopv+speaker_fail_autonv+speaker_fail_teleopv, source_to_speaker, spotlightv, buddy_climbv, trapv, onstagev, list, currentTime);
+               saveData(scout_namev, match_numberv, team_numberv, alliance_colorv ,ground_pickup_autonv, ground_pickup_teleopv, source_pickup_autonv, source_pickup_teleopv, speaker_autonv, speaker_teleopv, amplified_speaker_teleopv, speaker_autonv, speaker_teleopv, amp_autonv, amp_teleopv, amp_fail_autonv+amp_fail_teleopv+speaker_fail_autonv+speaker_fail_teleopv, source_to_speaker, spotlightv, buddy_climbv, trapv, onstagev, list);
 //                String name = "amogh";
 //                int matchnumber = 76;
 //                int teamnumber = 7390;
@@ -417,7 +414,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else if(speakerv&&autonv)speaker_autonv++;
                 else if(speakerv&&!autonv)speaker_teleopv++;
 
-				
+
                 if(speakerv){
                     speaker_scoredv ++;
                     speakers_scored.setText(String.valueOf(speaker_scoredv));                }
@@ -585,27 +582,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
         mTextViewCountDown.setText(timeLeftFormatted);
     }
-	private void saveData(String name, String matchnumber, String teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int speaker_autonv, int speaker_teleopv, int amplified_speaker_teleopv, int speaker_autonv, int speaker_teleopv, int amp_autonv, int amp_teleopv, int amp_fail_autonv, int amp_fail_teleopv, int drop, String source_to_speaker, String spotlight, String buddy_climb, String trap, String onstage, String list, String currentTime) {
-		String url = "https://script.google.com/macros/s/AKfycbyM7SgLcZHHQJU278nUJ6AO7estaRV8CqfM61dXxoBdjd-Cgj90NNxBM94VXnUDIzBj/exec?";
-		url = url + "action=create&name=" + name + "&matchnumber=" + matchnumber + "&teamnumber=" + teamnumber;
-		url = url + "&color=" + alliance_color + "&groundpickupauton=" + ground_pickup_auton + "&groundpickupteleop=" + ground_pickup_teleop + "&sourcepickupauton=" + source_pickup_auton + "&sourcepickupteleop=" + source_pickup_teleop + "®ularnoteauton=" + regular_note_auton + "®ularnoteteleop=" + regular_note_teleop;
-		url = url + "&lifiednote=" + amplified_note + "&speakernotesauton=" + speaker_notes_auton + "&speakernotesteleop=" + speaker_notes_teleop + "¬esauton=" + amp_notes_auton + "¬esteleop=" + amp_notes_teleop + "&drop=" + drop + "&sourcetospeaker=" + source_to_speaker + "&spotlight=" + spotlight;
-		url = url + "&buddyclimb=" + buddy_climb + "&trap=" + trap + "&onstage=" + onstage + "&list=" + list + "¤tTime=" + currentTime;
-		StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-			@Override
-			public void onResponse(String response) {
-				System.out.println("Received response");
-				System.out.println(response);
-			}
-		}, new Response.ErrorListener() {
-			@Override
-			public void onErrorResponse(VolleyError error) {
-				System.out.println("Received error");
-				System.out.println(error.getMessage());
-			}
-		});
-		queue.add(stringRequest);
-	}
+    private void saveData(String name, String matchnumber, String teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, String spotlight, String buddy_climb, String trap, String onstage, String list) {
+        String url = "https://script.google.com/macros/s/AKfycbyM7SgLcZHHQJU278nUJ6AO7estaRV8CqfM61dXxoBdjd-Cgj90NNxBM94VXnUDIzBj/exec?";
+        url = url + "action=create&name=" + name + "&matchnumber=" + matchnumber + "&teamnumber=" + teamnumber;
+        url = url + "&color=" + alliance_color + "&groundpickupauton=" + ground_pickup_auton + "&groundpickupteleop=" + ground_pickup_teleop + "&sourcepickupauton=" + source_pickup_auton + "&sourcepickupteleop=" + source_pickup_teleop + "&regularnoteauton=" + regular_note_auton + "&regularnoteteleop=" + regular_note_teleop;
+        url = url + "&amplifiednote=" + amplified_note + "&speakernotesauton=" + speaker_notes_auton + "&speakernotesteleop=" + speaker_notes_teleop + "&ampnotesauton=" + amp_notes_auton + "&ampnotesteleop=" + amp_notes_teleop + "&drop=" + drop + "&sourcetospeaker=" + source_to_speaker + "&spotlight=" + spotlight;
+        url = url + "&buddyclimb=" + buddy_climb + "&trap=" + trap + "&onstage=" + onstage + "&list=" + list;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                System.out.println("Received response");
+                System.out.println(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Received error");
+                System.out.println(error.getMessage());
+            }
+        });
+        queue.add(stringRequest);
+    }
 //    void assignId(MaterialButton btn, int id) {
 //        btn = findViewById(id);
 //        btn.setOnClickListener(this);
