@@ -115,6 +115,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //entry data: unless these four have been filled out the rest of the app is hidden
     String scout_namev = ""; String alliance_colorv = "";
     String match_numberv=""; String team_numberv="";
+    // variable for timestamps
+    String listv = "";
     //variables for timer
     long START_TIME_IN_MILLIS = 45000;
     private CountDownTimer mCountDownTimer; private boolean mTimerRunning;
@@ -246,9 +248,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 					}
 				}
                String source_to_speaker = "NA";
-               String list = "NA";
                // String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list
-               saveData(scout_namev, match_numberv, team_numberv, alliance_colorv ,ground_pickup_autonv, ground_pickup_teleopv, source_pickup_autonv, source_pickup_teleopv, speaker_autonv, speaker_teleopv, amplified_speaker_teleopv, speaker_autonv, speaker_teleopv, amp_autonv, amp_teleopv, amp_fail_autonv+amp_fail_teleopv+speaker_fail_autonv+speaker_fail_teleopv, source_to_speaker, spotlightv, buddy_climbv, trapv, onstagev, list);
+               saveData(scout_namev, match_numberv, team_numberv, alliance_colorv ,ground_pickup_autonv, ground_pickup_teleopv, source_pickup_autonv, source_pickup_teleopv, speaker_autonv, speaker_teleopv, amplified_speaker_teleopv, speaker_autonv, speaker_teleopv, amp_autonv, amp_teleopv, amp_fail_autonv+amp_fail_teleopv+speaker_fail_autonv+speaker_fail_teleopv, source_to_speaker, spotlightv, buddy_climbv, trapv, onstagev, listv);
 //                String name = "amogh";
 //                int matchnumber = 76;
 //                int teamnumber = 7390;
@@ -354,6 +355,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                listv += ", failed " + (mTimeLeftInMillis / 1000);
                 if(ampv&&autonv) {
                     amp_fail_autonv++;
                 } else if (ampv&&!autonv) {
@@ -378,7 +380,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         score.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                listv += ", scored " + (mTimeLeftInMillis / 1000);
                 if(groundv&&autonv){
                     ground_pickup_autonv++;
                 }
