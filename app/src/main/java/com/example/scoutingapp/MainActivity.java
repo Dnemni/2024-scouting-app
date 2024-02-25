@@ -319,12 +319,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         source_pickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                listv += ", pickup from source " + (mTimeLeftInMillis / 1000);
                 sourcev=true;
                 groundv=false;
                 ground_pickup.setChecked(false);}});
         ground_pickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                listv += ", pickup from ground " + (mTimeLeftInMillis / 1000);
                 groundv=true;
                 sourcev=false;
                 source_pickup.setChecked(false);}});
@@ -380,7 +382,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         score.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listv += ", scored " + (mTimeLeftInMillis / 1000);
+                //listv += ", scored " + (mTimeLeftInMillis / 1000);
                 if(groundv&&autonv){
                     ground_pickup_autonv++;
                 }
@@ -395,15 +397,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 if(ampv&&autonv){
                     amp_autonv++;
+                    listv += ", scored in amp " + (mTimeLeftInMillis / 1000);
                 }
                 else if(ampv&&!autonv){
                     amp_teleopv++;
+                    listv += ", scored in amp " + (mTimeLeftInMillis / 1000);
                 }
                 else if(speakerv&&autonv){
                     speaker_autonv++;
+                    listv += ", scored in speaker " + (mTimeLeftInMillis / 1000);
                 }
                 else if(speakerv&&!autonv){
                     speaker_teleopv++;
+                    listv += ", scored in speaker " + (mTimeLeftInMillis / 1000);
                 }
                 //pickup location
                 if(groundv&&autonv)ground_pickup_autonv++;
