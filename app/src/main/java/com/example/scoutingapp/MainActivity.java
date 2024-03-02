@@ -112,6 +112,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             hideall();
         }
     }
+    void amplified(){
+        if(amplifiedv){
+            int x = amplify_timerv-10;
+            for (int i = amplify_timerv; i > 0 && i != x ; i--) {
+                if(amplify.isChecked()){
+                    amplify.setChecked(false);
+                }
+                else if(!amplify.isChecked()){
+                    amplify.setChecked(true);
+                }
+            }
+        }
+
+    }
     //entry data: unless these four have been filled out the rest of the app is hidden
     String scout_namev = ""; String alliance_colorv = "";
     String match_numberv=""; String team_numberv="";
@@ -131,10 +145,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String spotlightv; String buddy_climbv;
     String trapv; String onstagev; int blocksv;
     int shots_blockedv;
+
+    boolean region_1v, region_2v, region_3v, region_4v, region_5v;
     //variables use for checking whether or not an action is done or button is clicked
     boolean sourcev; boolean groundv;
     boolean ampv; boolean speakerv;
     boolean autonv=true; boolean amplifiedv = false;
+    int amplify_timerv;
     int speaker_scoredv=0; int amp_scoredv=0; // for display use only not actual data sent to sheet
 
     //textview, editview, and button definitions in order shown on app top to bottom
@@ -181,6 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch_teleop = (ToggleButton) findViewById(R.id.switch_teleop);
         source_pickup = (ToggleButton) findViewById(R.id.source_pickup);
         ground_pickup = (ToggleButton) findViewById(R.id.ground_pickup);
+        amplify = (ToggleButton) findViewById(R.id.amplify);
         speaker = (ToggleButton) findViewById(R.id.speaker);
         amp = (ToggleButton) findViewById(R.id.amp);
 //material buttons
@@ -332,14 +350,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 groundv=true;
                 sourcev=false;
                 source_pickup.setChecked(false);}});
-//        amplify.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                amplifiedv=true;
-//                speakerv=false;
-//                speaker.setChecked(false);
-//            }
-//        });
+        amplify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                amplifiedv=true;
+                //amplified();
+            }
+        });
         amp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -410,7 +427,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     listv += ", scored in speaker " + (mTimeLeftInMillis / 1000);
                 }
                 else if(speakerv&&!autonv){
-                    speaker_teleopv++;
+                    if(amplifiedv)amplified_speaker_teleopv++;
+                    if(!amplifiedv)speaker_teleopv++;
                     listv += ", scored in speaker " + (mTimeLeftInMillis / 1000);
                 }
                 //pickup location
@@ -440,7 +458,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         shots_blocked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                shots_blockedv++;}});
+                shots_blockedv++;
+                groundv=false;
+                sourcev=false;
+                ampv=false;
+                speakerv=false;
+                clearall();}});
         succesful_spotlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -530,30 +553,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         region_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                region_1v=true;
             }
         });
         region_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  num_of_links_autonv++;
+                region_2v=true;
             }
         });
         region_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   num_of_links_autonv--;
+                region_3v=true;
             }
         });
         region_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  num_of_links_teliopv++;
-            }
+                region_4v=true;            }
         });
         region_5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  num_of_links_teliopv--;
+                region_5v=true;
             }
         });
     }
@@ -564,7 +587,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mTimeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
             }
-
             @Override
             public void onFinish() {
                 mTimerRunning = false;
@@ -593,6 +615,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void updateCountDownText() {
         int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
         int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+        amplify_timerv=seconds;
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
         mTextViewCountDown.setText(timeLeftFormatted);
     }
