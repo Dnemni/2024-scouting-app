@@ -410,19 +410,19 @@
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
-<!--&lt;!&ndash;drop&ndash;&gt;-->
-<!--					<com.google.android.material.button.MaterialButton-->
-<!--						android:id="@+id/drop"-->
-<!--						style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-<!--						android:layout_width="wrap_content"-->
-<!--						android:layout_height="wrap_content"-->
-<!--						android:layout_margin="3dp"-->
-<!--						android:fontFamily="@font/red_hat_display_black"-->
-<!--						android:text="DROP"-->
-<!--						android:textColor="#FFFFFF"-->
-<!--						app:cornerRadius="4dp"-->
-<!--						app:strokeColor="#FFFFFF"-->
-<!--						app:strokeWidth="2dp" />-->
+<!--shots blocked-->
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/shots_blocked"
+						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_margin="3dp"
+						android:fontFamily="@font/red_hat_display_black"
+						android:text="BLOCK"
+						android:textColor="#FFFFFF"
+						app:cornerRadius="4dp"
+						app:strokeColor="#FFFFFF"
+						app:strokeWidth="2dp" />
 
 				</LinearLayout>
 <RelativeLayout

@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // variable for timestamps
     String listv = "";
     //variables for timer
-    long START_TIME_IN_MILLIS = 45000;
+    long START_TIME_IN_MILLIS = 15000;
     private CountDownTimer mCountDownTimer; private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
     //variables for data collection
@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int amp_fail_teleopv; int speaker_fail_teleopv;
     String spotlightv; String buddy_climbv;
     String trapv; String onstagev; int blocksv;
+    int shots_blockedv;
     //variables use for checking whether or not an action is done or button is clicked
     boolean sourcev; boolean groundv;
     boolean ampv; boolean speakerv;
@@ -145,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ToggleButton switch_auton, switch_teleop;
     ToggleButton source_pickup, ground_pickup, amplify;
     ToggleButton speaker, amp;
-    MaterialButton fail, score, undo;
+    MaterialButton fail, score, undo, shots_blocked;
     ToggleButton succesful_spotlight, no_try_spotlight, unsuccesful_spotlight;
     ToggleButton succesful_harmony, no_try_harmony, unsuccesful_harmony;
     ToggleButton succesful_trap, no_try_trap, unsuccesful_trap;
@@ -186,6 +187,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fail = (MaterialButton) findViewById(R.id.fail);
         score = (MaterialButton) findViewById(R.id.score);
         undo = (MaterialButton) findViewById(R.id.undo);
+        shots_blocked = (MaterialButton) findViewById(R.id.shots_blocked);
 //end game
         succesful_spotlight =  findViewById(R.id.succesful_spotlight);
         no_try_spotlight =  findViewById(R.id.no_try_spotlight);
@@ -287,7 +289,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 speaker_scoredv=0;
                 amps_scored.setText("0");
                 speakers_scored.setText("0");
-                START_TIME_IN_MILLIS = 45000;
+                START_TIME_IN_MILLIS = 15000;
                 resetTimer();
             }
         });
@@ -297,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 autonv=false;
                 switch_auton.setChecked(false);
                 switch_teleop.setChecked(true);
-                START_TIME_IN_MILLIS = 75000;
+                START_TIME_IN_MILLIS = 135000;
                 resetTimer();}});
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -435,6 +437,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ampv=false;
                 speakerv=false;
                 clearall();}});
+        shots_blocked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                shots_blockedv++;}});
         succesful_spotlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
