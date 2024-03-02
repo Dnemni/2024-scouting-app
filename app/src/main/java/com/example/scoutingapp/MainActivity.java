@@ -112,20 +112,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             hideall();
         }
     }
-    void amplified(){
-        if(amplifiedv){
-            int x = amplify_timerv-10;
-            for (int i = amplify_timerv; i > 0 && i != x ; i--) {
-                if(amplify.isChecked()){
-                    amplify.setChecked(false);
-                }
-                else if(!amplify.isChecked()){
-                    amplify.setChecked(true);
-                }
-            }
-        }
+	void amplified(){
+		if(amplifiedv){
+			int x = amplify_timerv-10;
+			for (int i = amplify_timerv; i > 0 && i != x ; i--) {
+				if(amplify.isChecked()){
+					amplify.setChecked(false);
+				}
+				else if(!amplify.isChecked()){
+					amplify.setChecked(true);
+				}
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-    }
+	}
     //entry data: unless these four have been filled out the rest of the app is hidden
     String scout_namev = ""; String alliance_colorv = "";
     String match_numberv=""; String team_numberv="";
