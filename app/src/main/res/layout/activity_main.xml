@@ -873,16 +873,6 @@
 						app:strokeWidth="2dp" />
 				</LinearLayout>
 
-				<TextView
-					android:id="@+id/last_score_time"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="10dp"
-					android:fontFamily="@font/archivo_black"
-					android:text="Last Score Time: 0:00"
-					android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-					android:textColor="#FFFFFF"
-					android:textSize="17sp" />
 			</LinearLayout>
 		</ScrollView>
 	</LinearLayout>
