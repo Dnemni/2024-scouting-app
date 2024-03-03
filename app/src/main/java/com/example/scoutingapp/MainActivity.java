@@ -1,4 +1,5 @@
 package com.example.scoutingapp;
+import android.content.Intent;
 import android.graphics.Color;
 import android.annotation.SuppressLint;
 import android.os.CountDownTimer;
@@ -196,6 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText scout_name, team_num, match_num;
     TextView mTextViewCountDown;
     Button mButtonStartPause, mButtonReset;
+    MaterialButton switch_to_teleop;
     ToggleButton red_alliance, blue_alliance;
     TextView speakers_scored,amps_scored;
     ToggleButton switch_auton, switch_teleop;
@@ -216,6 +218,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        switch_to_teleop = findViewById(R.id.switch_to_teleop);
         //timer buttons
         mTextViewCountDown = findViewById(R.id.mTextViewCountDown);
         mButtonStartPause = findViewById(R.id.mButtonStartPause);
@@ -278,6 +282,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         queue = Volley.newRequestQueue(this);
 		TextView lastScoreTime = findViewById(R.id.last_score_time);
 
+        switch_to_teleop.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
+            }
+        });
         submit.setOnClickListener(new View.OnClickListener() {
 
             @Override
