@@ -118,11 +118,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 			for (int i = amplify_timerv; i > 0 && i != x ; i--) {
 				if(amplify.isChecked()){
 					amplify.setChecked(false);
-					amplify.setBackgroundColor(Color.RED);
+					//amplify.setBackgroundColor(Color.RED);
 				}
 				else if(!amplify.isChecked()){
 					amplify.setChecked(true);
-					amplify.setBackgroundColor(Color.GREEN);
+					//amplify.setBackgroundColor(Color.GREEN);
 				}
 				try {
 					Thread.sleep(500);
@@ -361,7 +361,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View view) {
                 amplifiedv=true;
-                //amplified();
+                amplified();
             }
         });
         amp.setOnClickListener(new View.OnClickListener() {
