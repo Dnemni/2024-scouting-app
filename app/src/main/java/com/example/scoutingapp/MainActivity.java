@@ -1,5 +1,5 @@
 package com.example.scoutingapp;
-
+import android.graphics.Color;
 import android.annotation.SuppressLint;
 import android.os.CountDownTimer;
 import androidx.appcompat.app.AppCompatActivity;
@@ -118,9 +118,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 			for (int i = amplify_timerv; i > 0 && i != x ; i--) {
 				if(amplify.isChecked()){
 					amplify.setChecked(false);
+					amplify.setBackgroundColor(Color.RED);
 				}
 				else if(!amplify.isChecked()){
 					amplify.setChecked(true);
+					amplify.setBackgroundColor(Color.GREEN);
 				}
 				try {
 					Thread.sleep(500);
