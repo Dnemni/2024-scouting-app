@@ -872,9 +872,6 @@
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
 				</LinearLayout>
-<<<<<<< Updated upstream
-
-=======
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
@@ -893,7 +890,6 @@
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
 				</LinearLayout>
->>>>>>> Stashed changes
 				<TextView
 					android:id="@+id/last_score_time"
 					android:layout_width="wrap_content"
