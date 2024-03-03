@@ -280,6 +280,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        mButtonStartPause = (MaterialButton) findViewById(R.id.button_start_pause);
 //        mButtonReset = (MaterialButton) findViewById(R.id.button_reset);
         submit = (MaterialButton) findViewById(R.id.submit);
+        upload = (MaterialButton) findViewById(R.id.upload);
 
         // code below for submitting data to google sheet
         queue = Volley.newRequestQueue(this);
@@ -299,6 +300,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View view) {
                System.out.println("submit pressed");
                //matches.add(newMatch);
+                String source_to_speaker = "NA";
+                Match newMatch = new Match(scout_namev, match_numberv, team_numberv, alliance_colorv ,ground_pickup_autonv, ground_pickup_teleopv, source_pickup_autonv, source_pickup_teleopv, speaker_autonv, speaker_teleopv, amplified_speaker_teleopv, speaker_autonv, speaker_teleopv+amplified_speaker_teleopv, amp_autonv, amp_teleopv, amp_fail_autonv+amp_fail_teleopv+speaker_fail_autonv+speaker_fail_teleopv, source_to_speaker, spotlightv, buddy_climbv, trapv, onstagev, listv);
+                matches.add(newMatch);
+
 				if (view.getId() == R.id.submit) {
 					source_pickup.setChecked(false);
 					ground_pickup.setChecked(false);
@@ -307,7 +312,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 					switch_teleop.setChecked(false);
 					switch_auton.setChecked(false);
 					clearall();
-					scout_name.setText("");
 					team_num.setText("");
 					match_num.setText("");
 					speakers_scored.setText("0");
@@ -322,13 +326,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 					}
                     resetall();
 				}
-               String source_to_speaker = "NA";
                // String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list
-               Match newMatch = new Match(scout_namev, match_numberv, team_numberv, alliance_colorv ,ground_pickup_autonv, ground_pickup_teleopv, source_pickup_autonv, source_pickup_teleopv, speaker_autonv, speaker_teleopv, amplified_speaker_teleopv, speaker_autonv, speaker_teleopv+amplified_speaker_teleopv, amp_autonv, amp_teleopv, amp_fail_autonv+amp_fail_teleopv+speaker_fail_autonv+speaker_fail_teleopv, source_to_speaker, spotlightv, buddy_climbv, trapv, onstagev, listv);
 
                //String scoutNamev, String matchNumberv, String teamNumberv, String alliance_colorv, int groundPickupAutonv, int groundPickupTeleopv, int sourcePickupAutonv, int sourcePickupTeleopv, int speakerAutonv, int speakerTeleopv, int amplifiedSpeakerTeleopv, int totalSpeakerAutonv, int totalSpeakerTeleopv, int ampAutonv, int ampTeleopv, int totalFails, int sourceToSpeaker, String Spotlightv, boolean buddyClimbv, boolean Trapv, boolean Onstagev, String Listv)
-
-               matches.add(newMatch);
 
                 //saveData(match.scout_namev, match.match_numberv, team_numberv, alliance_colorv ,ground_pickup_autonv, ground_pickup_teleopv, source_pickup_autonv, source_pickup_teleopv, speaker_autonv, speaker_teleopv, amplified_speaker_teleopv, speaker_autonv, speaker_teleopv+amplified_speaker_teleopv, amp_autonv, amp_teleopv, amp_fail_autonv+amp_fail_teleopv+speaker_fail_autonv+speaker_fail_teleopv, source_to_speaker, spotlightv, buddy_climbv, trapv, onstagev, listv);
 
@@ -343,8 +343,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (view.getId() == R.id.upload) {
+                for(int i = 0; i < matches.size(); i++){
+                    Match match = matches.get(i);
+                    saveData(match.scout_namev, match.match_numberv, match.team_numberv, match.alliance_colorv ,match.ground_pickup_autonv, match.ground_pickup_teleopv, match.source_pickup_autonv, match.source_pickup_teleopv, match.speaker_autonv, match.speaker_teleopv, match.amplified_speaker_teleopv, match.total_speaker_autonv, match.total_speaker_teleopv, match.amp_autonv, match.amp_teleopv, match.totalfails, match.source_to_speaker, match.spotlightv, match.buddy_climbv, match.trapv, match.onstagev, match.listv);
+                }
 
+                if (view.getId() == R.id.upload) {
+                    scout_name.setText("");
                 }
             }
 
