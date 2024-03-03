@@ -75,7 +75,7 @@
 						android:layout_height="40dp"
 						android:layout_marginTop="8dp"
 						android:textColor="#FFFFFF"
-						android:inputType="text" />
+						android:inputType="number" />
 				</LinearLayout>
 				<LinearLayout
 					android:layout_width="wrap_content"
@@ -303,14 +303,11 @@
 						android:layout_height="wrap_content"
 						android:background="@drawable/speaker"
 						android:layout_marginStart="30dp"
-						android:layout_marginTop="50dp"
+						android:layout_marginTop="55dp"
 						android:fontFamily="@font/red_hat_display_black"
 						android:textOff="SPEAKER"
 						android:textOn="SPEAKER"
-						android:textColor="@color/blue"
-						app:cornerRadius="4dp"
-						app:strokeColor="@color/blue"
-						app:strokeWidth="2dp" />
+						android:textColor="@color/white" />
 <!--amp-->
 					<ToggleButton
 						android:id="@+id/amp"
@@ -318,13 +315,11 @@
 						android:layout_height="wrap_content"
 						android:background="@drawable/speaker"
 						android:layout_marginStart="105dp"
+						android:layout_marginTop="5dp"
 						android:fontFamily="@font/red_hat_display_black"
 						android:textOn="AMP"
 						android:textOff="AMP"
-						android:textColor="@color/blue"
-						app:cornerRadius="4dp"
-						app:strokeColor="@color/blue"
-						app:strokeWidth="2dp" />
+						android:textColor="@color/white" />
 
 					<TextView
 						android:layout_width="wrap_content"
@@ -408,7 +403,7 @@
 						android:layout_height="wrap_content"
 						android:layout_margin="3dp"
 						android:fontFamily="@font/red_hat_display_black"
-						android:text="UNDO"
+						android:text="Clear"
 						android:textColor="#FFFFFF"
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"

@@ -115,7 +115,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	void amplified(){
 		if(amplifiedv){
 			int x = amplify_timerv-10;
-			for (int i = amplify_timerv; i > 0 && i != x ; i--) {
+            int i =  amplify_timerv;
+			if(i > 0 && i != x) {
 				if(amplify.isChecked()){
 					amplify.setChecked(false);
 					//amplify.setBackgroundColor(Color.RED);
@@ -124,15 +125,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 					amplify.setChecked(true);
 					//amplify.setBackgroundColor(Color.GREEN);
 				}
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
 			}
 		}
 
 	}
+    void resetall(){
+        source_pickup_autonv=0;
+        ground_pickup_autonv=0;
+        source_pickup_teleopv=0;
+        ground_pickup_teleopv=0;
+        speaker_autonv=0;
+        amp_autonv=0;
+        speaker_teleopv=0;
+        amp_teleopv=0;
+        amplified_speaker_teleopv=0;
+        amp_fail_autonv=0;
+        speaker_fail_autonv=0;
+        amp_fail_teleopv=0;
+        speaker_fail_teleopv=0;
+        spotlightv="";
+        buddy_climbv="";
+        trapv=""; onstagev="";
+        blocksv=0;
+        shots_blockedv=0;
+        region_1v = false;
+        region_2v = false;
+        region_3v = false;
+        region_4v = false;
+        region_5v = false;
+        sourcev = false;
+        groundv = false;
+        ampv= false;
+        speakerv= false;
+        autonv=true;
+        amplifiedv = false;
+        amplify_timerv = 0;
+        speaker_scoredv=0;
+        amp_scoredv=0;
+    }
+
     //entry data: unless these four have been filled out the rest of the app is hidden
     String scout_namev = ""; String alliance_colorv = "";
     String match_numberv=""; String team_numberv="";
@@ -273,6 +304,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 						mCountDownTimer.cancel();
 						resetTimer();
 					}
+                    resetall();
 				}
                String source_to_speaker = "NA";
                // String name, int matchnumber, int teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, boolean spotlight, boolean buddy_climb, boolean trap, boolean onstage, String list
