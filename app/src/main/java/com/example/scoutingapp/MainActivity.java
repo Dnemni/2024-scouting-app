@@ -347,6 +347,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if (view.getId() == R.id.upload) {
                     scout_name.setText("");
+                    matches.clear();
                 }
             }
 
