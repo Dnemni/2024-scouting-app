@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.annotation.SuppressLint;
 import android.os.CountDownTimer;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -17,6 +19,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.tabs.TabLayout;
+
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -102,18 +106,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         region_5.setVisibility(View.VISIBLE);
         submit.setVisibility(View.VISIBLE);
     }
-    void filledout(){
-        scout_namev=scout_name.getText().toString();
-        team_numberv=team_num.getText().toString();
-        match_numberv=match_num.getText().toString();
-        String blank = scout_name.getText().toString();;
-        if(scout_namev!=blank&&team_numberv!=blank&&match_numberv!=blank){
-           showall();
-        }
-        else{
-            hideall();
-        }
-    }
 	void amplified(){
 		if(amplifiedv){
 			int x = amplify_timerv-10;
@@ -193,7 +185,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean autonv=true; boolean amplifiedv = false;
     int amplify_timerv;
     int speaker_scoredv=0; int amp_scoredv=0; // for display use only not actual data sent to sheet
-
+//for switching between auton and teleop
+    private TabLayout auton_switch_teleop;
+    private ViewPager swipe_views;
     //textview, editview, and button definitions in order shown on app top to bottom
     EditText scout_name, team_num, match_num;
     TextView mTextViewCountDown;
@@ -223,6 +217,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         switch_to_teleop = findViewById(R.id.switch_to_teleop);
+
+        auton_switch_teleop = findViewById(R.id.auton_switch_teleop);
+        //swipe_views = findViewById(R.id.swipe_views);
         //timer buttons
         mTextViewCountDown = findViewById(R.id.mTextViewCountDown);
         mButtonStartPause = findViewById(R.id.mButtonStartPause);
@@ -286,14 +283,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         queue = Volley.newRequestQueue(this);
 		TextView lastScoreTime = findViewById(R.id.last_score_time);
 
-        switch_to_teleop.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                startActivity(intent);
-            }
-        });
+//        switch_to_teleop.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+//                startActivity(intent);
+//            }
+//        });
         submit.setOnClickListener(new View.OnClickListener() {
 
             @Override

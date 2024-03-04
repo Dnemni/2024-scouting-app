@@ -169,6 +169,73 @@
 
 				</RelativeLayout>
 
+
+				<!-- True and False Buttons -->
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="20dp"
+					android:gravity="center_horizontal"
+					android:orientation="horizontal">
+
+					<!-- Auton Button -->
+					<!-- Teleop Button -->
+
+					<ToggleButton
+						android:id="@+id/switch_auton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_margin="3dp"
+						android:background="@drawable/toggle_color"
+						android:fontFamily="@font/red_hat_display_black"
+						android:radius="45dp"
+						android:textColor="#FFFFFF"
+						android:textOff="AUTON"
+						android:textOn="AUTON"
+						app:cornerRadius="4dp"
+						app:strokeColor="#FFFFFF"
+						app:strokeWidth="2dp" />
+
+					<ToggleButton
+						android:id="@+id/switch_teleop"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_margin="3dp"
+						android:background="@drawable/toggle_color"
+						android:fontFamily="@font/red_hat_display_black"
+						android:textColor="#FFFFFF"
+						android:textOff="TELEOP"
+						android:textOn="TELEOP"
+						app:cornerRadius="4dp"
+						app:strokeColor="#FFFFFF"
+						app:strokeWidth="2dp" />
+				</LinearLayout>
+
+
+				<com.google.android.material.tabs.TabLayout
+					android:id="@+id/auton_switch_teleop"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+
+					<com.google.android.material.tabs.TabItem
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Auton" />
+
+					<com.google.android.material.tabs.TabItem
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Teleop" />
+				</com.google.android.material.tabs.TabLayout>
+
+				<androidx.viewpager.widget.ViewPager
+					android:id="@+id/swipe_views"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:layout_constraintTop_toBottomOf="@+id/auton_switch_teleop"
+					app:layout_constraintHorizontal_bias="0.5"
+					app:layout_constraintStart_toStartOf="parent" />
+
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
@@ -210,46 +277,7 @@
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="3dp" />
 				</LinearLayout>
-				<!-- True and False Buttons -->
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="20dp"
-					android:gravity="center_horizontal"
-					android:orientation="horizontal">
 
-					<!-- Auton Button -->
-					<!-- Teleop Button -->
-
-					<ToggleButton
-						android:id="@+id/switch_auton"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_margin="3dp"
-						android:background="@drawable/toggle_color"
-						android:fontFamily="@font/red_hat_display_black"
-						android:radius="45dp"
-						android:textColor="#FFFFFF"
-						android:textOff="AUTON"
-						android:textOn="AUTON"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
-
-					<ToggleButton
-						android:id="@+id/switch_teleop"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_margin="3dp"
-						android:background="@drawable/toggle_color"
-						android:fontFamily="@font/red_hat_display_black"
-						android:textColor="#FFFFFF"
-						android:textOff="TELEOP"
-						android:textOn="TELEOP"
-						app:cornerRadius="4dp"
-						app:strokeColor="#FFFFFF"
-						app:strokeWidth="2dp" />
-				</LinearLayout>
 				<!--				pickup location buttons-->
 				<LinearLayout
 					android:layout_width="match_parent"
@@ -563,8 +591,10 @@
 						android:id="@+id/no_try_onstage"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_margin="3dp"
 						android:layout_marginStart="3dp"
+						android:layout_marginTop="3dp"
+						android:layout_marginEnd="3dp"
+						android:layout_marginBottom="3dp"
 						android:layout_toRightOf="@+id/succesful_onstage"
 						android:background="@drawable/toggle_color"
 						android:fontFamily="@font/red_hat_display_black"
@@ -872,6 +902,7 @@
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
 				</LinearLayout>
+
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
@@ -881,15 +912,16 @@
 						style="@style/Widget.MaterialComponents.Button.OutlinedButton"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:layout_gravity="center_horizontal"
 						android:fontFamily="@font/red_hat_display_black"
 						android:text="UPLOAD"
-						android:layout_gravity="center_horizontal"
 						android:textColor="#FFFFFF"
 						android:textSize="20sp"
 						app:cornerRadius="4dp"
 						app:strokeColor="#FFFFFF"
 						app:strokeWidth="2dp" />
 				</LinearLayout>
+
 				<TextView
 					android:id="@+id/last_score_time"
 					android:layout_width="wrap_content"
