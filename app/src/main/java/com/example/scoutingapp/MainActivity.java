@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.annotation.SuppressLint;
 import android.os.CountDownTimer;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
@@ -186,8 +187,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int amplify_timerv;
     int speaker_scoredv=0; int amp_scoredv=0; // for display use only not actual data sent to sheet
 //for switching between auton and teleop
-    private TabLayout auton_switch_teleop;
-    private ViewPager swipe_views;
+    private TabLayout tablayout;
+    private ViewPager viewpager;
     //textview, editview, and button definitions in order shown on app top to bottom
     EditText scout_name, team_num, match_num;
     TextView mTextViewCountDown;
@@ -218,8 +219,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch_to_teleop = findViewById(R.id.switch_to_teleop);
 
-        auton_switch_teleop = findViewById(R.id.auton_switch_teleop);
-        //swipe_views = findViewById(R.id.swipe_views);
+        tablayout = findViewById(R.id.tablayout);
+        viewpager = findViewById(R.id.viewpager);
+        tablayout.setupWithViewPager(viewpager);
+        VPAdapter vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        vpAdapter.addFragment(new auton(), "auton");
+        vpAdapter.addFragment(new teleop(), "teleop");
+        viewpager.setAdapter(vpAdapter);
         //timer buttons
         mTextViewCountDown = findViewById(R.id.mTextViewCountDown);
         mButtonStartPause = findViewById(R.id.mButtonStartPause);

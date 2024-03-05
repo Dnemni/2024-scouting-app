@@ -213,7 +213,7 @@
 
 
 				<com.google.android.material.tabs.TabLayout
-					android:id="@+id/auton_switch_teleop"
+					android:id="@+id/tablayout"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent">
 
@@ -229,9 +229,9 @@
 				</com.google.android.material.tabs.TabLayout>
 
 				<androidx.viewpager.widget.ViewPager
-					android:id="@+id/swipe_views"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
+					android:id="@+id/viewpager"
+					android:layout_width="match_parent"
+					android:layout_height="500dp"
 					app:layout_constraintTop_toBottomOf="@+id/auton_switch_teleop"
 					app:layout_constraintHorizontal_bias="0.5"
 					app:layout_constraintStart_toStartOf="parent" />
