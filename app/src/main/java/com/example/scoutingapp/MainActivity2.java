@@ -335,7 +335,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
             public void onClick(View view) {
                 for(int i = 0; i < matches.size(); i++){
                     Match match = matches.get(i);
-                    saveData(match.scout_namev, match.match_numberv, match.team_numberv, match.alliance_colorv ,match.ground_pickup_autonv, match.ground_pickup_teleopv, match.source_pickup_autonv, match.source_pickup_teleopv, match.speaker_autonv, match.speaker_teleopv, match.amplified_speaker_teleopv, match.total_speaker_autonv, match.total_speaker_teleopv, match.amp_autonv, match.amp_teleopv, match.totalfails, match.source_to_speaker, match.spotlightv, match.buddy_climbv, match.trapv, match.onstagev, match.listv);
+                    //saveData(match.scout_namev, match.match_numberv, match.team_numberv, match.alliance_colorv ,match.ground_pickup_autonv, match.ground_pickup_teleopv, match.source_pickup_autonv, match.source_pickup_teleopv, match.speaker_autonv, match.speaker_teleopv, match.amplified_speaker_teleopv, match.total_speaker_autonv, match.total_speaker_teleopv, match.amp_autonv, match.amp_teleopv, match.totalfails, match.source_to_speaker, match.spotlightv, match.buddy_climbv, match.trapv, match.onstagev, match.listv);
                 }
 
                 if (view.getId() == R.id.upload) {
@@ -687,6 +687,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
         mTextViewCountDown.setText(timeLeftFormatted);
     }
+    /*
     private void saveData(String name, String matchnumber, String teamnumber, String alliance_color, int ground_pickup_auton, int ground_pickup_teleop, int source_pickup_auton, int source_pickup_teleop, int regular_note_auton, int regular_note_teleop, int amplified_note, int speaker_notes_auton, int speaker_notes_teleop, int amp_notes_auton, int amp_notes_teleop, int drop, String source_to_speaker, String spotlight, String buddy_climb, String trap, String onstage, String list) {
         String url = "https://script.google.com/macros/s/AKfycbzfPRl0QhBQ_meqcIeDAb1qwZKtK-BQ-IO9uiyBwjRCu0xmr2__KJEKbmj0ri46KTsp/exec?";
         url = url + "action=create&name=" + name + "&matchnumber=" + matchnumber + "&teamnumber=" + teamnumber;
@@ -708,6 +709,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         });
         queue.add(stringRequest);
     }
+     */
 //    void assignId(MaterialButton btn, int id) {
 //        btn = findViewById(id);
 //        btn.setOnClickListener(this);
