@@ -32,8 +32,8 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     void clearall(){
-        source_pickup.setChecked(false);
-        ground_pickup.setChecked(false);
+        //source_pickup.setChecked(false);
+        //ground_pickup.setChecked(false);
         amp.setChecked(false);
         speaker.setChecked(false);
     }
